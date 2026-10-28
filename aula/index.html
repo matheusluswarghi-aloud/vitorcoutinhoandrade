@@ -39,7 +39,9 @@
   --acao:#E0362C; --acao-h:#C42C23; --vivo:#FF4B3E;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;background:var(--bg);scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%;background:var(--bg);scroll-behavior:smooth;overflow-x:hidden}
+html,body{max-width:100%;overflow-x:clip}
+.sempre,.faixa{overflow:hidden;contain:paint}
 body{background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 img{display:block;max-width:100%}

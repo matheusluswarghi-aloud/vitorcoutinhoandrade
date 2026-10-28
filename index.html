@@ -15,6 +15,16 @@
      Entra aqui quando a BM nova existir. Nada de pixel, Utmify ou Clarity
      herdado da página antiga (drvitorcoutinhoandrade.com.br/v4). -->
 
+<script>
+/* Trava do pixel antigo. Os 3 players do teste A/B têm o pixel antigo do Meta
+   (1165898412096025) configurado no painel do VTurb: ao montar, o player carrega o
+   fbevents, faz init e PageView, e no pitch dispara "ChegouNoPitch". Ele só carrega o
+   fbevents se window.fbq não existir, então este fbq vazio absorve tudo isso.
+   Quando o pixel novo entrar: tirar o pixel dos players no VTurb e apagar esta trava
+   (o snippet do Meta não roda se window.fbq já existir). */
+window.fbq=window._fbq=function(){};
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700;900&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet">

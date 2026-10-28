@@ -64,10 +64,12 @@ section{padding:88px 0}
 .abre{position:relative;overflow:hidden;padding:0 0 72px;background:radial-gradient(ellipse 70% 52% at 50% 30%,var(--brasa),transparent 70%)}
 .abre .grade{display:grid;gap:8px}
 .abre figure{margin:0 -24px}
-.abre figure img{width:100%;aspect-ratio:1/0.86;object-fit:cover;object-position:50% 20%;-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 100%);mask-image:linear-gradient(180deg,#000 72%,transparent 100%)}
-.abre .texto-abre{text-align:center;margin-top:-40px;position:relative}
-.abre .linha1{font-weight:700;font-size:17px;color:var(--marfim);margin-bottom:14px}
-.abre .bt{margin:28px auto 0}
+.abre figure img{width:100%;aspect-ratio:1/0.66;object-fit:cover;object-position:50% 12%;-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 100%);mask-image:linear-gradient(180deg,#000 72%,transparent 100%)}
+.abre .texto-abre{text-align:center;margin-top:-36px;position:relative}
+.abre h1{font-size:clamp(40px,10.6vw,60px)}
+.abre #apoio{font-size:17px;line-height:1.5}
+.abre .linha1{font-weight:700;font-size:17px;color:var(--marfim);margin-bottom:10px}
+.abre .bt{margin:22px auto 0}
 .prova-linha{margin-top:18px;font-size:15px;color:var(--cinza)}
 .prova-linha b{color:var(--marfim)}
 
@@ -81,7 +83,7 @@ section{padding:88px 0}
 /* 3 · carrossel dos cursos com o painel ao lado */
 .cursos{overflow:hidden}
 .palco{display:grid;gap:26px;margin-top:40px;align-items:center}
-.cf{position:relative;height:440px;perspective:1200px;touch-action:pan-y;user-select:none;-webkit-user-select:none;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%)}
+.cf{position:relative;height:396px;perspective:1200px;touch-action:pan-y;user-select:none;-webkit-user-select:none;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%)}
 .cf-card{position:absolute;left:50%;top:0;width:270px;margin-left:-135px;border-radius:8px;overflow:hidden;transition:transform .6s cubic-bezier(.2,.75,.2,1),opacity .45s,filter .45s;box-shadow:0 30px 70px rgba(0,0,0,.6);cursor:pointer}
 .cf-card img{width:100%;aspect-ratio:3/4}
 .painel{text-align:center;min-height:260px}
@@ -158,6 +160,7 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
   .abre{padding-bottom:96px;background:radial-gradient(ellipse 46% 60% at 72% 46%,var(--brasa),transparent 70%)}
   .abre .grade{grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);align-items:center;gap:0;min-height:min(calc(100vh - 64px),820px)}
   .abre h1{font-size:clamp(52px,5.4vw,74px)}
+  .abre #apoio{font-size:19px;line-height:1.55}
   .abre .texto-abre{text-align:left;margin-top:0;order:-1;position:relative;z-index:2}
   .abre .bt{margin:32px 0 0}
   .abre figure{margin:0 -150px 0 24px;position:relative;z-index:1}
@@ -190,7 +193,7 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
   <div class="texto-abre">
     <p class="linha1">Nessa Black do Plantonista, uma condição que eu nunca fiz:</p>
     <h1 id="titulo">Todos os meus cursos de emergência. <span class="vm">Vitalícios.</span></h1>
-    <p class="texto" id="apoio">ECG, arritmias, dor torácica, drogas vasoativas, intubação e mais 11 cursos e ferramentas, com a comunidade comigo e um encontro ao vivo por mês. A condição abre <b>ao vivo, quarta, 11/11, às 20h</b>, só para quem está no grupo VIP.</p>
+    <p class="texto" id="apoio">ECG, arritmias, dor torácica, drogas vasoativas, intubação e mais 11 cursos e ferramentas, com a comunidade e um encontro ao vivo por mês comigo. Abre <b>ao vivo, quarta, 11/11, às 20h</b>, só no grupo&nbsp;VIP.</p>
     <a class="bt" href="#fecha" data-grupo id="bt-abre">Quero entrar no grupo VIP</a>
     <p class="depois">De <s>R$ 8.365</s> por uma condição revelada só no grupo VIP.</p>
     <p class="prova-linha">Junte-se a mais de <b>600 alunos</b> do Dr. Vitor.</p>
@@ -282,7 +285,7 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
 <section class="quem"><div class="lado"><div class="grade">
   <figure><img src="img/quem-vitor.webp" width="1200" height="1800" alt="Dr. Vitor Coutinho no consultório" loading="lazy"></figure>
   <div class="texto-quem">
-    <h2>Prazer, eu sou o Dr. Vitor.</h2>
+    <h2>Prazer, eu sou o <span style="white-space:nowrap">Dr. Vitor.</span></h2>
     <p class="texto">Sou cardiologista, doutor em Cardiologia pela USP, e passei pelo InCor, pelo Hospital Albert Einstein e pela Beneficência Portuguesa. Foram dez anos de emergência.</p>
     <p class="texto">Hoje sou professor de emergências cardiológicas e já ensinei eletro para mais de 600 médicos no ECG Descomplicado. No Clube do Plantonista eu junto tudo o que ensino sobre plantão num lugar só, e tudo o que eu lançar depois entra para você.</p>
   </div>

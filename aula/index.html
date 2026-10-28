@@ -73,7 +73,8 @@ section+section{border-top:1px solid var(--fio)}
 .pontos li b{font-weight:700}
 
 /* a oferta */
-.oferta .pilha{margin:30px auto 0;max-width:560px;width:100%}
+.oferta{overflow:hidden}
+.oferta .pilha{margin:22px 0 0 -12%;width:124%;max-width:none}
 .cursos{display:grid;grid-template-columns:1fr 1fr;gap:34px 18px;margin:48px auto 0;max-width:640px;text-align:left}
 .cursos img{width:100%;aspect-ratio:3/4;border-radius:4px}
 .cursos h3{font-weight:700;font-size:16px;line-height:1.25;letter-spacing:-.01em;margin-top:12px}
@@ -106,6 +107,7 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
   .abre .foto img{aspect-ratio:16/10;object-position:50% 18%}
   .abre .col{margin-top:-150px;max-width:760px}
   .cursos{grid-template-columns:repeat(4,1fr);max-width:1000px}
+  .oferta .pilha{margin:30px auto 0;width:100%;max-width:760px}
   section{padding:104px 0}
 }
 </style>

@@ -57,7 +57,7 @@ section+section{border-top:1px solid var(--fio)}
 /* primeira dobra: foto grande sangrando, título por cima do fim da foto */
 .abre{padding:0 0 64px}
 .abre .foto{position:relative;max-width:720px;margin:0 auto}
-.abre .foto img{width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:50% 24%}
+.abre .foto img{width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:50% 24%;filter:brightness(1.04)}
 .abre .foto::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(180deg,rgba(20,19,18,0),var(--fundo))}
 .abre .col{margin-top:-84px;position:relative;z-index:2}
 .abre .data{font-weight:700;font-size:17px;color:var(--marfim);margin-bottom:12px}
@@ -104,7 +104,7 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
 
 @media (min-width:900px){
   .abre .foto{max-width:900px}
-  .abre .foto img{aspect-ratio:16/10;object-position:50% 18%}
+  .abre .foto img{aspect-ratio:16/10;object-position:50% 18%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%)}
   .abre .col{margin-top:-150px;max-width:760px}
   .cursos{grid-template-columns:repeat(4,1fr);max-width:1000px}
   .oferta .pilha{margin:30px auto 0;width:100%;max-width:760px}

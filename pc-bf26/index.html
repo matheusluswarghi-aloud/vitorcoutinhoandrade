@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Black do Plantonista · Dr. Vitor Coutinho</title>
+<!--
+ Link principal da captação da Black aberta (anúncio, bio, e-mail). Sorteia uma das versões da página e manda
+ o visitante para /pc-bf26-vN/, levando query (UTMs) e hash. Quem volta cai sempre na mesma versão.
+ Para ligar uma versão nova: crie a pasta pc-bf26-vN/ e dê peso a ela aqui. Peso 0 = fora do sorteio.
+-->
+<script>
+(function () {
+  var PESOS = { v1: 1, v2: 0, v3: 0 };
+  var CHAVE = "pc-bf26-versao", v = null;
+  try { v = localStorage.getItem(CHAVE); } catch (e) {}
+  if (!v || !PESOS[v]) {
+    var total = 0, k; for (k in PESOS) total += PESOS[k];
+    var r = Math.random() * total;
+    for (k in PESOS) { if (PESOS[k] && (r -= PESOS[k]) < 0) { v = k; break; } }
+    v = v || "v1";
+    try { localStorage.setItem(CHAVE, v); } catch (e) {}
+  }
+  location.replace("/pc-bf26-" + v + "/" + location.search + location.hash);
+})();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=/pc-bf26-v1/"></noscript>
+<style>html,body{background:#0F0E0D;color:#ADA59C;font-family:system-ui,sans-serif;text-align:center;padding:40px 20px}a{color:#F2ECE4}</style>
+</head>
+<body><p><a href="/pc-bf26-v1/">Black do Plantonista · Dr. Vitor Coutinho</a></p></body>
+</html>

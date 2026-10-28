@@ -39,7 +39,7 @@
 html{-webkit-text-size-adjust:100%;background:var(--fundo);overflow-x:hidden;scroll-behavior:smooth}
 html,body{max-width:100%;overflow-x:clip}
 body{background:var(--fundo);color:var(--marfim);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%;height:auto}
+img{display:block;max-width:100%;height:auto;-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;pointer-events:none}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--marfim);outline-offset:3px}
 h1,h2,h3{text-wrap:balance}
@@ -105,24 +105,28 @@ section{padding:88px 0}
 
 /* 3 · tudo isso e um pouco mais: a caixa completa */
 .leva{text-align:center;overflow:hidden}
-.cursos h2,.leva h2{font-size:clamp(28px,6.6vw,44px);line-height:1.1}
+.leva h2{font-size:clamp(28px,6.6vw,44px);line-height:1.1}
 .leva .nota{font-size:17px;color:var(--cinza);margin-top:14px}
 .sub{position:relative;white-space:nowrap}
 .sub::after{content:"";position:absolute;left:-2%;right:-2%;bottom:-.16em;height:.24em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9C48 3 118 2 197 7' stroke='%23D63A2E' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
 .leva .caixa{margin:34px 0 0 -6%;max-width:none;width:112%}
 
 /* 2 · conheça o Clube: carrossel dos cursos com o painel ao lado */
-.cursos{overflow:hidden;background:var(--fundo2)}
+.cursos{overflow:hidden;background:var(--fundo2);padding-top:52px}
+.cursos .estreito .texto{margin-top:12px}
 .cursos .estreito .texto{max-width:620px;margin-left:auto;margin-right:auto}
 .palco{display:grid;gap:26px;margin-top:40px;align-items:center}
 .cf{position:relative;height:396px;perspective:1200px;touch-action:pan-y;user-select:none;-webkit-user-select:none;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%)}
 .cf-card{position:absolute;left:50%;top:0;width:270px;margin-left:-135px;border-radius:8px;overflow:hidden;transition:transform .6s cubic-bezier(.2,.75,.2,1),opacity .45s,filter .45s;box-shadow:0 30px 70px rgba(0,0,0,.6);cursor:pointer}
 .cf-card img{width:100%;aspect-ratio:3/4}
-.painel{text-align:center;min-height:220px}
+.painel{text-align:center}
+.painel .item h3{font-weight:800;font-size:clamp(28px,6.6vw,40px);line-height:1.04;letter-spacing:-.03em}
 .painel h3{font-weight:800;font-size:clamp(28px,6.6vw,40px);line-height:1.04;letter-spacing:-.03em}
 .painel .promessa{font-weight:700;font-size:19px;line-height:1.35;color:var(--marfim);margin-top:14px}
 .painel .desc{font-size:17px;color:var(--cinza);margin-top:10px}
-.painel .troca{transition:opacity .25s}
+.painel .troca{display:grid}
+.painel .item{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.painel .item.ver{opacity:1;visibility:visible}
 .setas{display:flex;justify-content:center;gap:12px;margin-top:22px}
 .setas button{width:52px;height:52px;border-radius:50%;border:1px solid var(--fio);background:var(--fundo3);color:var(--marfim);font-size:20px;cursor:pointer;font-family:inherit}
 .setas button:hover{border-color:var(--cinza2)}
@@ -214,6 +218,7 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
   .leva .caixa{width:100%;max-width:980px;margin:44px auto 0}
   .faixa{margin-top:24px}
   .trilho span{font-size:24px;padding:19px 30px}
+  .cursos{padding-top:96px}
   .palco{grid-template-columns:1.1fr .9fr;gap:40px}
   .cf{height:520px}
   .cf-card{width:330px;margin-left:-165px}
@@ -235,7 +240,7 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
   .barra .info span{color:var(--cinza);font-weight:500}
   .barra .bt{width:auto;padding:16px 34px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cf-card,.barra,.painel .troca{transition:none}.fl .ft,.fl .fb{animation:none}.trilho{animation:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cf-card,.barra,.painel .item{transition:none}.fl .ft,.fl .fb{animation:none}.trilho{animation:none}}
 </style>
 </head>
 <body>
@@ -264,16 +269,13 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
 <!-- 2 · conheça o Clube: os cursos, um por um -->
 <section class="cursos"><div class="lado">
   <div class="estreito">
-    <h2>Conheça o <span class="vm">Clube do Plantonista</span>: tudo o que você precisa dominar para o seu plantão, num lugar&nbsp;só.</h2>
+    <h2>Conheça o <span class="vm">Clube do Plantonista</span></h2>
+    <p class="texto">Tudo o que você precisa dominar para o seu plantão, num lugar só.</p>
   </div>
   <div class="palco">
     <div class="cf" id="cf" aria-label="Cursos do Clube do Plantonista"></div>
     <div class="painel" aria-live="polite">
-      <div class="troca" id="painel">
-        <h3 id="p-nome"></h3>
-        <p class="promessa" id="p-prom"></p>
-        <p class="desc" id="p-desc"></p>
-      </div>
+      <div class="troca" id="painel"></div>
       <div class="setas"><button type="button" data-dir="-1" aria-label="Curso anterior">←</button><button type="button" data-dir="1" aria-label="Próximo curso">→</button></div>
     </div>
   </div>
@@ -392,12 +394,9 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
   const cards = [...cf.children];
   let atual = 0, x0 = null, arrastou = false, timer = null, visto = false;
   const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  function painel() {
-    const c = C[atual], p = $("painel");
-    const poe = () => { $("p-nome").textContent = c[1]; $("p-prom").textContent = c[2]; $("p-desc").textContent = c[3]; p.style.opacity = 1; };
-    if (calmo) return poe();
-    p.style.opacity = 0; setTimeout(poe, 180);
-  }
+  $("painel").innerHTML = C.map(c => `<div class="item"><h3>${c[1]}</h3><p class="promessa">${c[2]}</p><p class="desc">${c[3]}</p></div>`).join("");
+  const itens = [...$("painel").children];
+  function painel() { itens.forEach((el, i) => el.classList.toggle("ver", i === atual)); }
   function desenha() {
     const passo = cards[0].offsetWidth * (innerWidth < 900 ? 0.52 : 0.62);
     cards.forEach((el, i) => {
@@ -451,6 +450,9 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
     placas.forEach(fls => fls.forEach((el, i) => vira(el, digitos[i])));
   }
   conta(); setInterval(conta, 1000);
+
+  addEventListener("contextmenu", e => { if (e.target.closest("figure,.foto,.caixa,.cf,.abre")) e.preventDefault(); });
+  addEventListener("dragstart", e => e.preventDefault());
 
   // ---------- barra fixa: aparece quando o botão da primeira dobra sai da tela por cima ----------
   const barra = $("barra");

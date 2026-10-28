@@ -5,359 +5,218 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Black do Plantonista · Dr. Vitor Coutinho</title>
-<meta name="description" content="Aulão Plantão Descomplicado, aula ao vivo e gratuita com o Dr. Vitor Coutinho, cardiologista. Quarta, 11/11, às 20h. Durante a live abre a condição de Black Friday do Clube do Plantonista.">
-<meta property="og:title" content="Aulão Plantão Descomplicado · ao vivo e gratuito, 11/11 às 20h">
+<meta name="description" content="Aulão Plantão Descomplicado, ao vivo e gratuito com o Dr. Vitor Coutinho, cardiologista. Quarta, 11/11, às 20h. Durante a live abre a condição de Black Friday do Clube do Plantonista.">
+<meta property="og:title" content="Black do Plantonista · Aulão ao vivo, quarta, 11/11, às 20h">
 <meta property="og:description" content="Casos reais de plantão com o Dr. Vitor Coutinho e todos os cursos de emergência dele vitalícios.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vitorcoutinhoandrade.com/aula/">
 <meta property="og:image" content="https://vitorcoutinhoandrade.com/aula/vitor.jpg">
-<meta name="theme-color" content="#0E0708">
+<meta name="theme-color" content="#141312">
 <link rel="canonical" href="https://vitorcoutinhoandrade.com/aula/">
 <!--
- Captação da Black aberta (aula de 11/11), no molde da página da Black da Maria (pc-bf26-v2), sem formulário:
- o GitHub Pages não recebe cadastro, então o botão leva direto ao grupo VIP (SendLus, campanha black-aberta) com a
- origem e as UTMs. Três primeiras dobras prontas para teste (VERSOES no script): v1 oferta, v2 aula + oferta, v3 aula.
- Sem ?v=, vale a v2. Capas do Clube: 07-entregaveis/black-plantonista/capas-clube (aprovadas em 28/10).
+ Captação da Black aberta (aula de 11/11). Identidade "Jornal à noite" (aprovada em 28/10): grafite, marfim e um vermelho,
+ Schibsted Grotesk em tudo. Estrutura modelada na página da Black do Código Viral (foto grande, título centralizado,
+ botão largo, "comprando você leva" com a pilha dos produtos, cursos com capa e valor), em versão curta e sóbria.
+ Sem formulário (GitHub Pages): o botão leva ao grupo VIP no SendLus com origem e UTMs. ?v=1|2|3 troca a primeira dobra.
 -->
 
 <!-- ===== PIXEL DO META (BM NOVA) =====
      Entra aqui quando a BM nova existir (decisão adiada pelo Matheus em 28/10).
-     Nada de pixel, Utmify ou Clarity herdado do domínio antigo. O Lead, se vier,
-     dispara no clique do botão (ver o script no fim da página). -->
+     Nada de pixel, Utmify ou Clarity herdado do domínio antigo. -->
 
 
-<link rel="preload" as="image" href="img/hero.webp" type="image/webp">
+<link rel="preload" as="image" href="img/hero-vitor.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* Identidade da Black do Plantonista (a mesma do Raio-X, da foto do grupo e das capas do Clube): chão escuro avermelhado
-   com papel de eletro, vermelho do AO VIVO só na ação, Instrument Sans no texto e JetBrains Mono em rótulo e número. */
-:root{
-  --bg:#0E0708; --s1:#170C0E; --s2:#221115; --linha:#3A1C22; --borda:#57303A;
-  --ink:#F6EFEA; --ink2:#CDBDB6; --apagado:#9C827C;
-  --acao:#E0362C; --acao-h:#C42C23; --vivo:#FF4B3E;
-}
+:root{--fundo:#141312;--fundo2:#1B1A18;--marfim:#EFEAE2;--cinza:#B3ADA4;--fio:#34312D;--vermelho:#D0382C;--vermelho-h:#B52E24}
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;background:var(--bg);scroll-behavior:smooth;overflow-x:hidden}
+html{-webkit-text-size-adjust:100%;background:var(--fundo);overflow-x:hidden}
 html,body{max-width:100%;overflow-x:clip}
-.sempre,.faixa{overflow:hidden;contain:paint}
-body{background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--fundo);color:var(--marfim);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;text-align:center}
+img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-img{display:block;max-width:100%}
-:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-.papel{background-image:linear-gradient(rgba(214,60,52,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(214,60,52,.08) 1px,transparent 1px),linear-gradient(rgba(214,60,52,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(214,60,52,.035) 1px,transparent 1px);background-size:60px 60px,60px 60px,12px 12px,12px 12px}
-.rotulo{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--vivo)}
-h2{font-size:clamp(30px,7.6vw,46px);line-height:1.05;letter-spacing:-.035em;font-weight:700}
-.bt{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:60px;padding:0 26px;border-radius:6px;background:var(--acao);color:#fff;font-weight:700;font-size:19px;letter-spacing:-.01em;text-decoration:none;transition:background .15s}
-.bt:hover{background:var(--acao-h)}
-.bt svg{width:18px;height:18px;flex:none}
+:focus-visible{outline:2px solid var(--marfim);outline-offset:3px}
+.col{width:100%;max-width:640px;margin:0 auto;padding:0 24px}
+h1{font-weight:800;font-size:clamp(34px,8.6vw,58px);line-height:1.04;letter-spacing:-.035em}
+h2{font-weight:800;font-size:clamp(30px,7.4vw,46px);line-height:1.06;letter-spacing:-.03em}
+.vt{color:var(--vermelho)}
+p.texto{font-size:19px;line-height:1.55;color:var(--cinza);margin-top:18px}
+p.texto b{color:var(--marfim);font-weight:600}
+.bt{display:block;width:100%;max-width:460px;margin:30px auto 0;background:var(--vermelho);color:#fff;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.01em;padding:22px 16px;border-radius:3px;transition:background .15s}
+.bt:hover{background:var(--vermelho-h)}
+.debaixo{margin-top:14px;font-size:15px;color:var(--cinza)}
+section{padding:76px 0}
+section+section{border-top:1px solid var(--fio)}
 
-/* topo: assinatura do Clube + contagem até a aula */
-.topo{border-bottom:1px solid var(--linha)}
-.topo .wrap{display:flex;justify-content:space-between;align-items:center;height:62px;gap:12px}
-.marca{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-.02em;color:var(--vivo);white-space:nowrap}
-.marca svg{width:38px;height:18px}.marca path,.pulso path{fill:none;stroke:currentColor;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
-.marca b{color:var(--ink);font-weight:700}
-.conta{display:flex;gap:6px;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink2)}
-.conta span{display:flex;flex-direction:column;align-items:center;min-width:30px}
-.conta b{font-size:17px;font-weight:800;color:var(--ink);line-height:1.1}
+/* topo */
+.topo{padding:18px 24px;border-bottom:1px solid var(--fio)}
+.logo{font-weight:900;font-size:22px;letter-spacing:-.03em}
 
-/* primeira dobra */
-.abre{padding:30px 0 0}
-.quando{display:flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#F2B3A6}
-.quando i{width:10px;height:10px;border-radius:50%;background:var(--vivo);box-shadow:0 0 0 5px rgba(255,75,62,.18)}
-h1{font-size:clamp(34px,9.4vw,60px);line-height:1.02;letter-spacing:-.045em;font-weight:700;margin-top:16px}
-h1 em{font-style:normal;color:var(--vivo)}
-.sub{margin-top:16px;font-size:18px;line-height:1.5;color:var(--ink2);max-width:34em}
-.sub b{color:var(--ink);font-weight:600}
-.abre .bt{margin-top:24px}
-.nota{margin-top:12px;font-size:14px;color:var(--apagado)}
-.hero{position:relative;margin:24px -20px 0}
-.hero img{width:100%;height:auto;-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 78%,transparent 100%)}
-.selo{position:absolute;left:20px;right:20px;bottom:10px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.selo span{background:rgba(14,7,8,.82);border:1px solid var(--borda);padding:7px 10px;border-radius:4px}
+/* primeira dobra: foto grande sangrando, título por cima do fim da foto */
+.abre{padding:0 0 64px}
+.abre .foto{position:relative;max-width:720px;margin:0 auto}
+.abre .foto img{width:100%;aspect-ratio:4/4.4;object-fit:cover;object-position:50% 12%}
+.abre .foto::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(180deg,rgba(20,19,18,0),var(--fundo))}
+.abre .col{margin-top:-96px;position:relative;z-index:2}
+.abre .data{font-weight:700;font-size:17px;color:var(--marfim);margin-bottom:16px}
+.abre .data span{color:var(--vermelho)}
 
-/* faixa rolando */
-.faixa{overflow:hidden;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);background:var(--s1);padding:14px 0;margin-top:8px}
-.rolo{display:flex;width:max-content;animation:rola 40s linear infinite}
-.rolo p{white-space:nowrap;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);padding-right:24px}
-.rolo .bf{color:var(--vivo)}
-@keyframes rola{to{transform:translateX(-50%)}}
+/* a aula */
+.aula{background:var(--fundo2)}
+.aula figure{margin:34px auto 0;max-width:560px}
+.aula figure img{width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:50% 20%;border-radius:3px}
+.pontos{list-style:none;margin:34px auto 0;max-width:520px}
+.pontos li{padding:18px 0;border-top:1px solid var(--fio);font-size:19px;line-height:1.45}
+.pontos li:last-child{border-bottom:1px solid var(--fio)}
+.pontos li b{font-weight:700}
 
-section{padding:64px 0 0}
+/* a oferta */
+.oferta .pilha{margin:30px auto 0;max-width:560px;width:100%}
+.cursos{display:grid;grid-template-columns:1fr 1fr;gap:34px 18px;margin:48px auto 0;max-width:640px;text-align:left}
+.cursos img{width:100%;aspect-ratio:3/4;border-radius:4px}
+.cursos h3{font-weight:700;font-size:16px;line-height:1.25;letter-spacing:-.01em;margin-top:12px}
+.cursos p{font-size:14px;color:var(--cinza);margin-top:4px;line-height:1.35}
+.cursos span{display:block;font-weight:700;font-size:15px;margin-top:8px;color:var(--marfim)}
+.total{margin:56px auto 0;padding-top:34px;border-top:1px solid var(--fio)}
+.total .de{font-size:18px;color:var(--cinza)}
+.total .de s{font-weight:800;font-size:30px;color:var(--marfim);text-decoration-color:var(--vermelho);text-decoration-thickness:3px;display:block;margin-top:4px}
+.total .na{font-weight:800;font-size:clamp(26px,6.4vw,36px);line-height:1.12;letter-spacing:-.025em;margin-top:26px}
 
-/* aula */
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips span{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--borda);border-radius:4px;padding:7px 10px;color:var(--ink2)}
-.aula h2{margin-top:20px}
-.aula .sub{margin-top:12px}
-.telao{margin:22px -8px 0}
-.datas{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);margin-top:10px}
-.datas div{padding:16px 6px;text-align:center;border-right:1px solid var(--linha)}.datas div:last-child{border-right:0}
-.datas b{display:block;font-size:24px;letter-spacing:-.03em}
-.datas span{font-size:13px;color:var(--apagado)}
-.lista{list-style:none;margin-top:22px}
-.lista li{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:12px 0;color:var(--ink2)}
-.lista li svg{width:30px;height:16px;margin-top:5px;color:var(--vivo)}
-.aviso{margin-top:18px;padding:18px 20px;background:var(--s1);border-left:3px solid var(--vivo);border-radius:0 6px 6px 0;color:var(--ink2)}
-.aviso b{color:var(--ink)}
-.aula .bt{margin-top:22px}
+/* quem conduz */
+.quem figure{margin:34px auto 0;max-width:560px}
+.quem figure img{width:100%;aspect-ratio:4/3.6;object-fit:cover;object-position:50% 25%;border-radius:3px}
+.fatos{display:grid;grid-template-columns:1fr 1fr 1fr;margin:34px auto 0;max-width:560px;border-top:1px solid var(--fio);border-bottom:1px solid var(--fio)}
+.fatos div{padding:20px 6px}
+.fatos div+div{border-left:1px solid var(--fio)}
+.fatos b{display:block;font-weight:800;font-size:26px;letter-spacing:-.03em;line-height:1.1}
+.fatos span{display:block;font-size:14px;color:var(--cinza);margin-top:6px;line-height:1.3}
 
-/* por que é diferente: lista numerada, sem cards */
-.dif .itens{margin-top:26px;border-top:1px solid var(--linha)}
-.dif .item{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:22px 0;border-bottom:1px solid var(--linha)}
-.dif .n{font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--vivo);padding-top:4px}
-.dif h3{font-size:21px;letter-spacing:-.02em;font-weight:600;line-height:1.3}
-.dif p{grid-column:2;color:var(--ink2)}
-
-/* para sempre: carrossel das capas */
-.sempre{text-align:center}
-.sempre p.sub{margin:12px auto 0}
-.cf{position:relative;height:440px;margin-top:30px;perspective:1100px;touch-action:pan-y;user-select:none}
-.cf-card{position:absolute;left:50%;top:0;width:300px;margin-left:-150px;border-radius:10px;overflow:hidden;transition:transform .55s cubic-bezier(.2,.7,.2,1),opacity .4s,filter .4s;box-shadow:0 30px 60px rgba(0,0,0,.55);cursor:pointer}
-.cf-card img{width:100%;height:auto;aspect-ratio:3/4}
-.cf-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:4px}
-.cf-seta{width:46px;height:46px;border-radius:50%;border:1px solid var(--borda);background:var(--s1);color:var(--ink);font-size:20px;cursor:pointer}
-.cf-pontos{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:220px}
-.cf-pontos i{width:7px;height:7px;border-radius:50%;background:var(--borda)}.cf-pontos i.on{background:var(--vivo)}
-
-/* empilhamento */
-.pilha h2{text-align:center}
-.itens-preco{list-style:none;margin-top:26px;border-top:1px solid var(--linha)}
-.itens-preco li{display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--linha)}
-.itens-preco img{width:48px;height:64px;border-radius:4px;object-fit:cover}
-.itens-preco span{font-weight:600;font-size:16px;line-height:1.25}
-.itens-preco small{display:block;font-weight:400;font-size:14px;color:var(--apagado);margin-top:2px}
-.itens-preco b{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:16px;white-space:nowrap}
-.total{display:flex;justify-content:space-between;align-items:baseline;padding:22px 0 0}
-.total span{font-size:20px;font-weight:600}
-.total s{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:26px;color:var(--vivo);text-decoration-thickness:3px}
-.black{margin-top:26px;padding:28px 16px;border:1px solid var(--borda);border-radius:8px;background:var(--s1);text-align:center}
-.black .rotulo{color:var(--ink2);letter-spacing:.05em}
-.black .preco{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:56px;letter-spacing:-.04em;margin-top:10px;filter:blur(11px);user-select:none}
-.black p{color:var(--vivo);font-weight:600;font-size:19px;margin-top:4px}
-.black .bt{margin-top:20px}
-
-/* grupo VIP */
-.vip .caixa{padding:32px 16px;border-radius:8px;background:linear-gradient(160deg,#2a0d0f,#170A0B);border:1px solid var(--borda)}
-.vip p.sub{margin-top:12px}
-.vip ul{list-style:none;margin-top:18px}
-.vip li{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:9px 0;color:var(--ink2)}
-.vip li svg{width:30px;height:16px;margin-top:5px;color:var(--vivo)}
-.vip .bt{margin-top:22px}
-.black .bt,.vip .bt{padding:0 14px;font-size:18px;gap:8px;white-space:nowrap}
-.fim{padding:56px 0 30px;text-align:center}
-.fim .rotulo{color:var(--ink2)}
-.fim .conta{justify-content:center;gap:12px;margin-top:12px;font-size:13px}
-.fim .conta span{min-width:56px}
-.fim .conta b{font-size:34px}
-footer{padding:26px 0 calc(26px + env(safe-area-inset-bottom));border-top:1px solid var(--linha);font-size:13px;color:var(--apagado);text-align:center;line-height:1.6}
+/* fechamento */
+.fecha{background:var(--fundo2)}
+.conta{display:flex;justify-content:center;gap:22px;margin-top:30px}
+.conta div{min-width:64px}
+.conta b{display:block;font-weight:800;font-size:44px;letter-spacing:-.03em;line-height:1}
+.conta span{display:block;font-size:14px;color:var(--cinza);margin-top:6px}
+footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--fio);font-size:14px;color:var(--cinza)}
 
 @media (min-width:900px){
-  .abre .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
-  .abre{padding-top:20px}
-  .hero{margin:0}
-  .abre .bt{width:auto;display:inline-flex;min-width:360px}
-  section{padding-top:96px}
-  .aula .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  .aula .bt,.black .bt,.vip .bt{width:auto;display:inline-flex;min-width:360px}
-  .dif .itens{display:grid;grid-template-columns:repeat(3,1fr);gap:0 32px;border-top:0}
-  .dif .item{border-top:1px solid var(--linha);border-bottom:0}
-  .cf{height:500px}.cf-card{width:330px;margin-left:-165px}
-  .pilha .wrap{max-width:760px}
-  .vip .caixa{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:44px}
+  .abre .foto{max-width:900px}
+  .abre .foto img{aspect-ratio:16/10;object-position:50% 18%}
+  .abre .col{margin-top:-150px;max-width:760px}
+  .cursos{grid-template-columns:repeat(4,1fr);max-width:1000px}
+  section{padding:104px 0}
 }
-@media (prefers-reduced-motion:reduce){.rolo{animation:none}.cf-card{transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<header class="topo"><div class="wrap">
-  <div class="marca"><svg viewBox="0 0 38 18"><path d="M1 10 H10 L13 10 L16 2 L20 16 L23 10 H37"/></svg><span>clube do plantonista</span></div>
-  <div class="conta" data-conta aria-label="Tempo até a aula"><span><b data-d>--</b>dias</span><span><b data-h>--</b>h</span><span><b data-m>--</b>min</span></div>
-</div></header>
+<header class="topo"><div class="logo">Black do <span class="vt">Plantonista</span></div></header>
 
 <main>
-<div class="abre papel"><div class="wrap">
-  <div>
-    <p class="quando"><i></i>Aula gratuita · qua, 11/11 · 20h</p>
-    <h1 id="titulo">Uma noite de casos reais de plantão comigo e todos os meus cursos de emergência <em>VITALÍCIOS</em>.</h1>
-    <p class="sub" id="apoio">Participe do <b>Aulão Plantão Descomplicado</b>, aula ao vivo e gratuita, quarta, 11/11, às 20h. Durante a live eu abro a condição de Black Friday do Clube do Plantonista.</p>
-    <a class="bt" href="#grupo" data-grupo>Quero entrar no grupo VIP <svg viewBox="0 0 18 18"><path d="M4 14 L14 4 M6 4 H14 V12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    <p class="nota">O link da aula e a condição de Black saem no grupo do WhatsApp.</p>
+<div class="abre">
+  <div class="foto"><img src="img/hero-vitor.webp" width="1200" height="1800" alt="Dr. Vitor Coutinho, cardiologista, de jaleco" fetchpriority="high"></div>
+  <div class="col">
+    <p class="data">Quarta, 11/11, às 20h · <span>ao vivo</span></p>
+    <h1 id="titulo">Uma noite de casos reais de plantão comigo e todos os meus cursos de emergência <span class="vt">vitalícios</span>.</h1>
+    <p class="texto" id="apoio">No <b>Aulão Plantão Descomplicado</b> eu conduzo casos reais de plantão ao vivo e, durante a live, abro a condição de Black Friday do Clube do Plantonista.</p>
+    <a class="bt" href="#fecha" data-grupo>Quero entrar no grupo VIP</a>
+    <p class="debaixo">O link da aula e a condição de Black saem no grupo do WhatsApp.</p>
   </div>
-  <figure class="hero"><img src="img/hero.webp" width="800" height="1000" alt="Dr. Vitor Coutinho de jaleco, na frente dos cursos do Clube do Plantonista" fetchpriority="high">
-    <figcaption class="selo"><span>Dr. Vitor Coutinho Andrade</span><span>Cardiologista · doutor pela USP</span></figcaption></figure>
-</div></div>
+</div>
 
-<div class="faixa" aria-hidden="true"><div class="rolo"><p><span class="bf">Black Friday</span> ✱ Aulão Plantão Descomplicado ✱ Acesso vitalício ✱ <span class="bf">Black Friday</span> ✱ Todos os cursos de emergência ✱ Comunidade com o Dr. Vitor ✱ </p><p><span class="bf">Black Friday</span> ✱ Aulão Plantão Descomplicado ✱ Acesso vitalício ✱ <span class="bf">Black Friday</span> ✱ Todos os cursos de emergência ✱ Comunidade com o Dr. Vitor ✱ </p></div></div>
-
-<section class="aula"><div class="wrap">
-  <div>
-    <div class="chips"><span>Aula gratuita, ao vivo</span><span>Sem replay</span><span>Condição de Black ao vivo</span></div>
-    <h2>Aulão Plantão Descomplicado</h2>
-    <p class="sub">Casos reais de plantão conduzidos ao vivo pelo Dr. Vitor, do primeiro olhar até a conduta.</p>
-    <img class="telao" src="img/telao.webp" width="900" height="620" alt="Notebook com a aula ao vivo: eletro de um caso de dor no peito na tela" loading="lazy">
-  </div>
-  <div>
-    <div class="datas"><div><b>11/11</b><span>quarta-feira</span></div><div><b>20h</b><span>horário de Brasília</span></div><div><b>R$ 0,00</b><span>para participar</span></div></div>
-    <ul class="lista">
-      <li><svg class="pulso" viewBox="0 0 30 16"><path d="M1 9 H8 L10 9 L13 2 L17 14 L19 9 H29"/></svg>Casos do tipo que chega na UPA e no pronto-socorro, conduzidos do começo ao fim.</li>
-      <li><svg class="pulso" viewBox="0 0 30 16"><path d="M1 9 H8 L10 9 L13 2 L17 14 L19 9 H29"/></svg>Você escreve a sua conduta no chat antes de o Dr. Vitor mostrar a dele.</li>
-      <li><svg class="pulso" viewBox="0 0 30 16"><path d="M1 9 H8 L10 9 L13 2 L17 14 L19 9 H29"/></svg>A sequência que ele usa em todo caso para não deixar passar nada grave.</li>
-    </ul>
-    <p class="aviso">Durante a live, o Dr. Vitor abre a matrícula de Black Friday do <b>Clube do Plantonista</b>. Entre no grupo VIP agora para não perder.</p>
-    <a class="bt" href="#grupo" data-grupo>Quero entrar no grupo VIP <svg viewBox="0 0 18 18"><path d="M4 14 L14 4 M6 4 H14 V12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-  </div>
-</div></section>
-
-<section class="dif"><div class="wrap">
-  <h2>Por que com o Dr. Vitor é diferente</h2>
-  <div class="itens">
-    <div class="item"><span class="n">01</span><h3>Vai até a conduta</h3><p>Não para no diagnóstico. Chega na droga, na dose e na ordem do que fazer.</p></div>
-    <div class="item"><span class="n">02</span><h3>Um cardiologista do lado</h3><p>Doutor em Cardiologia pela USP, com passagem pelo InCor e pelo Einstein, e dez anos de emergência.</p></div>
-    <div class="item"><span class="n">03</span><h3>A mesma sequência em todo caso</h3><p>Um raciocínio fixo para você parar de depender de alguém confirmando.</p></div>
-  </div>
-</div></section>
-
-<section class="sempre"><div class="wrap">
-  <h2>Tudo isso vai ser seu para sempre</h2>
-  <p class="sub">Acesso vitalício a todos os cursos de emergência do Dr. Vitor, e a tudo o que ele lançar depois.</p>
-  <div class="cf" id="cf">
-    <figure class="cf-card"><img src="img/cursos/comunidade-do-plantonista.webp" width="600" height="800" alt="Comunidade do Plantonista" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/plantao-mensal-ao-vivo.webp" width="600" height="800" alt="Plantão Mensal ao Vivo" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/ecg-descomplicado.webp" width="600" height="800" alt="ECG Descomplicado" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/plantao-seguro.webp" width="600" height="800" alt="Plantão Seguro" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/arsenal-do-plantonista.webp" width="600" height="800" alt="Arsenal do Plantonista" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/antiarritmicos-na-emergencia.webp" width="600" height="800" alt="Antiarrítmicos na Emergência" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/intubacao-no-plantao.webp" width="600" height="800" alt="Intubação no Plantão" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/taquiarritmias.webp" width="600" height="800" alt="Taquiarritmias" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/bradiarritmias.webp" width="600" height="800" alt="Bradiarritmias" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/dor-toracica.webp" width="600" height="800" alt="Dor Torácica" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/insuficiencia-cardiaca.webp" width="600" height="800" alt="Insuficiência Cardíaca" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/crise-hipertensiva.webp" width="600" height="800" alt="Crise Hipertensiva" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/ecg-go.webp" width="600" height="800" alt="ECG GO" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/preceptoria-ecg.webp" width="600" height="800" alt="PreceptorIA ECG" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/preceptoria-emergencias.webp" width="600" height="800" alt="PreceptorIA Emergências" draggable="false" loading="lazy"></figure>
-    <figure class="cf-card"><img src="img/cursos/cursos-convidados.webp" width="600" height="800" alt="Cursos Convidados" draggable="false" loading="lazy"></figure>
-  </div>
-  <div class="cf-nav"><button class="cf-seta" data-dir="-1" aria-label="Anterior">←</button><div class="cf-pontos" id="pontos"></div><button class="cf-seta" data-dir="1" aria-label="Próximo">→</button></div>
-</div></section>
-
-<section class="pilha"><div class="wrap">
-  <h2>Quanto custaria tudo isso separado</h2>
-  <ul class="itens-preco">
-    <li><img src="img/cursos/comunidade-do-plantonista.webp" alt="" loading="lazy"><span>Comunidade do Plantonista<small>casos do plantão com o Dr. Vitor</small></span><b>R$ 1.998</b></li>
-    <li><img src="img/cursos/plantao-mensal-ao-vivo.webp" alt="" loading="lazy"><span>Plantão Mensal ao Vivo<small>encontros mensais com o Dr. Vitor</small></span><b>R$ 998</b></li>
-    <li><img src="img/cursos/ecg-descomplicado.webp" alt="" loading="lazy"><span>ECG Descomplicado<small>leia qualquer eletro sem travar</small></span><b>R$ 597</b></li>
-    <li><img src="img/cursos/plantao-seguro.webp" alt="" loading="lazy"><span>Plantão Seguro<small>o plantão do começo ao fim</small></span><b>R$ 498</b></li>
-    <li><img src="img/cursos/arsenal-do-plantonista.webp" alt="" loading="lazy"><span>Arsenal do Plantonista<small>drogas vasoativas sem medo</small></span><b>R$ 498</b></li>
-    <li><img src="img/cursos/antiarritmicos-na-emergencia.webp" alt="" loading="lazy"><span>Antiarrítmicos na Emergência<small>a droga certa para cada ritmo</small></span><b>R$ 298</b></li>
-    <li><img src="img/cursos/intubacao-no-plantao.webp" alt="" loading="lazy"><span>Intubação no Plantão<small>da indicação às doses</small></span><b>R$ 398</b></li>
-    <li><img src="img/cursos/taquiarritmias.webp" alt="" loading="lazy"><span>Taquiarritmias<small>remédio ou choque, na hora</small></span><b>R$ 398</b></li>
-    <li><img src="img/cursos/bradiarritmias.webp" alt="" loading="lazy"><span>Bradiarritmias<small>da atropina ao marcapasso</small></span><b>R$ 298</b></li>
-    <li><img src="img/cursos/dor-toracica.webp" alt="" loading="lazy"><span>Dor Torácica<small>o que mata primeiro</small></span><b>R$ 398</b></li>
-    <li><img src="img/cursos/insuficiencia-cardiaca.webp" alt="" loading="lazy"><span>Insuficiência Cardíaca<small>a descompensação na porta</small></span><b>R$ 298</b></li>
-    <li><img src="img/cursos/crise-hipertensiva.webp" alt="" loading="lazy"><span>Crise Hipertensiva<small>urgência ou emergência</small></span><b>R$ 298</b></li>
-    <li><img src="img/cursos/ecg-go.webp" alt="" loading="lazy"><span>ECG GO<small>treino de eletro no celular</small></span><b>R$ 397</b></li>
-    <li><img src="img/cursos/preceptoria-ecg.webp" alt="" loading="lazy"><span>PreceptorIA ECG<small>tira-dúvidas de eletro 24 h</small></span><b>R$ 198</b></li>
-    <li><img src="img/cursos/preceptoria-emergencias.webp" alt="" loading="lazy"><span>PreceptorIA Emergências<small>tira-dúvidas de conduta 24 h</small></span><b>R$ 198</b></li>
-    <li><img src="img/cursos/cursos-convidados.webp" alt="" loading="lazy"><span>Cursos Convidados<small>especialistas da emergência</small></span><b>R$ 597</b></li>
+<section class="aula"><div class="col">
+  <h2>Casos reais de plantão, do primeiro olhar até a conduta</h2>
+  <p class="texto">Quarta, 11 de novembro, às 20h. Uma aula só, ao vivo e gratuita, sem replay.</p>
+  <figure><img src="img/aula-vitor.webp" width="1200" height="1800" alt="Dr. Vitor Coutinho lendo um eletrocardiograma" loading="lazy"></figure>
+  <ul class="pontos">
+    <li>Casos do tipo que chega na <b>UPA e no pronto-socorro</b>, conduzidos do começo ao fim.</li>
+    <li>Você escreve a sua conduta no chat <b>antes</b> de o Dr. Vitor mostrar a dele.</li>
+    <li>A sequência que ele usa em todo caso para <b>não deixar passar nada grave</b>.</li>
   </ul>
-  <div class="total"><span>Tudo separado</span><s>R$ 8.365</s></div>
-  <div class="black"><p class="rotulo">Condição de Black Friday</p><div class="preco" aria-hidden="true">R$ 0.000</div><p>Só dentro do grupo VIP</p>
-    <a class="bt" href="#grupo" data-grupo>Quero entrar no grupo VIP <svg viewBox="0 0 18 18"><path d="M4 14 L14 4 M6 4 H14 V12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  <a class="bt" href="#fecha" data-grupo>Quero entrar no grupo VIP</a>
 </div></section>
 
-<section class="vip" id="grupo"><div class="wrap"><div class="caixa">
-  <div>
-    <p class="rotulo">Grupo VIP</p>
-    <h2 style="margin-top:12px">Entre no grupo VIP da Black</h2>
-    <p class="sub">A condição de Black Friday é liberada ao vivo, no dia 11/11. Até lá, no grupo você recebe:</p>
+<section class="oferta"><div class="col" style="max-width:1040px">
+  <div style="max-width:640px;margin:0 auto">
+    <h2>Durante a live, eu abro a Black do Plantonista</h2>
+    <p class="texto">Garantindo o Clube do Plantonista na live, você leva todos os meus cursos de emergência, vitalícios, e tudo o que eu lançar depois.</p>
   </div>
-  <div>
-    <ul>
-      <li><svg class="pulso" viewBox="0 0 30 16"><path d="M1 9 H8 L10 9 L13 2 L17 14 L19 9 H29"/></svg>O link da aula, que não fica gravada</li>
-      <li><svg class="pulso" viewBox="0 0 30 16"><path d="M1 9 H8 L10 9 L13 2 L17 14 L19 9 H29"/></svg>Os bônus exclusivos da Black Friday</li>
-      <li><svg class="pulso" viewBox="0 0 30 16"><path d="M1 9 H8 L10 9 L13 2 L17 14 L19 9 H29"/></svg>Os avisos antes da live começar</li>
-    </ul>
-    <a class="bt" href="#grupo" data-grupo>Quero entrar no grupo VIP <svg viewBox="0 0 18 18"><path d="M4 14 L14 4 M6 4 H14 V12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <img class="pilha" src="img/pilha.webp" width="904" height="950" alt="As capas dos 16 cursos e produtos do Clube do Plantonista" loading="lazy">
+  <div class="cursos">
+    <div><img src="img/cursos/comunidade-do-plantonista.webp" alt="" loading="lazy"><h3>Comunidade do Plantonista</h3><p>Casos do plantão discutidos com o Dr. Vitor</p><span>R$ 1.998</span></div>
+    <div><img src="img/cursos/plantao-mensal-ao-vivo.webp" alt="" loading="lazy"><h3>Plantão Mensal ao Vivo</h3><p>Encontros mensais com o Dr. Vitor</p><span>R$ 998</span></div>
+    <div><img src="img/cursos/ecg-descomplicado.webp" alt="" loading="lazy"><h3>ECG Descomplicado</h3><p>Leia qualquer eletro sem travar</p><span>R$ 597</span></div>
+    <div><img src="img/cursos/plantao-seguro.webp" alt="" loading="lazy"><h3>Plantão Seguro</h3><p>O plantão do começo ao fim</p><span>R$ 498</span></div>
+    <div><img src="img/cursos/arsenal-do-plantonista.webp" alt="" loading="lazy"><h3>Arsenal do Plantonista</h3><p>Drogas vasoativas sem medo</p><span>R$ 498</span></div>
+    <div><img src="img/cursos/antiarritmicos-na-emergencia.webp" alt="" loading="lazy"><h3>Antiarrítmicos na Emergência</h3><p>A droga certa para cada ritmo</p><span>R$ 298</span></div>
+    <div><img src="img/cursos/intubacao-no-plantao.webp" alt="" loading="lazy"><h3>Intubação no Plantão</h3><p>Da indicação às doses</p><span>R$ 398</span></div>
+    <div><img src="img/cursos/taquiarritmias.webp" alt="" loading="lazy"><h3>Taquiarritmias</h3><p>Remédio ou choque, na hora</p><span>R$ 398</span></div>
+    <div><img src="img/cursos/bradiarritmias.webp" alt="" loading="lazy"><h3>Bradiarritmias</h3><p>Da atropina ao marcapasso</p><span>R$ 298</span></div>
+    <div><img src="img/cursos/dor-toracica.webp" alt="" loading="lazy"><h3>Dor Torácica</h3><p>O que mata primeiro</p><span>R$ 398</span></div>
+    <div><img src="img/cursos/insuficiencia-cardiaca.webp" alt="" loading="lazy"><h3>Insuficiência Cardíaca</h3><p>A descompensação na porta</p><span>R$ 298</span></div>
+    <div><img src="img/cursos/crise-hipertensiva.webp" alt="" loading="lazy"><h3>Crise Hipertensiva</h3><p>Urgência ou emergência</p><span>R$ 298</span></div>
+    <div><img src="img/cursos/ecg-go.webp" alt="" loading="lazy"><h3>ECG GO</h3><p>Treino de eletro no celular</p><span>R$ 397</span></div>
+    <div><img src="img/cursos/preceptoria-ecg.webp" alt="" loading="lazy"><h3>PreceptorIA ECG</h3><p>Tira-dúvidas de eletro 24 h</p><span>R$ 198</span></div>
+    <div><img src="img/cursos/preceptoria-emergencias.webp" alt="" loading="lazy"><h3>PreceptorIA Emergências</h3><p>Tira-dúvidas de conduta 24 h</p><span>R$ 198</span></div>
+    <div><img src="img/cursos/cursos-convidados.webp" alt="" loading="lazy"><h3>Cursos Convidados</h3><p>Especialistas da emergência</p><span>R$ 597</span></div>
   </div>
-</div></div></section>
+  <div class="total" style="max-width:640px">
+    <p class="de">Tudo isso separado custaria <s>R$ 8.365</s></p>
+    <p class="na">Na live, eu libero uma condição de Black Friday que eu nunca fiz e não pretendo fazer de novo.</p>
+    <p class="texto">O valor só aparece dentro do grupo VIP.</p>
+    <a class="bt" href="#fecha" data-grupo>Quero entrar no grupo VIP</a>
+  </div>
+</div></section>
 
-<div class="fim"><div class="wrap"><p class="rotulo">A aula começa em</p>
-  <div class="conta" data-conta><span><b data-d>--</b>dias</span><span><b data-h>--</b>horas</span><span><b data-m>--</b>min</span><span><b data-s>--</b>seg</span></div></div></div>
+<section class="quem"><div class="col">
+  <h2>Quem conduz a aula</h2>
+  <p class="texto"><b>Dr. Vitor Coutinho Andrade</b>, cardiologista, doutor em Cardiologia pela USP. Passou pelo InCor, pelo Hospital Albert Einstein e pela Beneficência Portuguesa, e é professor de emergências cardiológicas.</p>
+  <figure><img src="img/quem-vitor.webp" width="1200" height="1800" alt="Dr. Vitor Coutinho no consultório" loading="lazy"></figure>
+  <div class="fatos"><div><b>10 anos</b><span>de emergência</span></div><div><b>USP</b><span>doutorado em Cardiologia</span></div><div><b>+600</b><span>alunos no ECG Descomplicado</span></div></div>
+</div></section>
+
+<section class="fecha" id="fecha"><div class="col">
+  <h2>Entre no grupo VIP da Black do Plantonista</h2>
+  <p class="texto">É lá que sai o link da aula, os avisos antes da live e a condição de Black Friday, no dia 11/11.</p>
+  <a class="bt" href="#fecha" data-grupo>Quero entrar no grupo VIP</a>
+  <div class="conta" aria-label="Tempo até a aula"><div><b data-d>--</b><span>dias</span></div><div><b data-h>--</b><span>horas</span></div><div><b data-m>--</b><span>min</span></div></div>
+</div></section>
 </main>
 
-<footer><div class="wrap">Instituto VC de Ensino Médico LTDA · CNPJ 62.218.072/0001-67 · Ubá/MG</div></footer>
+<footer>Instituto VC de Ensino Médico LTDA · CNPJ 62.218.072/0001-67 · Ubá/MG</footer>
 
 <script>
 (function () {
-  const $ = s => document.querySelector(s);
-  // ---------- Primeira dobra por versão (?v=1|2|3): v1 oferta, v2 aula + oferta (padrão), v3 só a aula ----------
+  // Primeira dobra por versão (?v=1|2|3): v1 oferta, v2 aula + oferta (padrão), v3 só a aula.
   const VERSOES = {
-    "1": { titulo: "Todos os meus cursos de emergência <em>VITALÍCIOS</em>, numa condição que eu nunca fiz.",
+    "1": { titulo: "Todos os meus cursos de emergência <span class=\"vt\">vitalícios</span>, numa condição que eu nunca fiz.",
            apoio: "A condição de Black Friday abre ao vivo no <b>Aulão Plantão Descomplicado</b>, quarta, 11/11, às 20h, e é liberada só no grupo VIP." },
     "2": null,
     "3": { titulo: "Casos reais de plantão, do primeiro olhar até a conduta, ao vivo comigo.",
-           apoio: "Participe do <b>Aulão Plantão Descomplicado</b>, aula ao vivo e gratuita, quarta, 11/11, às 20h. Entre no grupo VIP para receber o link." }
+           apoio: "<b>Aulão Plantão Descomplicado</b>, aula ao vivo e gratuita, quarta, 11/11, às 20h. Entre no grupo VIP para receber o link." }
   };
   let V = new URLSearchParams(location.search).get("v");
   if (!(V in VERSOES)) V = "2";
-  if (VERSOES[V]) { $("#titulo").innerHTML = VERSOES[V].titulo; $("#apoio").innerHTML = VERSOES[V].apoio; }
+  if (VERSOES[V]) { document.getElementById("titulo").innerHTML = VERSOES[V].titulo; document.getElementById("apoio").innerHTML = VERSOES[V].apoio; }
 
-  // ---------- Botão do grupo: origem e UTMs até o SendLus (campanha black-aberta), com a versão da página ----------
-  // ?origem= vence; sem ela, quem traz UTM é anúncio; sem nada, "direto". "pg-v2-" marca a página e a versão.
+  // Botão do grupo: origem e UTMs até o SendLus (campanha black-aberta). "pg-v2-" marca a página e a versão.
   const GRUPO = "https://sendlus.luswarghi.com/g/vitor-coutinho/black-aberta";
   const UTM = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
   const aqui = new URLSearchParams(location.search), q = new URLSearchParams();
   q.set("origem", "pg-v" + V + "-" + (aqui.get("origem") || (aqui.get("utm_source") ? "anuncio" : "direto")));
   UTM.forEach(k => { if (aqui.get(k)) q.set(k, aqui.get(k)); });
-  const destino = GRUPO + "?" + q.toString();
-  document.querySelectorAll("a[data-grupo]").forEach(a => a.href = destino);
+  document.querySelectorAll("a[data-grupo]").forEach(a => a.href = GRUPO + "?" + q.toString());
 
-  // ---------- Contagem até a aula (quarta, 11/11/2026, 20h de Brasília) ----------
-  const ALVO = new Date("2026-11-11T20:00:00-03:00").getTime();
-  const dois = n => String(n).padStart(2, "0");
+  // Contagem até a aula (quarta, 11/11/2026, 20h de Brasília).
+  const ALVO = new Date("2026-11-11T20:00:00-03:00").getTime(), dois = n => String(n).padStart(2, "0");
   function conta() {
-    let t = Math.max(0, ALVO - Date.now()) / 1000;
-    const d = Math.floor(t / 86400), h = Math.floor(t % 86400 / 3600), m = Math.floor(t % 3600 / 60), s = Math.floor(t % 60);
-    document.querySelectorAll("[data-conta]").forEach(c => {
-      c.querySelector("[data-d]").textContent = dois(d); c.querySelector("[data-h]").textContent = dois(h); c.querySelector("[data-m]").textContent = dois(m);
-      const sg = c.querySelector("[data-s]"); if (sg) sg.textContent = dois(s);
-    });
+    const t = Math.max(0, ALVO - Date.now()) / 1000;
+    document.querySelector("[data-d]").textContent = dois(Math.floor(t / 86400));
+    document.querySelector("[data-h]").textContent = dois(Math.floor(t % 86400 / 3600));
+    document.querySelector("[data-m]").textContent = dois(Math.floor(t % 3600 / 60));
   }
-  conta(); setInterval(conta, 1000);
-
-  // ---------- Carrossel das capas (coverflow, o mesmo gesto da página da Maria) ----------
-  const cf = $("#cf"), cards = [...cf.querySelectorAll(".cf-card")], n = cards.length, pontos = $("#pontos");
-  const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let atual = 0, timer = null, visto = false, x0 = null, arrastou = false;
-  cards.forEach(() => pontos.appendChild(document.createElement("i")));
-  function desenha() {
-    const passo = cards[0].offsetWidth * (innerWidth < 900 ? 0.56 : 0.9);
-    cards.forEach((c, i) => {
-      let d = i - atual; if (d > n / 2) d -= n; if (d < -n / 2) d += n;
-      const a = Math.abs(d);
-      c.style.transform = `translateX(${d * passo}px) translateZ(${-a * 140}px) rotateY(${-Math.sign(d) * Math.min(a, 1) * 38}deg) scale(${a ? 0.86 : 1})`;
-      c.style.opacity = a > 2 ? 0 : a === 2 ? 0.45 : 1;
-      c.style.zIndex = 50 - a; c.style.filter = a ? "brightness(.6)" : "none";
-      c.style.pointerEvents = a > 2 ? "none" : "auto";
-    });
-    [...pontos.children].forEach((b, i) => b.classList.toggle("on", i === atual));
-  }
-  const vai = k => { atual = (atual + k + n) % n; desenha(); };
-  const auto = () => { if (calmo || !visto) return; clearInterval(timer); timer = setInterval(() => vai(1), 4500); };
-  document.querySelectorAll(".cf-seta").forEach(b => b.addEventListener("click", () => { vai(+b.dataset.dir); auto(); }));
-  cards.forEach((c, i) => c.addEventListener("click", () => { if (arrastou) { arrastou = false; return; } if (i !== atual) { atual = i; desenha(); auto(); } }));
-  cf.addEventListener("pointerdown", e => { x0 = e.clientX; arrastou = false; });
-  addEventListener("pointerup", e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) { arrastou = true; vai(dx < 0 ? 1 : -1); auto(); } });
-  addEventListener("pointercancel", () => { x0 = null; });
-  cf.addEventListener("mouseenter", () => clearInterval(timer)); cf.addEventListener("mouseleave", auto);
-  addEventListener("resize", desenha); desenha();
-  new IntersectionObserver((es, ob) => { if (es[0].isIntersecting) { visto = true; auto(); ob.disconnect(); } }, { threshold: 0.5 }).observe(cf);
+  conta(); setInterval(conta, 30000);
 })();
 </script>
 </body>

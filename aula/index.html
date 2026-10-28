@@ -156,10 +156,11 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
 @media (min-width:900px){
   section{padding:120px 0}
   .abre{padding-bottom:96px;background:radial-gradient(ellipse 46% 60% at 72% 46%,var(--brasa),transparent 70%)}
-  .abre .grade{grid-template-columns:1fr 1.08fr;align-items:center;gap:20px;min-height:calc(100vh - 64px);max-height:860px}
+  .abre .grade{grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);align-items:center;gap:0;min-height:min(calc(100vh - 64px),820px)}
+  .abre h1{font-size:clamp(52px,5.4vw,74px)}
   .abre .texto-abre{text-align:left;margin-top:0;order:-1}
   .abre .bt{margin:32px 0 0}
-  .abre figure{margin:0 -60px 0 0}
+  .abre figure{margin:0 -150px 0 -40px}
   .abre figure img{aspect-ratio:1400/1100;-webkit-mask-image:linear-gradient(180deg,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,#000 80%,transparent 100%)}
   .leva .caixa{width:100%;max-width:960px;margin:40px auto 0}
   .nomes{grid-template-columns:repeat(4,1fr)}

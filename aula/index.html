@@ -60,7 +60,7 @@ h2{font-size:clamp(30px,7.6vw,46px);line-height:1.05;letter-spacing:-.035em;font
 .marca svg{width:38px;height:18px}.marca path,.pulso path{fill:none;stroke:currentColor;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
 .marca b{color:var(--ink);font-weight:700}
 .conta{display:flex;gap:6px;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink2)}
-.conta span{display:flex;flex-direction:column;align-items:center;min-width:34px}
+.conta span{display:flex;flex-direction:column;align-items:center;min-width:30px}
 .conta b{font-size:17px;font-weight:800;color:var(--ink);line-height:1.1}
 
 /* primeira dobra */
@@ -133,19 +133,20 @@ section{padding:64px 0 0}
 .total{display:flex;justify-content:space-between;align-items:baseline;padding:22px 0 0}
 .total span{font-size:20px;font-weight:600}
 .total s{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:26px;color:var(--vivo);text-decoration-thickness:3px}
-.black{margin-top:26px;padding:28px 22px;border:1px solid var(--borda);border-radius:8px;background:var(--s1);text-align:center}
-.black .rotulo{color:var(--ink2)}
+.black{margin-top:26px;padding:28px 16px;border:1px solid var(--borda);border-radius:8px;background:var(--s1);text-align:center}
+.black .rotulo{color:var(--ink2);letter-spacing:.05em}
 .black .preco{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:56px;letter-spacing:-.04em;margin-top:10px;filter:blur(11px);user-select:none}
 .black p{color:var(--vivo);font-weight:600;font-size:19px;margin-top:4px}
 .black .bt{margin-top:20px}
 
 /* grupo VIP */
-.vip .caixa{padding:32px 22px;border-radius:8px;background:linear-gradient(160deg,#2a0d0f,#170A0B);border:1px solid var(--borda)}
+.vip .caixa{padding:32px 16px;border-radius:8px;background:linear-gradient(160deg,#2a0d0f,#170A0B);border:1px solid var(--borda)}
 .vip p.sub{margin-top:12px}
 .vip ul{list-style:none;margin-top:18px}
 .vip li{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:9px 0;color:var(--ink2)}
 .vip li svg{width:30px;height:16px;margin-top:5px;color:var(--vivo)}
 .vip .bt{margin-top:22px}
+.black .bt,.vip .bt{padding:0 14px;font-size:18px;gap:8px;white-space:nowrap}
 .fim{padding:56px 0 30px;text-align:center}
 .fim .rotulo{color:var(--ink2)}
 .fim .conta{justify-content:center;gap:12px;margin-top:12px;font-size:13px}
@@ -172,14 +173,14 @@ footer{padding:26px 0 calc(26px + env(safe-area-inset-bottom));border-top:1px so
 </head>
 <body>
 <header class="topo"><div class="wrap">
-  <div class="marca"><svg viewBox="0 0 38 18"><path d="M1 10 H10 L13 10 L16 2 L20 16 L23 10 H37"/></svg><span>clube do plantonista <b>· black</b></span></div>
+  <div class="marca"><svg viewBox="0 0 38 18"><path d="M1 10 H10 L13 10 L16 2 L20 16 L23 10 H37"/></svg><span>clube do plantonista</span></div>
   <div class="conta" data-conta aria-label="Tempo até a aula"><span><b data-d>--</b>dias</span><span><b data-h>--</b>h</span><span><b data-m>--</b>min</span></div>
 </div></header>
 
 <main>
 <div class="abre papel"><div class="wrap">
   <div>
-    <p class="quando"><i></i>Ao vivo e gratuita · quarta, 11/11 · 20h</p>
+    <p class="quando"><i></i>Aula gratuita · qua, 11/11 · 20h</p>
     <h1 id="titulo">Uma noite de casos reais de plantão comigo e todos os meus cursos de emergência <em>VITALÍCIOS</em>.</h1>
     <p class="sub" id="apoio">Participe do <b>Aulão Plantão Descomplicado</b>, aula ao vivo e gratuita, quarta, 11/11, às 20h. Durante a live eu abro a condição de Black Friday do Clube do Plantonista.</p>
     <a class="bt" href="#grupo" data-grupo>Quero entrar no grupo VIP <svg viewBox="0 0 18 18"><path d="M4 14 L14 4 M6 4 H14 V12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -211,7 +212,7 @@ footer{padding:26px 0 calc(26px + env(safe-area-inset-bottom));border-top:1px so
 </div></section>
 
 <section class="dif"><div class="wrap">
-  <p class="rotulo">Por que com o Dr. Vitor é diferente</p>
+  <h2>Por que com o Dr. Vitor é diferente</h2>
   <div class="itens">
     <div class="item"><span class="n">01</span><h3>Vai até a conduta</h3><p>Não para no diagnóstico. Chega na droga, na dose e na ordem do que fazer.</p></div>
     <div class="item"><span class="n">02</span><h3>Um cardiologista do lado</h3><p>Doutor em Cardiologia pela USP, com passagem pelo InCor e pelo Einstein, e dez anos de emergência.</p></div>

@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Aula ao vivo: do primeiro olhar até a conduta · Dr. Vitor Coutinho</title>
+<meta name="description" content="Aula ao vivo e gratuita com o Dr. Vitor Coutinho, cardiologista: casos reais de plantão conduzidos do começo até a conduta. Quarta, 11/11, às 20h, sem replay.">
+<meta property="og:title" content="Aula ao vivo e gratuita: casos reais de plantão até a conduta">
+<meta property="og:description" content="Com o Dr. Vitor Coutinho, cardiologista. Quarta, 11/11, às 20h, ao vivo e sem replay.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vitorcoutinhoandrade.com/aula/">
+<meta property="og:image" content="https://vitorcoutinhoandrade.com/aula/vitor.jpg">
+<meta name="theme-color" content="#120A0B">
+<link rel="canonical" href="https://vitorcoutinhoandrade.com/aula/">
+
+<!-- ===== PIXEL DO META (BM NOVA) =====
+     Entra aqui quando a BM nova existir (decisão adiada pelo Matheus em 28/10).
+     Nada de pixel, Utmify ou Clarity herdado do domínio antigo. O Lead, se vier,
+     dispara no clique do botão (ver o script no fim da página). -->
+
+
+<link rel="preload" as="image" href="vitor.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Página de captação da aula aberta de 11/11. Identidade do Clube do Plantonista, a mesma do Raio-X e da foto
+   do grupo: fundo escuro avermelhado com papel de eletro, vermelho do Vitor só no botão e no traçado, Instrument Sans
+   no texto e JetBrains Mono nos rótulos e datas. Foto: ensaio profissional do perfil dele (post de 21/04/2025). */
+:root{
+  --bg:#120A0B; --s1:#1C1213; --s2:#271819; --linha:#36221F; --borda:#4E3430;
+  --ink:#F4EFE9; --ink2:#CDBCB5; --apagado:#9C847E;
+  --acao:#D3342B; --acao-h:#B92A22; --traco:#E04A3F;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:linear-gradient(rgba(214,60,52,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(214,60,52,.09) 1px,transparent 1px),
+    linear-gradient(rgba(214,60,52,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(214,60,52,.04) 1px,transparent 1px);
+  background-size:60px 60px,60px 60px,12px 12px,12px 12px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* topo */
+.topo{display:flex;justify-content:space-between;align-items:center;height:60px;position:relative;z-index:2}
+.marca{font-weight:700;font-size:16px;letter-spacing:-.02em}
+.marca span{color:var(--ink2);font-weight:500}
+
+/* abertura */
+.abre{position:relative}
+.foto{position:relative;margin:0 -20px;height:min(80vw,340px);overflow:hidden}
+.foto img{width:100%;height:100%;object-fit:cover;object-position:50% 0%;display:block;filter:saturate(.92) contrast(1.02)}
+.foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,10,11,0) 46%,rgba(18,10,11,.55) 72%,var(--bg) 100%)}
+.texto{position:relative;z-index:1;margin-top:-34px}
+.quando{display:block;margin-bottom:14px;color:#F2B3A6}
+h1{font-size:clamp(36px,10vw,62px);line-height:1.03;letter-spacing:-.045em;font-weight:700;max-width:12em}
+.sub{margin-top:16px;font-size:18px;line-height:1.5;color:var(--ink2);max-width:31em}
+.sub b{color:var(--ink);font-weight:600}
+.bt{display:flex;align-items:center;justify-content:center;width:100%;min-height:58px;margin-top:24px;padding:0 24px;border-radius:6px;background:var(--acao);color:#fff;font-weight:600;font-size:18px;letter-spacing:-.01em;text-decoration:none;transition:background .15s}
+.bt:hover{background:var(--acao-h)}
+.nota{margin-top:12px;font-size:14px;color:var(--apagado)}
+.ecg{display:block;width:100%;height:46px;margin:38px 0 0;overflow:visible}
+.ecg path{fill:none;stroke:var(--traco);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+
+/* seções */
+section{padding:56px 0 8px}
+h2{font-size:clamp(28px,7.4vw,40px);line-height:1.08;letter-spacing:-.035em;font-weight:700;max-width:16em;margin-top:12px}
+.itens{margin-top:30px;border-top:1px solid var(--linha)}
+.item{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:22px 0;border-bottom:1px solid var(--linha)}
+.item .n{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:14px;color:var(--traco);padding-top:4px}
+.item h3{font-size:20px;line-height:1.3;letter-spacing:-.02em;font-weight:600}
+.item p{grid-column:2;color:var(--ink2)}
+.paraquem p{margin-top:18px;max-width:34em;color:var(--ink2)}
+.paraquem p:first-of-type{margin-top:22px;font-size:20px;line-height:1.45;color:var(--ink)}
+
+/* clube: a oferta que abre no fim da aula, como lista de prontuário, sem preço */
+.clube{display:grid;gap:8px}
+.clube .intro{margin-top:18px;max-width:34em;color:var(--ink2)}
+.clube .intro b{color:var(--ink);font-weight:600}
+.cursos{margin-top:26px;list-style:none;border-left:2px solid var(--acao);padding-left:18px;max-width:40em}
+.cursos li{padding:12px 0;border-bottom:1px solid var(--linha)}
+.cursos li:last-child{border-bottom:none}
+.cursos b{display:block;font-size:18px;font-weight:600;letter-spacing:-.015em}
+.cursos span{display:block;color:var(--ink2);font-size:16px;margin-top:2px}
+.clube .depois{margin-top:20px;font-size:15px;color:var(--apagado);max-width:34em}
+
+.vitor{display:grid;gap:26px}
+.vitor .bio p{color:var(--ink2);margin-top:14px;max-width:34em}
+.vitor .bio p.nome{color:var(--ink);font-size:20px;font-weight:600;letter-spacing:-.02em;margin-top:12px}
+blockquote{border-left:2px solid var(--acao);padding:4px 0 4px 18px}
+blockquote p{font-size:clamp(24px,6.4vw,32px);line-height:1.2;letter-spacing:-.03em;font-weight:600}
+blockquote cite{display:block;margin-top:12px;font-style:normal}
+
+.fim{padding:64px 0 40px}
+.fim .data{font-size:clamp(34px,9vw,54px);line-height:1.04;letter-spacing:-.045em;font-weight:700;margin-top:12px}
+.fim .sub{margin-top:12px}
+footer{padding:28px 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--linha);font-size:13px;color:var(--apagado);line-height:1.6}
+
+@media (min-width:860px){
+  .abre{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:end;padding-top:12px}
+  .foto{order:2;margin:0 -20px 0 0;height:640px;border-radius:2px}
+  .foto::after{background:linear-gradient(180deg,rgba(18,10,11,0) 62%,rgba(18,10,11,.7) 100%)}
+  .texto{margin-top:0;padding-bottom:40px}
+  .bt{width:auto;display:inline-flex;min-width:340px}
+  section{padding-top:88px}
+  .itens{max-width:760px}
+  .clube{grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+  .cursos{margin-top:8px}
+  .vitor{grid-template-columns:1fr 1fr;align-items:start;gap:64px}
+  .fim{padding-top:96px}
+  .fim .bt{min-width:380px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="topo">
+    <div class="marca">Dr. Vitor Coutinho <span>· cardiologista</span></div>
+  </header>
+
+  <main>
+    <div class="abre">
+      <figure class="foto">
+        <picture>
+          <source srcset="vitor.webp" type="image/webp">
+          <img src="vitor.jpg" alt="Dr. Vitor Coutinho, de jaleco, segurando o estetoscópio" width="840" height="988" fetchpriority="high">
+        </picture>
+      </figure>
+      <div class="texto">
+        <span class="mono quando">Ao vivo e gratuita · quarta, 11/11 · 20h</span>
+        <h1>Casos reais de plantão, do primeiro olhar até a conduta.</h1>
+        <p class="sub">Uma aula com o Dr. Vitor Coutinho, cardiologista, conduzindo cada caso do começo ao fim: o eletro, a droga, a dose e a ordem. <b>Ao vivo e sem replay.</b></p>
+        <a class="bt" href="#grupo" data-grupo>Quero entrar no grupo da aula</a>
+        <p class="nota">O link da aula sai no grupo do WhatsApp.</p>
+      </div>
+    </div>
+
+    <svg class="ecg" viewBox="0 0 1040 46" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 30 H150 q8 -7 16 0 H186 l6 4 l9 -32 l9 40 l6 -12 H250 q14 -12 28 0 H420 q8 -7 16 0 H456 l6 4 l9 -32 l9 40 l6 -12 H520 q14 -12 28 0 H690 q8 -7 16 0 H726 l6 4 l9 -32 l9 40 l6 -12 H790 q14 -12 28 0 H1040"/>
+    </svg>
+
+    <section>
+      <span class="mono">O que acontece na quarta</span>
+      <h2>O plantão conduzido com um cardiologista do lado.</h2>
+      <div class="itens">
+        <div class="item">
+          <span class="n">01</span>
+          <h3>Casos que chegam em todo plantão</h3>
+          <p>Do tipo que aparece na UPA e no pronto-socorro, conduzidos do começo ao fim, em voz alta.</p>
+        </div>
+        <div class="item">
+          <span class="n">02</span>
+          <h3>Vai até a conduta</h3>
+          <p>Não para no diagnóstico. Chega no que fazer com o paciente: a droga, a dose e a ordem.</p>
+        </div>
+        <div class="item">
+          <span class="n">03</span>
+          <h3>Você responde antes</h3>
+          <p>No chat, você escreve a sua conduta antes de o Vitor mostrar a dele. É ali que a dúvida aparece, e é ao vivo que ela se resolve.</p>
+        </div>
+        <div class="item">
+          <span class="n">04</span>
+          <h3>Uma vez só</h3>
+          <p>A aula acontece ao vivo e não fica gravada para depois.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="paraquem">
+      <span class="mono">Para quem é</span>
+      <p>Para o médico que dá plantão e quer chegar sozinho na conduta, sem precisar de alguém do lado para confirmar.</p>
+      <p>UPA, pronto-socorro, SAMU ou UTI, formado há pouco ou há muitos anos. E não é só eletro: é o plantão inteiro, da dor no peito à droga que a gente deixa para depois.</p>
+    </section>
+
+    <section class="clube">
+      <div>
+        <span class="mono">No fim da aula</span>
+        <h2>O Vitor abre o Clube do Plantonista.</h2>
+        <p class="intro">Na live, ele libera a condição de Black Friday do Clube: <b>acesso vitalício a todos os cursos de emergência dele</b>, num lugar só. É a primeira vez que ele faz isso.</p>
+      </div>
+      <div>
+        <ul class="cursos">
+          <li><b>Plantão Seguro</b><span>O plantão do começo ao fim: a passagem, o raciocínio, o prontuário.</span></li>
+          <li><b>Arsenal do Plantonista</b><span>As drogas de emergência, como noradrenalina e adrenalina: quando ligar, quanto e como.</span></li>
+          <li><b>Dor Torácica</b><span>Separar o que mata do que não mata, nos primeiros minutos.</span></li>
+          <li><b>Arritmias</b><span>Estável ou instável, remédio ou choque.</span></li>
+          <li><b>ECG Descomplicado e ECG GO</b><span>O curso de eletro e o aplicativo para treinar eletro todo dia no celular.</span></li>
+          <li><b>PCR, insuficiência cardíaca e exames de porta</b><span>Entram depois, com data marcada.</span></li>
+        </ul>
+        <p class="depois">Os detalhes da matrícula são apresentados na aula, ao vivo.</p>
+      </div>
+    </section>
+
+    <section class="vitor">
+      <div class="bio">
+        <span class="mono">Quem conduz a aula</span>
+        <p class="nome">Dr. Vitor Coutinho Andrade</p>
+        <p>Cardiologista, doutor em Cardiologia pela USP. Passou pelo InCor, pelo Hospital Albert Einstein e pela Beneficência Portuguesa, com dez anos de emergência.</p>
+        <p>Hoje é professor de emergências cardiológicas e ensina a conduzir o caso em uma sequência fixa, a mesma em todo plantão.</p>
+      </div>
+      <blockquote>
+        <p>“O ECG responde melhor quando a gente faz a pergunta certa.”</p>
+        <cite class="mono">Dr. Vitor Coutinho</cite>
+      </blockquote>
+    </section>
+
+    <section class="fim" id="grupo">
+      <span class="mono">Ao vivo, gratuita e sem replay</span>
+      <p class="data">Quarta, 11 de novembro, às 20h.</p>
+      <p class="sub">Entre no grupo para receber o link da aula e os avisos.</p>
+      <a class="bt" href="#grupo" data-grupo>Quero entrar no grupo da aula</a>
+    </section>
+  </main>
+
+  <footer>Instituto VC de Ensino Médico LTDA · CNPJ 62.218.072/0001-67 · Ubá/MG</footer>
+</div>
+
+<script>
+// Botão do grupo: leva a origem e as UTMs até o SendLus (campanha black-aberta), que grava as duas por clique.
+// ?origem= vence; sem ela, quem traz UTM é anúncio; sem nada, "direto". O prefixo "pg-" separa quem passou
+// pela página de quem foi direto para o link do grupo.
+(function () {
+  var GRUPO = 'https://sendlus.luswarghi.com/g/vitor-coutinho/black-aberta';
+  var UTM = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  var aqui = new URLSearchParams(location.search);
+  var q = new URLSearchParams();
+  q.set('origem', 'pg-' + (aqui.get('origem') || (aqui.get('utm_source') ? 'anuncio' : 'direto')));
+  UTM.forEach(function (k) { if (aqui.get(k)) q.set(k, aqui.get(k)); });
+  var destino = GRUPO + '?' + q.toString();
+  var links = document.querySelectorAll('a[data-grupo]');
+  for (var i = 0; i < links.length; i++) links[i].href = destino;
+})();
+</script>
+</body>
+</html>

@@ -242,6 +242,18 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cf-card,.barra,.painel .item{transition:none}.fl .ft,.fl .fb{animation:none}.trilho{animation:none}}
 </style>
+<!-- Meta Pixel (28/10): dois pixels no mesmo fbq. 1165898412096025 = "PIXEL - TypeBot" (BM do Vitor, compartilhado;
+     é o que otimiza as campanhas) e 1742493520573514 = "Pixel Instituto VC" (BM nova, só alimentando).
+     PageView ao abrir; Lead no clique de qualquer botão do grupo VIP (a[data-grupo], script no fim da página). -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1165898412096025');
+fbq('init','1742493520573514');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1165898412096025&ev=PageView&noscript=1"><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1742493520573514&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
 <header class="topo"><div class="lado">
@@ -369,6 +381,19 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
   q.set("origem", "pc-bf26-" + V + "-" + (aqui.get("origem") || (aqui.get("utm_source") ? "anuncio" : "direto")));
   ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(k => { if (aqui.get(k)) q.set(k, aqui.get(k)); });
   document.querySelectorAll("a[data-grupo]").forEach(a => a.href = GRUPO + "?" + q.toString());
+  // Lead no Meta antes de sair para o grupo: dispara e segura a navegação ~350 ms para o evento sair.
+  // Uma vez por visita à página; se o pixel estiver bloqueado, segue direto.
+  let lead = false;
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a[data-grupo]");
+    if (!a || lead) return;
+    lead = true;
+    if (typeof fbq !== "function") return;
+    fbq("track", "Lead", { content_name: "black-aberta", content_category: "pc-bf26-" + V });
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    setTimeout(() => { location.href = a.href; }, 350);
+  });
 
   // ---------- os produtos (Doc "Clube do Plantonista · produtos da oferta"; sem valor nem contagem na página) ----------
   const C = [

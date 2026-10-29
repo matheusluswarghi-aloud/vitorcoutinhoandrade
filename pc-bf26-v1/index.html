@@ -375,8 +375,8 @@ fbq('track','PageView');
   // ---------- versão da página pelo caminho (/pc-bf26-v1/ → "v1"); o sorteio é feito em /pc-bf26/ ----------
   const V = (location.pathname.match(/pc-bf26-(v\d+)/) || [, "v1"])[1];
 
-  // ---------- botões: origem e UTMs até o grupo VIP (SendLus, black-aberta) ----------
-  const GRUPO = "https://sendlus.luswarghi.com/g/vitor-coutinho/black-aberta";
+  // ---------- botões: origem e UTMs até o grupo VIP (grupo.vitorcoutinhoandrade.com/aberta → SendLus black-aberta) ----------
+  const GRUPO = "https://grupo.vitorcoutinhoandrade.com/aberta";
   const aqui = new URLSearchParams(location.search), q = new URLSearchParams();
   q.set("origem", "pc-bf26-" + V + "-" + (aqui.get("origem") || (aqui.get("utm_source") ? "anuncio" : "direto")));
   ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(k => { if (aqui.get(k)) q.set(k, aqui.get(k)); });

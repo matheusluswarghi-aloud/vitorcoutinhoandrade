@@ -241,10 +241,41 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
   .barra .bt{width:auto;padding:16px 34px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cf-card,.barra,.painel .item{transition:none}.fl .ft,.fl .fb{animation:none}.trilho{animation:none}}
+/* ---------- pop-up de inscrição (29/10): nome, WhatsApp e e-mail antes do grupo VIP ---------- */
+.insc{position:fixed;left:0;right:0;top:0;height:100%;z-index:200;display:flex;align-items:flex-start;justify-content:center;padding:16px 16px calc(16px + env(safe-area-inset-bottom));background:rgba(8,7,6,.82);overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;transition:opacity .18s,visibility 0s .18s}
+.insc[hidden]{display:none}
+.insc.ver{opacity:1;visibility:visible;transition:opacity .18s}
+html.travado,html.travado body{overflow:hidden}
+.insc .caixa-i{position:relative;width:100%;max-width:460px;margin:2vh auto auto;background:var(--fundo2);border:1px solid var(--fio);border-radius:4px;padding:26px 20px 22px;transform:translateY(10px);transition:transform .18s}
+.insc.ver .caixa-i{transform:none}
+.insc h2{font-size:23px;line-height:1.22;font-weight:800;letter-spacing:-.02em;padding-right:34px}
+.insc .x{position:absolute;top:10px;right:10px;width:40px;height:40px;border:0;background:none;color:var(--cinza);font-size:26px;line-height:1;cursor:pointer;font-family:inherit}
+.insc form{margin-top:18px;display:flex;flex-direction:column;gap:14px}
+.insc label,.insc .rotulo{display:block;font-size:15px;font-weight:600;color:var(--cinza);margin-bottom:6px}
+.insc .in{display:block;width:100%;background:var(--fundo3);border:1px solid var(--fio);border-radius:4px;color:var(--marfim);font:500 17px/1.3 "Schibsted Grotesk",system-ui,sans-serif;padding:15px 14px;outline:0;transition:border-color .15s;-webkit-appearance:none;appearance:none}
+.insc .in:focus{border-color:var(--cinza2)}
+.insc .tel{position:relative}
+.insc .tel>.in{padding-left:104px}
+.insc .ddi{position:absolute;left:1px;top:1px;bottom:1px;display:flex;align-items:center;gap:7px;padding:0 10px 0 13px;background:none;border:0;border-right:1px solid var(--fio);color:var(--marfim);font:500 16px "Schibsted Grotesk",system-ui,sans-serif;cursor:pointer;z-index:2}
+.insc .ddi img{border-radius:2px;display:block;object-fit:cover}
+.insc .ddi i{font-style:normal;font-size:10px;color:var(--cinza)}
+.insc .paises{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--fundo3);border:1px solid var(--fio);border-radius:4px;padding:8px;z-index:10;box-shadow:0 18px 40px rgba(0,0,0,.55)}
+.insc .paises .in{margin:0 0 6px;padding:11px 12px;font-size:16px;background:var(--fundo2)}
+.insc .paises ul{list-style:none;max-height:min(240px,36dvh);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.insc .paises li{display:flex;align-items:center;gap:10px;padding:10px;border-radius:4px;cursor:pointer;font-size:15px}
+.insc .paises li:hover,.insc .paises li:active{background:rgba(255,255,255,.06)}
+.insc .paises li span{flex:1}
+.insc .paises li b{font-weight:500;color:var(--cinza)}
+.insc .erro{font-size:15px;line-height:1.4;color:#F08A7E}
+.insc .erro[hidden]{display:none}
+.insc button.bt{border:0;cursor:pointer;font-family:inherit;max-width:none;margin-top:4px}
+.insc .priv{margin-top:12px;font-size:13px;line-height:1.45;color:var(--cinza2);text-align:center}
+@media (min-width:600px){.insc{align-items:center}.insc .caixa-i{margin:auto;padding:34px 32px 28px}.insc h2{font-size:26px}}
+@media (prefers-reduced-motion:reduce){.insc,.insc .caixa-i{transition:none}}
 </style>
 <!-- Meta Pixel (28/10): dois pixels no mesmo fbq. 1165898412096025 = "PIXEL - TypeBot" (BM do Vitor, compartilhado;
      é o que otimiza as campanhas) e 1742493520573514 = "Pixel Instituto VC" (BM nova, só alimentando).
-     PageView ao abrir; Lead no clique de qualquer botão do grupo VIP (a[data-grupo], script no fim da página). -->
+     PageView ao abrir; Lead no envio do pop-up de inscrição (29/10; script no fim da página). -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -369,6 +400,31 @@ fbq('track','PageView');
 
 <div class="barra" id="barra" aria-hidden="true"><div class="lado"><p class="info">Black do Plantonista <span>· ao vivo, quarta, 11/11, às 20h</span></p><a class="bt" href="#fecha" data-grupo tabindex="-1">Quero entrar no grupo VIP</a></div></div>
 
+<div class="insc" id="insc" role="dialog" aria-modal="true" aria-labelledby="insc-t" hidden>
+  <div class="caixa-i">
+    <button type="button" class="x" id="insc-x" aria-label="Fechar">×</button>
+    <h2 id="insc-t">Preencha abaixo para garantir o seu lugar no grupo VIP da Black</h2>
+    <form id="insc-f" novalidate>
+      <div><label for="i-nome">Nome</label><input class="in" id="i-nome" name="nome" autocomplete="name" autocapitalize="words" maxlength="120" required></div>
+      <div><label for="i-whats">WhatsApp</label>
+        <div class="tel">
+          <button type="button" class="ddi" id="i-ddi" aria-haspopup="listbox" aria-expanded="false" aria-controls="i-paises"><img id="i-flag" src="https://flagcdn.com/w40/br.png" width="22" height="16" alt="" draggable="false"><span id="i-cod">+55</span><i aria-hidden="true">▾</i></button>
+          <input class="in" id="i-whats" name="telefone" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" placeholder="(11) 99999-9999" required>
+          <div class="paises" id="i-paises" hidden>
+            <input class="in" id="i-busca" type="search" placeholder="Buscar país" autocomplete="off" aria-label="Buscar país">
+            <ul id="i-lista" role="listbox" aria-label="Países"></ul>
+          </div>
+        </div>
+      </div>
+      <div><label for="i-email">E-mail</label><input class="in" id="i-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" maxlength="200" required></div>
+      <p class="erro" id="insc-erro" role="alert" hidden></p>
+      <button class="bt" type="submit" id="insc-bt">Entrar no grupo VIP</button>
+    </form>
+    <p class="priv">Seus dados ficam só com a equipe do Dr. Vitor Coutinho, para avisos da aula e da Black.</p>
+  </div>
+</div>
+<script src="paises.js" defer></script>
+
 <script>
 (function () {
   const $ = id => document.getElementById(id);
@@ -381,18 +437,124 @@ fbq('track','PageView');
   q.set("origem", "pc-bf26-" + V + "-" + (aqui.get("origem") || (aqui.get("utm_source") ? "anuncio" : "direto")));
   ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(k => { if (aqui.get(k)) q.set(k, aqui.get(k)); });
   document.querySelectorAll("a[data-grupo]").forEach(a => a.href = GRUPO + "?" + q.toString());
-  // Lead no Meta antes de sair para o grupo: dispara e segura a navegação ~350 ms para o evento sair.
-  // Uma vez por visita à página; se o pixel estiver bloqueado, segue direto.
-  let lead = false;
+  // ---------- pop-up de inscrição (29/10): o botão abre o formulário; só depois de nome, WhatsApp e e-mail a pessoa vai
+  // ao grupo. A captura sai por sendBeacon para o Supabase (api/lead do projeto raio-x-plantao) e nunca segura o
+  // redirecionamento; o Lead do Meta dispara no envio e a página espera só 150 ms para ele sair.
+  const API = "https://raio-x-plantao.vercel.app/api/";
+  const TESTE = aqui.get("teste") === "1";
+  const insc = $("insc"), fI = $("insc-f"), erroI = $("insc-erro"), whats = $("i-whats"), btDdi = $("i-ddi"), caixaP = $("i-paises"), busca = $("i-busca"), listaP = $("i-lista");
+  const BR = { nome: "Brasil", cod: "br", num: 55 };
+  let ddi = BR, destino = null, ultimoFoco = null, enviado = false;
+  const bandeira = c => `https://flagcdn.com/w40/${c}.png`;
+  const semAcento = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const escH = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const mascara = (v, d0) => {
+    const cru = String(v || ""), k = String(d0.num);
+    let d = cru.replace(/\D/g, "");
+    if ((cru.trim().startsWith("+") || (d0.num === 55 && d.length > 11)) && d.startsWith(k)) d = d.slice(k.length);
+    if (d0.num !== 55) return d.slice(0, 15);
+    d = d.replace(/^0+/, ""); if (d.length > 11 && d.startsWith("55")) d = d.slice(2);
+    d = d.slice(0, 11);
+    return d.length > 6 ? `(${d.slice(0, 2)}) ${d.slice(2, d.length - 4)}-${d.slice(-4)}` : d.length > 2 ? `(${d.slice(0, 2)}) ${d.slice(2)}` : d;
+  };
+  const poeDdi = (novo, limpar) => {
+    ddi = novo; $("i-flag").src = bandeira(ddi.cod); $("i-cod").textContent = "+" + ddi.num;
+    btDdi.setAttribute("aria-label", `Código do país: ${ddi.nome} +${ddi.num}`);
+    whats.placeholder = ddi.num === 55 ? "(11) 99999-9999" : "Número com código de área";
+    if (limpar) whats.value = "";
+  };
+  let paisIp = null;
+  const acharPais = () => paisIp || (paisIp = fetch(API + "pais").then(r => r.json()).then(j => j.pais || "").catch(() => ""));
+  const desenhaP = (filtro = "") => {
+    if (typeof PAISES === "undefined") return;
+    const q2 = filtro.trim(), dig = /^[+\d]/.test(q2) ? q2.replace(/\D/g, "") : null, fl = semAcento(q2);
+    listaP.innerHTML = PAISES.filter(([nm, , k]) => dig !== null ? String(k).startsWith(dig) : semAcento(nm).includes(fl))
+      .map(([nm, cod, k]) => `<li role="option" data-c="${cod}"><img src="${bandeira(cod)}" width="22" height="16" alt="" loading="lazy" draggable="false"><span>${escH(nm)}</span><b>+${k}</b></li>`).join("");
+  };
+  const abreP = sim => {
+    caixaP.hidden = !sim; btDdi.setAttribute("aria-expanded", sim);
+    if (!sim) return;
+    busca.value = ""; desenhaP(); caixaP.scrollIntoView({ block: "nearest" });
+    if (!matchMedia("(pointer:coarse)").matches) setTimeout(() => busca.focus(), 50);
+  };
+  const escolheP = li => { const x = PAISES.find(p => p[1] === li.dataset.c); poeDdi({ nome: x[0], cod: x[1], num: x[2] }, true); abreP(false); whats.focus(); };
+  btDdi.onclick = () => abreP(caixaP.hidden);
+  busca.oninput = () => desenhaP(busca.value);
+  busca.onkeydown = e => {
+    if (e.key === "Enter") { e.preventDefault(); const li = listaP.querySelector("li"); if (li) escolheP(li); }
+    else if (e.key === "Escape") { e.stopPropagation(); abreP(false); btDdi.focus(); }
+  };
+  listaP.onclick = e => { const li = e.target.closest("li"); if (li) escolheP(li); };
+  whats.oninput = () => { whats.value = mascara(whats.value, ddi); };
+
+  // o teclado do celular encolhe a área visível: o pop-up acompanha a altura que sobra, então o botão continua alcançável
+  const vv = window.visualViewport;
+  const ajustaAltura = () => { if (vv) { insc.style.height = vv.height + "px"; insc.style.top = vv.offsetTop + "px"; } };
+  if (vv) { vv.addEventListener("resize", ajustaAltura); vv.addEventListener("scroll", ajustaAltura); }
+  fI.addEventListener("focusin", e => { if (e.target.matches(".in")) setTimeout(() => e.target.scrollIntoView({ block: "center", behavior: "smooth" }), 250); });
+
+  let guardado = {};
+  try { guardado = JSON.parse(localStorage.getItem("pc-bf26-contato") || "{}"); } catch (e) {}
+  function abrir(a) {
+    destino = a.href; ultimoFoco = a; erroI.hidden = true;
+    if (!fI.nome.value && guardado.nome) fI.nome.value = guardado.nome;
+    if (!fI.email.value && guardado.email) fI.email.value = guardado.email;
+    if (!whats.value && guardado.ddi) { poeDdi(guardado.ddi); whats.value = mascara(guardado.tel || "", ddi); }
+    if (!whats.value && !guardado.ddi) acharPais().then(cod => {
+      const x = cod && typeof PAISES !== "undefined" && PAISES.find(p => p[1] === cod);
+      if (x && !whats.value) poeDdi({ nome: x[0], cod: x[1], num: x[2] });
+    });
+    insc.hidden = false; ajustaAltura();
+    void insc.offsetWidth; insc.classList.add("ver"); // força o layout antes, para a transição rodar
+    document.documentElement.classList.add("travado");
+    if (!matchMedia("(pointer:coarse)").matches) setTimeout(() => fI.nome.focus(), 60);
+  }
+  function fechar() {
+    insc.classList.remove("ver"); abreP(false);
+    document.documentElement.classList.remove("travado");
+    setTimeout(() => { if (!insc.classList.contains("ver")) insc.hidden = true; }, 200);
+    if (ultimoFoco) ultimoFoco.focus({ preventScroll: true });
+  }
   document.addEventListener("click", e => {
     const a = e.target.closest("a[data-grupo]");
-    if (!a || lead) return;
-    lead = true;
-    if (typeof fbq !== "function") return;
-    fbq("track", "Lead", { content_name: "black-aberta", content_category: "pc-bf26-" + V });
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    if (a) { e.preventDefault(); abrir(a); return; }
+    if (!caixaP.hidden && !e.target.closest(".paises, .ddi")) abreP(false);
+  });
+  $("insc-x").onclick = fechar;
+  insc.addEventListener("click", e => { if (e.target === insc) fechar(); });
+  addEventListener("keydown", e => { if (e.key === "Escape" && insc.classList.contains("ver")) fechar(); });
+
+  const falha = (msg, campo) => { erroI.textContent = msg; erroI.hidden = false; if (campo) campo.focus(); };
+  const novoId = () => (crypto.randomUUID ? crypto.randomUUID() : "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)));
+  fI.addEventListener("submit", e => {
     e.preventDefault();
-    setTimeout(() => { location.href = a.href; }, 350);
+    erroI.hidden = true;
+    const nome = fI.nome.value.trim(), email = fI.email.value.trim().toLowerCase();
+    const num = ddi.num === 55 ? whats.value.replace(/\D/g, "").replace(/^0+/, "").replace(/^55(?=\d{10,11}$)/, "") : whats.value.replace(/\D/g, "");
+    const tel = ddi.num + num;
+    if (!nome) return falha("Escreva o seu nome.", fI.nome);
+    if (num.length < (ddi.num === 55 ? 10 : 6) || tel.length < 10) return falha(ddi.num === 55 ? "Coloque o WhatsApp com DDD." : "Confira o número do WhatsApp.", whats);
+    // celular do Brasil com DDD tem 11 dígitos e o 3º é 9: sem ele, só avisa; na 2ª tentativa com o mesmo número passa
+    if (ddi.num === 55 && num.length === 11 && num[2] !== "9" && whats.dataset.avisado !== num) {
+      whats.dataset.avisado = num;
+      return falha("Esse número não parece celular do Brasil. Se o seu WhatsApp é de outro país, toque na bandeira. Se está certo, toque no botão de novo.", whats);
+    }
+    if (!/^[^@\s]+@[^@\s]+$/.test(email)) return falha("Confira o e-mail.", fI.email);
+    try { localStorage.setItem("pc-bf26-contato", JSON.stringify({ nome, email, tel: num, ddi })); } catch (err) {}
+
+    const dq = new URL(destino).searchParams, origem = { destino };
+    ["origem", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(k => { if (dq.get(k)) origem[k] = dq.get(k); });
+    if (aqui.get("fbclid")) origem.fbclid = aqui.get("fbclid");
+    if (document.referrer) origem.referrer = document.referrer;
+    const corpo = JSON.stringify({ id: novoId(), nome, telefone: tel, email, pagina: V, origem, teste: TESTE });
+    let foi = false;
+    try { foi = navigator.sendBeacon(API + "lead", new Blob([corpo], { type: "text/plain" })); } catch (err) {}
+    if (!foi) fetch(API + "lead", { method: "POST", body: corpo, keepalive: true, headers: { "content-type": "text/plain" } }).catch(() => {});
+
+    if (!enviado && typeof fbq === "function") fbq("track", "Lead", { content_name: "black-aberta", content_category: "pc-bf26-" + V });
+    enviado = true;
+    $("insc-bt").textContent = "Abrindo o grupo…";
+    setTimeout(() => { location.href = destino; }, 150);
   });
 
   // ---------- os produtos (Doc "Clube do Plantonista · produtos da oferta"; sem valor nem contagem na página) ----------

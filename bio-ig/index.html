@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Black do Plantonista · Dr. Vitor Coutinho</title>
+<!--
+ Link da bio do Instagram do Vitor (29/10). Leva direto para a v1 da captação da Black geral, sem passar pelo sorteio,
+ com origem=bio-ig e as UTMs da bio. O botão da v1 manda isso ao SendLus como origem=pc-bf26-v1-bio-ig.
+ Parâmetro que vier no link manda sobre o padrão daqui.
+-->
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var PADRAO = { origem: "bio-ig", utm_source: "ig", utm_medium: "bio", utm_campaign: "black-geral" };
+  for (var k in PADRAO) if (!q.get(k)) q.set(k, PADRAO[k]);
+  location.replace("/pc-bf26-v1/?" + q.toString() + location.hash);
+})();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=/pc-bf26-v1/?origem=bio-ig&amp;utm_source=ig&amp;utm_medium=bio&amp;utm_campaign=black-geral"></noscript>
+<style>html,body{background:#0F0E0D;color:#ADA59C;font-family:system-ui,sans-serif;text-align:center;padding:40px 20px}a{color:#F2ECE4}</style>
+</head>
+<body><p><a href="/pc-bf26-v1/?origem=bio-ig&amp;utm_source=ig&amp;utm_medium=bio&amp;utm_campaign=black-geral">Black do Plantonista · Dr. Vitor Coutinho</a></p></body>
+</html>

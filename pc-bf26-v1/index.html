@@ -431,9 +431,6 @@ fbq('track','PageView');
 
   // ---------- botões: origem e UTMs até o grupo VIP (grupo.vitorcoutinhoandrade.com/aberta → SendLus black-aberta) ----------
   const GRUPO = "https://grupo.vitorcoutinhoandrade.com/aberta";
-  // 02/11: a Vercel caiu (grupo.vitorcoutinhoandrade.com e raio-x-plantao fora). Improviso: o envio vai direto ao
-  // convite do WhatsApp; o href acima continua só para guardar origem e UTMs. Voltar para `destino` quando a Vercel voltar.
-  const GRUPO_DIRETO = "https://chat.whatsapp.com/HIopeCyQaF825NfhbRyT26?s=cl&p=i&mlu=4&ilr=4&iam=2";
   const aqui = new URLSearchParams(location.search), q = new URLSearchParams();
   q.set("origem", "pc-bf26-" + V + "-" + (aqui.get("origem") || (aqui.get("utm_source") ? "anuncio" : "direto")));
   ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(k => { if (aqui.get(k)) q.set(k, aqui.get(k)); });
@@ -555,7 +552,7 @@ fbq('track','PageView');
     if (!enviado && typeof fbq === "function") fbq("track", "Lead", { content_name: "black-aberta", content_category: "pc-bf26-" + V });
     enviado = true;
     $("insc-bt").textContent = "Abrindo o grupo…";
-    setTimeout(() => { location.href = GRUPO_DIRETO; }, 150);
+    setTimeout(() => { location.href = destino; }, 150);
   });
 
   // ---------- os produtos (Doc "Clube do Plantonista · produtos da oferta"; sem valor nem contagem na página) ----------

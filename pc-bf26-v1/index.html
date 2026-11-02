@@ -433,6 +433,7 @@ fbq('track','PageView');
   const GRUPO = "https://grupo.vitorcoutinhoandrade.com/aberta";
   // 02/11: a Vercel caiu (grupo.vitorcoutinhoandrade.com e raio-x-plantao fora). Improviso: o envio vai direto ao
   // convite do WhatsApp; o href acima continua só para guardar origem e UTMs. Voltar para `destino` quando a Vercel voltar.
+  const SUPA = "https://hzpekxhdosiyovimgwfe.supabase.co", SUPA_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6cGVreGhkb3NpeW92aW1nd2ZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzMDgwMzEsImV4cCI6MjEwNTg4NDAzMX0.G0Hmx_MzX3CF_PuqEQd5g9hlwWATrd3Z8s18i-iF0n8";
   const GRUPO_DIRETO = "https://chat.whatsapp.com/HIopeCyQaF825NfhbRyT26?s=cl&p=i&mlu=4&ilr=4&iam=2";
   const aqui = new URLSearchParams(location.search), q = new URLSearchParams();
   q.set("origem", "pc-bf26-" + V + "-" + (aqui.get("origem") || (aqui.get("utm_source") ? "anuncio" : "direto")));
@@ -548,14 +549,17 @@ fbq('track','PageView');
     if (aqui.get("fbclid")) origem.fbclid = aqui.get("fbclid");
     if (document.referrer) origem.referrer = document.referrer;
     const corpo = JSON.stringify({ id: novoId(), nome, telefone: tel, email, pagina: V, origem, teste: TESTE });
-    let foi = false;
-    try { foi = navigator.sendBeacon(API + "lead", new Blob([corpo], { type: "text/plain" })); } catch (err) {}
-    if (!foi) fetch(API + "lead", { method: "POST", body: corpo, keepalive: true, headers: { "content-type": "text/plain" } }).catch(() => {});
+    // IMPROVISO 02/11 (Vercel fora): grava direto no Supabase pela função black_lead_publico (sql/003 do raio-x-plantao)
+    // e espera a resposta, no máximo 1,5 s, antes de ir ao grupo. Para reverter, `git revert` deste commit e do anterior.
+    const salvou = fetch(SUPA + "/rest/v1/rpc/black_lead_publico", {
+      method: "POST", body: JSON.stringify({ d: JSON.parse(corpo) }), keepalive: true,
+      headers: { apikey: SUPA_ANON, authorization: "Bearer " + SUPA_ANON, "content-type": "application/json" },
+    }).catch(() => {});
 
     if (!enviado && typeof fbq === "function") fbq("track", "Lead", { content_name: "black-aberta", content_category: "pc-bf26-" + V });
     enviado = true;
     $("insc-bt").textContent = "Abrindo o grupo…";
-    setTimeout(() => { location.href = GRUPO_DIRETO; }, 150);
+    Promise.race([salvou, new Promise(r => setTimeout(r, 1500))]).then(() => { location.href = GRUPO_DIRETO; });
   });
 
   // ---------- os produtos (Doc "Clube do Plantonista · produtos da oferta"; sem valor nem contagem na página) ----------

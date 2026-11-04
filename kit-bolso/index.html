@@ -9,139 +9,145 @@
  Entrega do Kit de Bolso para o grupo dos alunos (04/11/2026). Fica trancado até a senha, que o Vitor fala no fim da
  live das 20h. A senha não está nesta página: os PDFs moram numa pasta cujo nome é o SHA-256 de "kit-bolso:<SENHA>"
  (24 primeiros caracteres). Senha certa = a pasta existe. Para trocar a senha, gere o hash novo e renomeie a pasta.
- Visual: o do próprio Kit (papel, vinho, Arial Black), porque a página é o envelope dele.
+ Visual: o da página de vendas da Black (pc-bf26-v1): grafite, marfim, um vermelho, só Schibsted Grotesk. As folhas
+ são o topo real de cada PDF, renderizado do próprio arquivo.
 -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vitorcoutinhoandrade.com/kit-bolso/">
 <meta property="og:title" content="Kit de Bolso do Plantonista">
-<meta property="og:description" content="Presente do Dr. Vitor para os alunos: 5 guias em PDF para abrir no plantão. A senha sai hoje, às 20h, ao vivo.">
+<meta property="og:description" content="5 guias para abrir no celular, no meio do plantão. A senha sai hoje, às 20h, ao vivo.">
 <meta property="og:image" content="https://vitorcoutinhoandrade.com/kit-bolso/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
-:root {
-  --papel: #F5F0E8; --superficie: #FFFFFF; --tinta: #1A1A1A; --apagado: #5E554C; --linha: #D9CFBF;
-  --vinho: #8B1A1A; --sobre-vinho: #FFFFFF; --erro: #A62B26;
+:root{
+  --fundo:#0F0E0D; --fundo3:#1D1A17; --fio:#2E2A26;
+  --marfim:#F2ECE4; --cinza:#ADA59C; --cinza2:#7F776F;
+  --vermelho:#D63A2E; --vermelho-h:#BC2F24; --brasa:rgba(214,58,46,.26);
 }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --papel: #0E0803; --superficie: #1A120C; --tinta: #F2ECE4; --apagado: #B8AEA2; --linha: #3A2F27;
-  --vinho: #E07A6E; --sobre-vinho: #1A0A06; --erro: #E8907F; color-scheme: dark; } }
-:root[data-theme="dark"] {
-  --papel: #0E0803; --superficie: #1A120C; --tinta: #F2ECE4; --apagado: #B8AEA2; --linha: #3A2F27;
-  --vinho: #E07A6E; --sobre-vinho: #1A0A06; --erro: #E8907F; color-scheme: dark; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--fundo);overflow-x:hidden}
+html,body{max-width:100%;overflow-x:clip}
+body{background:var(--fundo);color:var(--marfim);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto;-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;pointer-events:none}
+:focus-visible{outline:2px solid var(--marfim);outline-offset:3px}
+h1{text-wrap:balance}
 
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--papel); color: var(--tinta); font: 17px/1.5 "Instrument Sans", Arial, sans-serif; }
-main { max-width: 560px; margin: 0 auto; padding: 36px 16px 64px; }
-.de { margin: 0 0 14px; font-size: .74rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--apagado); }
-h1 { margin: 0 0 12px; font: 900 2.15rem/1.04 "Arial Black", Arial, sans-serif; letter-spacing: -.02em; }
-.sub { margin: 0 0 28px; color: var(--apagado); }
+main{max-width:520px;margin:0 auto;padding:0 24px 72px;text-align:center;
+  background:radial-gradient(ellipse 90% 340px at 50% 150px,var(--brasa),transparent 72%)}
 
-.tranca { border-top: 2px solid var(--tinta); padding-top: 18px; margin-bottom: 36px; }
-label { display: block; font-weight: 600; margin-bottom: 8px; }
-.campo { display: flex; gap: 8px; }
-input { flex: 1; min-width: 0; font: 600 1.1rem/1 "Instrument Sans", Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase;
-  padding: 14px 12px; border: 1.5px solid var(--apagado); border-radius: 3px; background: var(--superficie); color: var(--tinta); }
-input:focus { outline: 2px solid var(--vinho); outline-offset: 1px; }
-button, .botao { font: 600 1rem/1 "Instrument Sans", Arial, sans-serif; border-radius: 3px; cursor: pointer; text-decoration: none; }
-.liberar { border: 0; background: var(--tinta); color: var(--papel); padding: 0 18px; }
-.erro { min-height: 1.5em; margin: 8px 0 0; color: var(--erro); font-size: .95rem; }
-.aviso { margin: 10px 0 16px; }
-.aviso b { color: var(--vinho); }
-.botao { display: block; text-align: center; padding: 16px; background: var(--vinho); color: var(--sobre-vinho); }
+/* as cinco folhas abertas em leque, a do meio na frente */
+.leque{position:relative;height:330px;margin:0 -24px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 98%);mask-image:linear-gradient(180deg,#000 62%,transparent 98%)}
+.leque img{position:absolute;left:50%;top:44px;width:178px;margin-left:-89px;border-radius:6px;
+  box-shadow:0 26px 50px -12px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.04)}
+.leque .f1{transform:translate(-128%,40px) rotate(-15deg);z-index:1}
+.leque .f2{transform:translate(-66%,12px) rotate(-7deg);z-index:2}
+.leque .f3{transform:translate(0,0);z-index:3}
+.leque .f4{transform:translate(66%,12px) rotate(7deg);z-index:2}
+.leque .f5{transform:translate(128%,40px) rotate(15deg);z-index:1}
 
-ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 28px; }
-.capa { position: relative; border-radius: 3px; overflow: hidden; background: #0E0803; aspect-ratio: 1512 / 664; }
-.capa img { display: block; width: 100%; height: 100%; object-fit: cover;
-  -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; pointer-events: none; }
-.trancado .capa img { filter: grayscale(.85) brightness(.55); }
-.trancado .capa::after { content: "Trancado"; position: absolute; left: 10px; bottom: 10px; padding: 5px 8px; font-size: .72rem; font-weight: 600;
-  letter-spacing: .1em; text-transform: uppercase; background: var(--papel); color: var(--tinta); border-radius: 2px; }
-.item h2 { margin: 12px 0 2px; font-size: 1.08rem; line-height: 1.3; }
-.item p { margin: 0; color: var(--apagado); font-size: .97rem; }
-.abrir { display: none; margin-top: 12px; padding: 13px; }
-.liberado .abrir { display: block; }
-.liberado .tranca { display: none; }
-.ok { display: none; border-top: 2px solid var(--tinta); padding-top: 18px; margin-bottom: 36px; }
-.liberado .ok { display: block; }
-.ok p { margin: 0; }
-footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--linha); color: var(--apagado); font-size: .85rem; }
+h1{font-weight:900;font-size:clamp(40px,11vw,58px);line-height:.98;letter-spacing:-.045em;margin-top:-26px;position:relative}
+.apoio{font-size:18px;color:var(--cinza);margin-top:14px}
+
+form{display:flex;gap:8px;margin-top:34px}
+input{flex:1;min-width:0;height:62px;padding:0 16px;background:var(--fundo3);border:1px solid var(--fio);border-radius:4px;
+  color:var(--marfim);font:800 20px/1 "Schibsted Grotesk",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;text-align:center}
+input::placeholder{color:var(--cinza2);letter-spacing:.02em;text-transform:none;font-weight:600}
+input:focus{outline:none;border-color:var(--cinza)}
+.liberar{flex:none;height:62px;padding:0 22px;border:0;border-radius:4px;background:var(--marfim);color:var(--fundo);
+  font:800 18px/1 "Schibsted Grotesk",system-ui,sans-serif;cursor:pointer}
+.erro{min-height:24px;margin-top:10px;font-size:15px;color:#F0897F}
+
+.quando{margin-top:22px;padding-top:26px;border-top:1px solid var(--fio);font-size:18px;color:var(--cinza)}
+.quando b{color:var(--marfim);font-weight:800}
+.bt{display:block;margin-top:18px;background:var(--vermelho);color:#fff;text-decoration:none;font-weight:800;font-size:20px;
+  letter-spacing:-.01em;padding:22px 18px;border-radius:4px;box-shadow:0 18px 40px -16px rgba(214,58,46,.7);transition:background .15s}
+.bt:hover{background:var(--vermelho-h)}
+
+/* liberado: a lista dos cinco no lugar da senha */
+.guias{display:none;list-style:none;margin-top:34px;text-align:left;border-top:1px solid var(--fio)}
+.guias a{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--fio);color:inherit;text-decoration:none}
+.guias .mini{flex:none;width:58px;height:74px;border-radius:4px;overflow:hidden;background:#000}
+.guias .mini img{width:100%;height:100%;object-fit:cover;object-position:top}
+.guias b{display:block;font-weight:800;font-size:19px;line-height:1.2;letter-spacing:-.015em}
+.guias span{display:block;font-size:15px;color:var(--cinza);margin-top:3px}
+.guias i{margin-left:auto;font-style:normal;font-weight:800;font-size:22px;color:var(--vermelho)}
+.liberado .tranca{display:none}
+.liberado .guias{display:block}
+.liberado .apoio{color:var(--marfim)}
 </style>
 </head>
 <body>
-<main id="pagina" class="trancado">
-  <p class="de">Presente do Dr. Vitor Coutinho para os alunos</p>
+<main id="pagina">
+  <div class="leque" aria-hidden="true">
+    <img class="f1" src="img/folha-01-checklist-plantao-seguro.webp" alt="" width="520" height="988" draggable="false">
+    <img class="f2" src="img/folha-02-sequencia-do-ecg.webp" alt="" width="520" height="988" draggable="false">
+    <img class="f4" src="img/folha-04-drogas-vasoativas.webp" alt="" width="520" height="988" draggable="false">
+    <img class="f5" src="img/folha-05-doses-na-emergencia.webp" alt="" width="520" height="988" draggable="false">
+    <img class="f3" src="img/folha-03-doses-de-iot.webp" alt="" width="520" height="988" draggable="false">
+  </div>
+
   <h1>Kit de Bolso do Plantonista</h1>
-  <p class="sub">Cinco guias em PDF para abrir no celular, no meio do plantão, sem precisar lembrar de nada de cabeça.</p>
+  <p class="apoio" id="apoio">5 guias para abrir no celular, no meio do plantão.</p>
 
-  <section class="tranca">
+  <div class="tranca">
     <form id="form" autocomplete="off">
-      <label for="senha">Senha do Kit</label>
-      <div class="campo">
-        <input id="senha" name="senha" type="text" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="Digite a senha">
-        <button class="liberar" type="submit">Liberar</button>
-      </div>
-      <p class="erro" id="erro" role="alert"></p>
+      <input id="senha" type="text" aria-label="Senha do Kit" placeholder="Digite a senha" autocapitalize="characters" autocorrect="off" spellcheck="false">
+      <button class="liberar" type="submit">Liberar</button>
     </form>
-    <p class="aviso" id="aviso">A senha sai <b>hoje, 04/11, às 20h</b>, ao vivo, na aula do Dr. Vitor. Só quem estiver lá fica sabendo.</p>
-    <a class="botao" id="live" href="https://www.youtube.com/live/fIyecsl0HRc" target="_blank" rel="noopener">Ativar lembrete da live</a>
-  </section>
+    <p class="erro" id="erro" role="alert"></p>
+    <p class="quando" id="quando">A senha sai <b>hoje, às 20h</b>, ao vivo.</p>
+    <a class="bt" id="live" href="https://www.youtube.com/live/fIyecsl0HRc" target="_blank" rel="noopener">Ativar lembrete da live</a>
+  </div>
 
-  <section class="ok">
-    <p>Liberado. Toque no guia para abrir e salve no celular.</p>
-  </section>
-
-  <ol id="guias"></ol>
-
-  <footer>Dr. Vitor Coutinho Andrade · Clube do Plantonista</footer>
+  <ol class="guias" id="guias"></ol>
 </main>
 
 <script>
 const GUIAS = [
-  ["01-checklist-plantao-seguro", "Checklist do Plantão Seguro", "O que conferir antes de assumir o plantão. Com caixinhas para marcar no próprio celular."],
-  ["02-sequencia-do-ecg", "Sequência do ECG", "O plano-sequência: a mesma ordem, em todo traçado, até virar automático."],
-  ["03-doses-de-iot", "Doses de IOT", "Da pré-oxigenação ao tubo confirmado. Prepara tudo antes de pegar a seringa."],
-  ["04-drogas-vasoativas", "Drogas Vasoativas", "Quantas ampolas, em quanto soro, quantos mL/h. As cinco do plantão."],
-  ["05-doses-na-emergencia", "Doses na Emergência", "Primeiro o cenário, depois a dose. As seis que mais pesam no plantão."],
+  ["01-checklist-plantao-seguro", "Checklist do Plantão Seguro"],
+  ["02-sequencia-do-ecg", "Sequência do ECG"],
+  ["03-doses-de-iot", "Doses de IOT"],
+  ["04-drogas-vasoativas", "Drogas Vasoativas"],
+  ["05-doses-na-emergencia", "Doses na Emergência"],
 ];
 const pagina = document.getElementById("pagina");
-const lista = document.getElementById("guias");
-for (const [arq, nome, apoio] of GUIAS) {
-  const li = document.createElement("li"); li.className = "item";
-  li.innerHTML = `<div class="capa"><img src="img/${arq}.webp" alt="" width="900" height="395" draggable="false" loading="lazy"></div>
-    <h2></h2><p></p><a class="botao abrir" target="_blank" rel="noopener">Abrir o PDF</a>`;
-  li.querySelector("h2").textContent = nome; li.querySelector("p").textContent = apoio;
-  li.querySelector("a").dataset.arq = arq;
-  lista.appendChild(li);
-}
-document.addEventListener("contextmenu", e => { if (e.target.closest(".capa")) e.preventDefault(); });
-document.addEventListener("dragstart", e => { if (e.target.closest(".capa")) e.preventDefault(); });
+document.addEventListener("contextmenu", e => { if (e.target.tagName === "IMG" || e.target.closest(".leque,.mini")) e.preventDefault(); });
+document.addEventListener("dragstart", e => { if (e.target.tagName === "IMG") e.preventDefault(); });
 
 // Botão da live conforme a hora de Brasília: lembrete antes, "no ar" durante, aula depois.
 (function () {
   const agora = Date.now(), inicio = Date.parse("2026-11-04T19:50:00-03:00"), fim = Date.parse("2026-11-05T00:30:00-03:00");
-  const live = document.getElementById("live"), aviso = document.getElementById("aviso");
+  const live = document.getElementById("live"), quando = document.getElementById("quando");
   if (agora >= inicio && agora < fim) {
-    live.textContent = "A live está no ar · entrar agora";
-    aviso.innerHTML = "A aula do Dr. Vitor <b>está acontecendo agora</b>. A senha sai lá, ao vivo.";
+    live.textContent = "Entrar na live agora";
+    quando.innerHTML = "A live está <b>no ar</b>. A senha sai lá.";
   } else if (agora >= fim) {
     live.textContent = "Ver a aula";
-    aviso.innerHTML = "A senha foi revelada na aula ao vivo de <b>04/11</b>.";
+    quando.innerHTML = "A senha saiu na aula de <b>04/11</b>.";
   }
 })();
 
 async function pasta(senha) {
   const limpa = senha.toUpperCase().replace(/[^A-Z0-9]/g, "");
-  const dados = new TextEncoder().encode("kit-bolso:" + limpa);
-  const h = await crypto.subtle.digest("SHA-256", dados);
+  const h = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("kit-bolso:" + limpa));
   return [...new Uint8Array(h)].map(b => b.toString(16).padStart(2, "0")).join("").slice(0, 24);
 }
 function liberar(p) {
-  document.querySelectorAll(".abrir").forEach(a => a.href = `${p}/${a.dataset.arq}.pdf`);
-  pagina.className = "liberado";
+  const lista = document.getElementById("guias");
+  lista.textContent = "";
+  for (const [arq, nome] of GUIAS) {
+    const li = document.createElement("li"), a = document.createElement("a");
+    a.href = `${p}/${arq}.pdf`; a.target = "_blank"; a.rel = "noopener";
+    a.innerHTML = `<div class="mini"><img src="img/folha-${arq}.webp" alt="" draggable="false"></div><div><b></b><span>Abrir o PDF</span></div><i>→</i>`;
+    a.querySelector("b").textContent = nome;
+    li.appendChild(a); lista.appendChild(li);
+  }
+  document.getElementById("apoio").textContent = "Liberado. Toque para abrir e salve no celular.";
+  pagina.classList.add("liberado");
   try { localStorage.setItem("kit-bolso", p); } catch (e) {}
 }
 async function confere(p) {
@@ -155,7 +161,7 @@ document.getElementById("form").addEventListener("submit", async e => {
   if (!v.trim()) { erro.textContent = "Digite a senha."; return; }
   const p = await pasta(v);
   if (await confere(p)) liberar(p);
-  else erro.textContent = "Senha errada. Ela sai hoje às 20h, ao vivo.";
+  else erro.textContent = "Senha errada.";
 });
 (async () => {
   let p = null; try { p = localStorage.getItem("kit-bolso"); } catch (e) {}

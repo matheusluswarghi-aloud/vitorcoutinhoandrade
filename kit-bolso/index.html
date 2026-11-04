@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kit de Bolso do Plantonista</title>
+<!--
+ Entrega do Kit de Bolso para o grupo dos alunos (04/11/2026). Fica trancado até a senha, que o Vitor fala no fim da
+ live das 20h. A senha não está nesta página: os PDFs moram numa pasta cujo nome é o SHA-256 de "kit-bolso:<SENHA>"
+ (24 primeiros caracteres). Senha certa = a pasta existe. Para trocar a senha, gere o hash novo e renomeie a pasta.
+ Visual: o do próprio Kit (papel, vinho, Arial Black), porque a página é o envelope dele.
+-->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vitorcoutinhoandrade.com/kit-bolso/">
+<meta property="og:title" content="Kit de Bolso do Plantonista">
+<meta property="og:description" content="Presente do Dr. Vitor para os alunos: 5 guias em PDF para abrir no plantão. A senha sai hoje, às 20h, ao vivo.">
+<meta property="og:image" content="https://vitorcoutinhoandrade.com/kit-bolso/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --papel: #F5F0E8; --superficie: #FFFFFF; --tinta: #1A1A1A; --apagado: #5E554C; --linha: #D9CFBF;
+  --vinho: #8B1A1A; --sobre-vinho: #FFFFFF; --erro: #A62B26;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --papel: #0E0803; --superficie: #1A120C; --tinta: #F2ECE4; --apagado: #B8AEA2; --linha: #3A2F27;
+  --vinho: #E07A6E; --sobre-vinho: #1A0A06; --erro: #E8907F; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --papel: #0E0803; --superficie: #1A120C; --tinta: #F2ECE4; --apagado: #B8AEA2; --linha: #3A2F27;
+  --vinho: #E07A6E; --sobre-vinho: #1A0A06; --erro: #E8907F; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--papel); color: var(--tinta); font: 17px/1.5 "Instrument Sans", Arial, sans-serif; }
+main { max-width: 560px; margin: 0 auto; padding: 36px 16px 64px; }
+.de { margin: 0 0 14px; font-size: .74rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--apagado); }
+h1 { margin: 0 0 12px; font: 900 2.15rem/1.04 "Arial Black", Arial, sans-serif; letter-spacing: -.02em; }
+.sub { margin: 0 0 28px; color: var(--apagado); }
+
+.tranca { border-top: 2px solid var(--tinta); padding-top: 18px; margin-bottom: 36px; }
+label { display: block; font-weight: 600; margin-bottom: 8px; }
+.campo { display: flex; gap: 8px; }
+input { flex: 1; min-width: 0; font: 600 1.1rem/1 "Instrument Sans", Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase;
+  padding: 14px 12px; border: 1.5px solid var(--apagado); border-radius: 3px; background: var(--superficie); color: var(--tinta); }
+input:focus { outline: 2px solid var(--vinho); outline-offset: 1px; }
+button, .botao { font: 600 1rem/1 "Instrument Sans", Arial, sans-serif; border-radius: 3px; cursor: pointer; text-decoration: none; }
+.liberar { border: 0; background: var(--tinta); color: var(--papel); padding: 0 18px; }
+.erro { min-height: 1.5em; margin: 8px 0 0; color: var(--erro); font-size: .95rem; }
+.aviso { margin: 10px 0 16px; }
+.aviso b { color: var(--vinho); }
+.botao { display: block; text-align: center; padding: 16px; background: var(--vinho); color: var(--sobre-vinho); }
+
+ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 28px; }
+.capa { position: relative; border-radius: 3px; overflow: hidden; background: #0E0803; aspect-ratio: 1512 / 664; }
+.capa img { display: block; width: 100%; height: 100%; object-fit: cover;
+  -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; pointer-events: none; }
+.trancado .capa img { filter: grayscale(.85) brightness(.55); }
+.trancado .capa::after { content: "Trancado"; position: absolute; left: 10px; bottom: 10px; padding: 5px 8px; font-size: .72rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; background: var(--papel); color: var(--tinta); border-radius: 2px; }
+.item h2 { margin: 12px 0 2px; font-size: 1.08rem; line-height: 1.3; }
+.item p { margin: 0; color: var(--apagado); font-size: .97rem; }
+.abrir { display: none; margin-top: 12px; padding: 13px; }
+.liberado .abrir { display: block; }
+.liberado .tranca { display: none; }
+.ok { display: none; border-top: 2px solid var(--tinta); padding-top: 18px; margin-bottom: 36px; }
+.liberado .ok { display: block; }
+.ok p { margin: 0; }
+footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--linha); color: var(--apagado); font-size: .85rem; }
+</style>
+</head>
+<body>
+<main id="pagina" class="trancado">
+  <p class="de">Presente do Dr. Vitor Coutinho para os alunos</p>
+  <h1>Kit de Bolso do Plantonista</h1>
+  <p class="sub">Cinco guias em PDF para abrir no celular, no meio do plantão, sem precisar lembrar de nada de cabeça.</p>
+
+  <section class="tranca">
+    <form id="form" autocomplete="off">
+      <label for="senha">Senha do Kit</label>
+      <div class="campo">
+        <input id="senha" name="senha" type="text" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="Digite a senha">
+        <button class="liberar" type="submit">Liberar</button>
+      </div>
+      <p class="erro" id="erro" role="alert"></p>
+    </form>
+    <p class="aviso" id="aviso">A senha sai <b>hoje, 04/11, às 20h</b>, ao vivo, na aula do Dr. Vitor. Só quem estiver lá fica sabendo.</p>
+    <a class="botao" id="live" href="https://www.youtube.com/live/fIyecsl0HRc" target="_blank" rel="noopener">Ativar lembrete da live</a>
+  </section>
+
+  <section class="ok">
+    <p>Liberado. Toque no guia para abrir e salve no celular.</p>
+  </section>
+
+  <ol id="guias"></ol>
+
+  <footer>Dr. Vitor Coutinho Andrade · Clube do Plantonista</footer>
+</main>
+
+<script>
+const GUIAS = [
+  ["01-checklist-plantao-seguro", "Checklist do Plantão Seguro", "O que conferir antes de assumir o plantão. Com caixinhas para marcar no próprio celular."],
+  ["02-sequencia-do-ecg", "Sequência do ECG", "O plano-sequência: a mesma ordem, em todo traçado, até virar automático."],
+  ["03-doses-de-iot", "Doses de IOT", "Da pré-oxigenação ao tubo confirmado. Prepara tudo antes de pegar a seringa."],
+  ["04-drogas-vasoativas", "Drogas Vasoativas", "Quantas ampolas, em quanto soro, quantos mL/h. As cinco do plantão."],
+  ["05-doses-na-emergencia", "Doses na Emergência", "Primeiro o cenário, depois a dose. As seis que mais pesam no plantão."],
+];
+const pagina = document.getElementById("pagina");
+const lista = document.getElementById("guias");
+for (const [arq, nome, apoio] of GUIAS) {
+  const li = document.createElement("li"); li.className = "item";
+  li.innerHTML = `<div class="capa"><img src="img/${arq}.webp" alt="" width="900" height="395" draggable="false" loading="lazy"></div>
+    <h2></h2><p></p><a class="botao abrir" target="_blank" rel="noopener">Abrir o PDF</a>`;
+  li.querySelector("h2").textContent = nome; li.querySelector("p").textContent = apoio;
+  li.querySelector("a").dataset.arq = arq;
+  lista.appendChild(li);
+}
+document.addEventListener("contextmenu", e => { if (e.target.closest(".capa")) e.preventDefault(); });
+document.addEventListener("dragstart", e => { if (e.target.closest(".capa")) e.preventDefault(); });
+
+// Botão da live conforme a hora de Brasília: lembrete antes, "no ar" durante, aula depois.
+(function () {
+  const agora = Date.now(), inicio = Date.parse("2026-11-04T19:50:00-03:00"), fim = Date.parse("2026-11-05T00:30:00-03:00");
+  const live = document.getElementById("live"), aviso = document.getElementById("aviso");
+  if (agora >= inicio && agora < fim) {
+    live.textContent = "A live está no ar · entrar agora";
+    aviso.innerHTML = "A aula do Dr. Vitor <b>está acontecendo agora</b>. A senha sai lá, ao vivo.";
+  } else if (agora >= fim) {
+    live.textContent = "Ver a aula";
+    aviso.innerHTML = "A senha foi revelada na aula ao vivo de <b>04/11</b>.";
+  }
+})();
+
+async function pasta(senha) {
+  const limpa = senha.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const dados = new TextEncoder().encode("kit-bolso:" + limpa);
+  const h = await crypto.subtle.digest("SHA-256", dados);
+  return [...new Uint8Array(h)].map(b => b.toString(16).padStart(2, "0")).join("").slice(0, 24);
+}
+function liberar(p) {
+  document.querySelectorAll(".abrir").forEach(a => a.href = `${p}/${a.dataset.arq}.pdf`);
+  pagina.className = "liberado";
+  try { localStorage.setItem("kit-bolso", p); } catch (e) {}
+}
+async function confere(p) {
+  try { const r = await fetch(`${p}/01-checklist-plantao-seguro.pdf`, { method: "HEAD", cache: "no-store" }); return r.ok; }
+  catch (e) { return false; }
+}
+document.getElementById("form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const erro = document.getElementById("erro"), v = document.getElementById("senha").value;
+  erro.textContent = "";
+  if (!v.trim()) { erro.textContent = "Digite a senha."; return; }
+  const p = await pasta(v);
+  if (await confere(p)) liberar(p);
+  else erro.textContent = "Senha errada. Ela sai hoje às 20h, ao vivo.";
+});
+(async () => {
+  let p = null; try { p = localStorage.getItem("kit-bolso"); } catch (e) {}
+  if (p && await confere(p)) liberar(p);
+})();
+</script>
+</body>
+</html>

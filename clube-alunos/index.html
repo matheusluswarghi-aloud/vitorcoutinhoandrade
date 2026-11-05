@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Clube do Plantonista · condição de aluno</title>
+<!--
+ Página de vendas do Clube do Plantonista para os alunos do ECG Descomplicado que não compraram na live de 04/11/2026.
+ Carrinho dos alunos aberto até sábado; a contagem vai até FIM (no script, horário de Brasília).
+ Oferta = a da live (07-entregaveis/black-plantonista/live-alunos/roteiro-live-alunos-v2.md e slides 55–74 do deck):
+ empilhamento de R$ 7.471, 12x R$ 199,90 ou R$ 1.998, garantia de 30 dias. Fora: sorteio, Plantão Mensal, acesso extra,
+ Cursos Convidados (não entrou no empilhamento da live). A Comunidade não é chamada de vitalícia (12 meses × vitalício em aberto).
+ Todo botão vai para clube.vitorcoutinhoandrade.com/pagina (origem "pagina" do projeto link-checkout-vitor → checkout mkvniz3k).
+ Visual: o da captação da Black geral (pc-bf26-v1), Jornal à noite, só Schibsted Grotesk.
+ O VÍDEO: procure o marcador VTURB no corpo e troque o que está entre ele e o /VTURB pelo embed da VTurb.
+-->
+<meta name="description" content="O Clube do Plantonista abriu em primeira mão para os alunos do Dr. Vitor Coutinho: todos os cursos de emergência, os aplicativos e a comunidade, com condição de aluno até sábado.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vitorcoutinhoandrade.com/clube-alunos/">
+<meta property="og:title" content="Clube do Plantonista · condição de aluno até sábado">
+<meta property="og:description" content="Todos os cursos de emergência do Dr. Vitor, os aplicativos e a comunidade, num lugar só.">
+<meta property="og:image" content="https://vitorcoutinhoandrade.com/clube-alunos/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F0E0D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fundo:#0F0E0D; --fundo2:#161412; --fundo3:#1D1A17; --fio:#2E2A26;
+  --marfim:#F2ECE4; --cinza:#ADA59C; --cinza2:#7F776F;
+  --vermelho:#D63A2E; --vermelho-h:#BC2F24; --brasa:rgba(214,58,46,.30);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--fundo);overflow-x:hidden;scroll-behavior:smooth}
+html,body{max-width:100%;overflow-x:clip}
+body{background:var(--fundo);color:var(--marfim);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto;-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;pointer-events:none}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--marfim);outline-offset:3px}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+.lado{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
+.estreito{max-width:760px;margin:0 auto;text-align:center}
+h1{font-weight:900;font-size:clamp(34px,9.4vw,64px);line-height:1;letter-spacing:-.045em}
+h2{font-weight:800;font-size:clamp(30px,7.6vw,52px);line-height:1.05;letter-spacing:-.035em}
+.vm{color:var(--vermelho)}
+.texto{font-size:18px;line-height:1.55;color:var(--cinza);margin-top:18px}
+.texto b{color:var(--marfim);font-weight:600}
+.bt{display:block;text-align:center;width:100%;max-width:460px;background:var(--vermelho);color:#fff;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.01em;padding:21px 16px;border-radius:4px;box-shadow:0 18px 40px -16px rgba(214,58,46,.7);transition:background .15s,transform .15s}
+.bt:hover{background:var(--vermelho-h);transform:translateY(-1px)}
+.depois{margin-top:12px;font-size:15px;line-height:1.45;color:var(--cinza)}
+section{padding:80px 0}
+
+/* placar da contagem: plaquinhas que viram (o mesmo da página da Black geral) */
+.placar{display:flex;justify-content:center;align-items:flex-start;gap:6px;--fh:32px}
+.placar .u{display:flex;flex-direction:column;align-items:center;gap:5px}
+.placar .par{display:flex;gap:3px}
+.placar .r{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cinza2);line-height:1}
+.placar .sep{font-weight:800;font-size:calc(var(--fh)*.5);line-height:var(--fh);color:var(--vermelho)}
+.fl{position:relative;width:calc(var(--fh)*.7);height:var(--fh);perspective:300px;font-weight:800;font-size:calc(var(--fh)*.7);letter-spacing:-.02em;color:var(--marfim);font-variant-numeric:tabular-nums;border-radius:4px;box-shadow:0 8px 16px -8px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.03)}
+.fl .h{position:absolute;left:0;right:0;height:50%;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.fl .h i{display:block;height:var(--fh);line-height:var(--fh);text-align:center;font-style:normal}
+.fl .t,.fl .ft{top:0;background:linear-gradient(180deg,#2C2824,#24211D);border-radius:4px 4px 0 0}
+.fl .b,.fl .fb{bottom:0;background:linear-gradient(180deg,#1F1C19,#191715);border-radius:0 0 4px 4px}
+.fl .b i,.fl .fb i{margin-top:calc(var(--fh)/-2)}
+.fl .ft{z-index:2;transform-origin:50% 100%;animation:flT .3s ease-in forwards}
+.fl .fb{z-index:2;transform-origin:50% 0;transform:rotateX(90deg);animation:flB .3s .3s ease-out forwards}
+.fl::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:#0B0A09;z-index:3}
+.fl::before{content:"";position:absolute;top:50%;left:-2px;right:-2px;height:6px;margin-top:-3px;z-index:4;background:linear-gradient(90deg,#3A3530 0 3px,transparent 3px calc(100% - 3px),#3A3530 calc(100% - 3px));border-radius:1px}
+@keyframes flT{to{transform:rotateX(-90deg)}}
+@keyframes flB{to{transform:rotateX(0)}}
+
+/* topo: a contagem de Black Friday */
+.topo{position:relative;z-index:5;background:linear-gradient(180deg,#1A1311,var(--fundo));border-bottom:1px solid var(--fio)}
+.topo .lado{display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:12px;padding-bottom:12px}
+.topo .aviso{font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--marfim);line-height:1.2;text-align:center}
+.topo .aviso span{color:var(--vermelho)}
+.topo .quando{font-size:14px;line-height:1.3;color:var(--cinza);text-align:center}
+
+/* 1 · primeira dobra: título e o vídeo */
+.abre{position:relative;padding:28px 0 64px;background:radial-gradient(ellipse 80% 40% at 50% 34%,var(--brasa),transparent 72%);text-align:center}
+.abre .sub-t{font-size:17px;line-height:1.5;color:var(--cinza);margin:14px auto 0;max-width:620px}
+.abre .sub-t b{color:var(--marfim);font-weight:600}
+.video{position:relative;margin:24px -20px 0;aspect-ratio:16/9;background:#000;overflow:hidden}
+.video .espera{position:absolute;inset:0}
+.video .espera img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.video .espera::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(15,14,13,.55))}
+.abre .bt{margin:24px auto 0}
+.chamada{display:flex;flex-direction:column;align-items:center;gap:10px;margin:44px auto 0;max-width:560px;text-decoration:none}
+.chamada b{font-weight:800;font-size:23px;line-height:1.2;letter-spacing:-.02em}
+.chamada i{font-style:normal;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--fio);color:var(--vermelho);font-size:20px;animation:desce 1.8s ease-in-out infinite}
+@keyframes desce{50%{transform:translateY(6px)}}
+
+/* 2 · os cursos: carrossel com o painel do curso */
+.cursos{overflow:hidden;background:var(--fundo2)}
+.cursos .estreito .texto{max-width:620px;margin-left:auto;margin-right:auto}
+.palco{display:grid;gap:24px;margin-top:36px;align-items:center}
+.cf{position:relative;height:396px;perspective:1200px;touch-action:pan-y;user-select:none;-webkit-user-select:none;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%)}
+.cf-card{position:absolute;left:50%;top:0;width:270px;margin-left:-135px;border-radius:8px;overflow:hidden;transition:transform .6s cubic-bezier(.2,.75,.2,1),opacity .45s,filter .45s;box-shadow:0 30px 70px rgba(0,0,0,.6);cursor:pointer;margin-top:0}
+.cf-card img{width:100%;aspect-ratio:3/4}
+.painel{text-align:center}
+.painel h3{font-weight:800;font-size:clamp(28px,6.6vw,40px);line-height:1.04;letter-spacing:-.03em}
+.painel .promessa{font-weight:700;font-size:19px;line-height:1.35;color:var(--marfim);margin-top:14px}
+.painel .desc{font-size:17px;color:var(--cinza);margin-top:10px}
+.painel .troca{display:grid}
+.painel .item{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.painel .item.ver{opacity:1;visibility:visible}
+.setas{display:flex;justify-content:center;gap:12px;margin-top:22px}
+.setas button{width:52px;height:52px;border-radius:50%;border:1px solid var(--fio);background:var(--fundo3);color:var(--marfim);font-size:20px;cursor:pointer;font-family:inherit}
+.setas button:hover{border-color:var(--cinza2)}
+
+/* 3 · promessa: as cenas do plantão */
+.promessa-s .grade{display:grid;gap:34px}
+.promessa-s .cab{text-align:center}
+.cenas{list-style:none;border-top:1px solid var(--fio)}
+.cenas li{padding:22px 0 22px 26px;border-bottom:1px solid var(--fio);position:relative;font-size:19px;line-height:1.45;color:var(--cinza)}
+.cenas li::before{content:"";position:absolute;left:0;top:33px;width:12px;height:3px;background:var(--vermelho)}
+.cenas li b{display:block;color:var(--marfim);font-weight:700;font-size:21px;line-height:1.3;letter-spacing:-.015em;margin-bottom:4px}
+
+/* 4 · empilhamento */
+.leva{background:var(--fundo2);overflow:hidden}
+.leva .caixa{margin:30px 0 0 -6%;width:112%;max-width:none}
+.pilha{list-style:none;max-width:760px;margin:26px auto 0;border-top:1px solid var(--fio)}
+.pilha li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--fio)}
+.pilha h3{font-weight:700;font-size:19px;line-height:1.3;letter-spacing:-.015em}
+.pilha p{grid-column:1/-1;font-size:16px;line-height:1.45;color:var(--cinza)}
+.pilha .v{font-weight:800;font-size:18px;white-space:nowrap;color:var(--marfim);font-variant-numeric:tabular-nums}
+.pilha .v.gratis{color:var(--vermelho)}
+.soma{max-width:760px;margin:34px auto 0;text-align:center}
+.soma p{font-weight:700;font-size:17px;letter-spacing:.08em;text-transform:uppercase;color:var(--cinza)}
+.soma s{display:inline-block;font-weight:900;font-size:clamp(58px,17vw,104px);line-height:1;letter-spacing:-.05em;color:var(--vermelho);text-decoration-thickness:.08em;text-decoration-color:var(--marfim);margin-top:8px}
+.mais{list-style:none;max-width:620px;margin:30px auto 0;display:grid;gap:12px;text-align:left}
+.mais li{position:relative;padding-left:30px;font-size:18px;line-height:1.45;color:var(--cinza)}
+.mais li::before{content:"+";position:absolute;left:4px;top:-2px;font-weight:900;font-size:24px;color:var(--vermelho)}
+.mais li b{color:var(--marfim);font-weight:700}
+.leva .bt{margin:36px auto 0}
+
+/* 5 · depoimentos */
+.prova .falas{display:grid;gap:0;max-width:980px;margin:34px auto 0;border-top:1px solid var(--fio)}
+.prova figure{padding:28px 0;border-bottom:1px solid var(--fio)}
+.prova blockquote{font-weight:600;font-size:21px;line-height:1.4;letter-spacing:-.015em;position:relative;padding-top:30px}
+.prova blockquote::before{content:"“";position:absolute;top:-10px;left:-2px;font-weight:900;font-size:64px;line-height:1;color:var(--vermelho)}
+.prova figcaption{margin-top:14px;font-size:16px;color:var(--cinza2);font-weight:700}
+
+/* 6 · garantia */
+.garantia{background:var(--fundo2)}
+.garantia .grade{display:grid;gap:26px;align-items:center;max-width:980px;margin:0 auto}
+.selo{display:flex;align-items:baseline;justify-content:center;gap:12px;line-height:.85}
+.selo b{font-weight:900;font-size:clamp(120px,36vw,200px);letter-spacing:-.06em;color:var(--vermelho)}
+.selo span{font-weight:900;font-size:clamp(34px,9vw,54px);letter-spacing:-.03em;text-transform:uppercase}
+.garantia .txt{text-align:center}
+.garantia .txt p.texto+p.texto{margin-top:12px}
+
+/* 7 · o ticket */
+.fecha{text-align:center;background:radial-gradient(ellipse 80% 50% at 50% 40%,rgba(214,58,46,.16),transparent 72%)}
+.oferta{margin:30px auto 0;max-width:580px;padding:30px 18px;border:1px solid var(--fio);border-radius:8px;background:var(--fundo3)}
+.oferta .de{font-weight:600;font-size:17px;line-height:1.45;color:var(--cinza)}
+.oferta .de s{color:var(--marfim);font-weight:800;text-decoration-color:var(--vermelho);text-decoration-thickness:2px}
+.oferta .aluno{font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--vermelho);margin-top:22px}
+.oferta .parc{font-weight:900;font-size:clamp(50px,15vw,84px);line-height:1;letter-spacing:-.05em;margin-top:8px}
+.oferta .parc small{font-size:.4em;letter-spacing:-.02em;font-weight:800;margin-right:.12em}
+.oferta .vista{font-weight:700;font-size:20px;margin-top:10px}
+.oferta .forma{font-size:15px;color:var(--cinza);margin-top:6px}
+.oferta .bt{margin:26px auto 0;max-width:none}
+.oferta .gar{font-size:15px;color:var(--cinza);margin-top:14px}
+.fecha .placar{--fh:40px;margin-top:34px}
+.fecha .quando{font-size:15px;color:var(--cinza);margin-top:14px}
+
+footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1px solid var(--fio);font-size:14px;color:var(--cinza2);text-align:center}
+
+/* barra fixa: o tempo que falta e o botão */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(15,14,13,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--fio);padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.75,.2,1)}
+.barra.ver{transform:none}
+.barra .lado{display:flex;align-items:center;gap:12px;padding:0}
+.barra .info{flex:none;font-size:12px;line-height:1.25;color:var(--cinza);text-align:center}
+.barra .info b{display:block;font-weight:800;font-size:17px;color:var(--marfim);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.barra .bt{max-width:none;padding:15px 10px;font-size:17px;box-shadow:none}
+
+@media (min-width:600px){
+  .oferta{padding:40px 40px}
+  .fecha .placar{--fh:58px;gap:9px}
+}
+@media (min-width:900px){
+  section{padding:112px 0}
+  .lado{padding:0 24px}
+  .topo .lado{flex-direction:row;justify-content:center;gap:28px}
+  .topo .placar{--fh:38px}
+  .topo .quando{text-align:left}
+  .abre{padding:48px 0 88px}
+  .video{margin:34px auto 0;max-width:880px;border-radius:6px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
+  .cursos .palco{grid-template-columns:1.1fr .9fr;gap:40px}
+  .cf{height:520px}
+  .cf-card{width:330px;margin-left:-165px}
+  .painel{text-align:left}
+  .setas{justify-content:flex-start}
+  .promessa-s .grade{grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+  .promessa-s .cab{text-align:left;position:sticky;top:40px}
+  .leva .caixa{width:100%;max-width:960px;margin:44px auto 0}
+  .pilha li{padding:20px 0}
+  .pilha h3{font-size:21px}
+  .prova .falas{grid-template-columns:1fr 1fr;column-gap:56px}
+  .prova blockquote{font-size:23px}
+  .garantia .grade{grid-template-columns:auto 1fr;gap:64px}
+  .garantia .txt{text-align:left}
+  .barra .info{text-align:left;font-size:13px}
+  .barra .bt{width:auto;margin-left:auto;padding:16px 34px}
+  .barra .lado{max-width:900px;padding:0 24px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cf-card,.barra,.painel .item{transition:none}.fl .ft,.fl .fb,.chamada i{animation:none}}
+</style>
+</head>
+<body>
+<header class="topo"><div class="lado">
+  <div>
+    <p class="aviso"><span>Black Friday</span> · condição de aluno</p>
+    <p class="quando">Acaba sábado, 07/11, às 23h59</p>
+  </div>
+  <div class="placar" data-placar role="timer" aria-label="Tempo até o fim da condição de aluno"></div>
+</div></header>
+
+<main>
+<!-- 1 · primeira dobra -->
+<div class="abre"><div class="lado">
+  <h1>Você nunca mais vai dar plantão <span class="vm">sozinho.</span></h1>
+  <p class="sub-t">O <b>Clube do Plantonista</b> abriu em primeira mão para quem é aluno do Dr. Vitor. Dê o play e veja o que tem dentro.</p>
+  <div class="video" id="video">
+    <!-- Vídeo de vendas (corte do pitch da live, 16:9): troque tudo o que está entre VTURB e /VTURB pelo embed do player. -->
+    <!-- VTURB -->
+    <div class="espera"><img src="img/hero-caixas.webp" srcset="img/hero-caixas.webp 1200w, img/hero-caixas-2x.webp 2000w" sizes="(min-width:900px) 880px, 100vw" width="1200" height="943" alt="Dr. Vitor Coutinho no meio dos cursos do Clube do Plantonista" fetchpriority="high" draggable="false"></div>
+    <!-- /VTURB -->
+  </div>
+  <a class="bt" href="https://clube.vitorcoutinhoandrade.com/pagina" id="bt-abre">Quero entrar no Clube do Plantonista</a>
+  <p class="depois">Condição de aluno com 30 dias de garantia.</p>
+  <a class="chamada" href="#cursos"><b>Confira tudo o que está incluso no Clube do Plantonista nesta Black Friday</b><i aria-hidden="true">↓</i></a>
+</div></div>
+
+<!-- 2 · os cursos, um por um -->
+<section class="cursos" id="cursos"><div class="lado">
+  <div class="estreito">
+    <h2>Conheça o <span class="vm">Clube do Plantonista</span></h2>
+    <p class="texto">Mais de 10 cursos de emergência, os aplicativos e a comunidade, num lugar só. Cada curso descomplica uma emergência do seu plantão.</p>
+  </div>
+  <div class="palco">
+    <div class="cf" id="cf" aria-label="Cursos e ferramentas do Clube do Plantonista"></div>
+    <div class="painel" aria-live="polite">
+      <div class="troca" id="painel"></div>
+      <div class="setas"><button type="button" data-dir="-1" aria-label="Anterior">←</button><button type="button" data-dir="1" aria-label="Próximo">→</button></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 3 · promessa -->
+<section class="promessa-s"><div class="lado"><div class="grade">
+  <div class="cab">
+    <h2>Seja o médico que a equipe chama quando o caso <span class="vm">complica.</span></h2>
+    <p class="texto">O Clube junta tudo o que o Dr. Vitor ensina de emergência, as ferramentas que fazem a conta por você e uma turma de plantonistas com ele lá dentro. É como ter um plantão inteiro de gente boa do seu lado, todo dia.</p>
+  </div>
+  <ul class="cenas">
+    <li><b>A porta abre e entram três pacientes graves.</b>Você sabe para qual olhar primeiro.</li>
+    <li><b>O monitor dispara em 180.</b>Você decide entre choque e remédio sem travar.</li>
+    <li><b>A pressão caiu e o paciente está chocado.</b>Você sabe qual droga, quanto e como diluir, até quando a UPA não tem bomba de infusão.</li>
+    <li><b>A frequência despencou para 30 e poucos.</b>Atropina, marca-passo ou dá para esperar: você sabe o próximo passo.</li>
+    <li><b>Três da manhã, um eletro estranho na sua mão.</b>Em vez de mandar foto para um colega e torcer para ele estar acordado, você manda na Comunidade.</li>
+  </ul>
+</div></div></section>
+
+<!-- 4 · empilhamento (valores do slide da live: total R$ 7.471) -->
+<section class="leva" id="leva"><div class="lado">
+  <div class="estreito">
+    <h2>Tudo o que você leva entrando no Clube</h2>
+  </div>
+  <img class="caixa" src="img/caixa-completa-15.webp" srcset="img/caixa-completa-15.webp 1200w, img/caixa-completa-15-2x.webp 1920w" sizes="(min-width:900px) 960px, 112vw" width="1200" height="933" alt="As caixas dos cursos e ferramentas do Clube do Plantonista" loading="lazy" draggable="false">
+  <ol class="pilha">
+    <li><h3>ECG Descomplicado</h3><span class="v">R$ 597</span><p>A sequência certa para ler um eletro. Você já tem, e ele passa a ser vitalício.</p></li>
+    <li><h3>Plantão Seguro</h3><span class="v">R$ 498</span><p>Abra a porta do plantão sabendo por onde começar.</p></li>
+    <li><h3>Drogas Vasoativas</h3><span class="v">R$ 498</span><p>A pressão caiu: qual droga, quanto e como diluir, até sem bomba.</p></li>
+    <li><h3>Intubação no Plantão</h3><span class="v">R$ 398</span><p>Pare de torcer para não precisar intubar e passe o tubo com calma.</p></li>
+    <li><h3>Dor Torácica</h3><span class="v">R$ 398</span><p>Nunca mais mande para casa um infarto escondido no eletro.</p></li>
+    <li><h3>Taquiarritmias</h3><span class="v">R$ 398</span><p>Choque ou remédio, decidido sem travar.</p></li>
+    <li><h3>Bradiarritmias</h3><span class="v">R$ 298</span><p>Atropina, marca-passo ou dá para esperar.</p></li>
+    <li><h3>Antiarrítmicos na Emergência</h3><span class="v">R$ 298</span><p>Qual remédio ajuda e qual piora o paciente.</p></li>
+    <li><h3>Insuficiência Cardíaca</h3><span class="v">R$ 298</span><p>O paciente chega afogando e você sabe o que fazer nos primeiros minutos.</p></li>
+    <li><h3>Crise Hipertensiva</h3><span class="v">R$ 298</span><p>Quando correr e quando respirar fundo e tratar com calma.</p></li>
+    <li><h3>App Dose Certa</h3><span class="v">R$ 497</span><p>A dose e a diluição em segundos, no seu celular, sem conta de cabeça.</p></li>
+    <li><h3>App ECG GO</h3><span class="v">R$ 997/ano</span><p>Um mini plantão por dia para treinar eletro de verdade, podendo errar.</p></li>
+    <li><h3>Kit de Bolso do Plantonista</h3><span class="v gratis">Grátis</span><p>Checklist do plantão, sequência do eletro, doses da intubação, drogas vasoativas e doses da emergência, para abrir no celular.</p></li>
+    <li><h3>PreceptorIA ECG e PreceptorIA Emergências</h3><span class="v gratis">Grátis</span><p>Tire a dúvida na hora, até de madrugada, sem esperar ninguém.</p></li>
+    <li><h3>Comunidade do Plantonista</h3><span class="v">R$ 1.998</span><p>A turma de plantonistas, com o Dr. Vitor lá dentro, para você nunca mais ficar sozinho com a dúvida.</p></li>
+  </ol>
+  <div class="soma">
+    <p>Tudo isso, separado</p>
+    <s>R$ 7.471</s>
+  </div>
+  <ul class="mais">
+    <li><b>Acesso vitalício</b> aos cursos e às ferramentas do Clube.</li>
+    <li><b>Tudo o que o Dr. Vitor lançar daqui para a frente</b> dentro do Clube entra para você, sem pagar nada a mais.</li>
+  </ul>
+  <a class="bt" href="https://clube.vitorcoutinhoandrade.com/pagina">Quero entrar no Clube do Plantonista</a>
+</div></section>
+
+<!-- 5 · depoimentos (os escritos do e-book "10 verdades", os mesmos do slide da live) -->
+<section class="prova"><div class="lado">
+  <div class="estreito">
+    <h2>Mais de 600 alunos já estudam eletro e emergência com o Dr. Vitor</h2>
+  </div>
+  <div class="falas">
+    <figure><blockquote>Suas aulas são ótimas, didática excelente. Muitas vezes, quando estamos na emergência, chegam casos muito parecidos.</blockquote><figcaption>Larissa L.</figcaption></figure>
+    <figure><blockquote>Discutir casos clínicos na prática com um professor de cardio tão bom é sensacional. Me ajudou a destravar vários pontos.</blockquote><figcaption>Mayara R.</figcaption></figure>
+    <figure><blockquote>Agradeço ao mestre Dr. Vitor Coutinho por nos fornecer tantos materiais para nos auxiliar na prática!</blockquote><figcaption>Allan S.</figcaption></figure>
+    <figure><blockquote>Didática boa e de fácil entendimento. Direto ao ponto.</blockquote><figcaption>Lucas F.</figcaption></figure>
+  </div>
+</div></section>
+
+<!-- 6 · garantia -->
+<section class="garantia"><div class="lado"><div class="grade">
+  <div class="selo" aria-hidden="true"><b>30</b><span>dias</span></div>
+  <div class="txt">
+    <h2>O risco fica todo com o Dr. Vitor.</h2>
+    <p class="texto">Você tem <b>30 dias de garantia</b>, o máximo que a plataforma permite. Entre e assista com calma, sem correr contra o prazo como nos cursos que dão só 7 dias.</p>
+    <p class="texto">Se dentro desses 30 dias achar que não é para você, peça o reembolso e receba o seu dinheiro de volta, inteiro, sem pergunta e sem burocracia. E se passarem os 30 dias e alguma coisa não te agradar, fale com a equipe ou com o próprio Dr. Vitor: o seu caso vai ser olhado de perto.</p>
+  </div>
+</div></div></section>
+
+<!-- 7 · o ticket -->
+<section class="fecha" id="oferta"><div class="lado">
+  <div class="estreito">
+    <h2>Essa condição é só para quem é aluno.</h2>
+    <div class="oferta">
+      <p class="de">Clube do Plantonista completo: mais de 10 cursos de emergência, Dose Certa, ECG GO, Kit de Bolso, PreceptorIAs e Comunidade. Separado, <s>R$ 7.471</s></p>
+      <p class="aluno">Para quem é aluno</p>
+      <p class="parc"><small>12x</small>R$ 199,90</p>
+      <p class="vista">ou R$ 1.998 à vista</p>
+      <p class="forma">Pix ou cartão · R$ 1.000 a menos do que para quem não é aluno</p>
+      <a class="bt" href="https://clube.vitorcoutinhoandrade.com/pagina">Quero entrar no Clube do Plantonista</a>
+      <p class="gar">30 dias de garantia</p>
+    </div>
+    <div class="placar" data-placar role="timer" aria-label="Tempo até o fim da condição de aluno"></div>
+    <p class="quando">A condição de aluno acaba sábado, 07/11, às 23h59.</p>
+  </div>
+</div></section>
+</main>
+
+<footer>Instituto VC de Ensino Médico LTDA · CNPJ 62.218.072/0001-67 · Ubá/MG</footer>
+
+<div class="barra" id="barra" aria-hidden="true"><div class="lado"><p class="info">Acaba em<b id="barra-t">--:--:--</b></p><a class="bt" href="https://clube.vitorcoutinhoandrade.com/pagina" tabindex="-1">Quero entrar no Clube</a></div></div>
+
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const dois = k => String(k).padStart(2, "0");
+
+  // ---------- os produtos (textos aprovados na página da Black geral; sem Cursos Convidados e sem Plantão Mensal) ----------
+  const C = [
+    ["comunidade-do-plantonista", "Comunidade do Plantonista", "Nunca mais fique sozinho com um caso difícil no plantão", "Pegou um eletro estranho ou um caso que tirou seu sono? Manda no grupo e discute a conduta com o Dr. Vitor e com quem vive o mesmo plantão que você."],
+    ["ecg-descomplicado", "ECG Descomplicado", "Bata o olho no eletro e saiba o que fazer, sem chamar ninguém para confirmar", "A sequência certa para ler um eletro, do zero às armadilhas, com eletros reais de plantão."],
+    ["plantao-seguro", "Plantão Seguro", "Entre em qualquer plantão sabendo exatamente o que fazer", "Tudo o que a faculdade não ensinou: como o plantão funciona de verdade, a passagem que não deixa nada se perder e o raciocínio que protege você e o paciente."],
+    ["drogas-vasoativas", "Drogas Vasoativas", "Ligue a noradrenalina sem medo, na hora e na dose certas", "A noradrenalina e as outras drogas vasoativas que a maioria deixa para depois por insegurança. Você sai sabendo quando ligar, quanto e como."],
+    ["antiarritmicos-na-emergencia", "Antiarrítmicos na Emergência", "Saiba qual remédio dar para cada arritmia, sem precisar abrir o celular", "Adenosina, amiodarona e as outras drogas antiarrítmicas, cada uma ligada ao ritmo que está no monitor, com indicação e dose na ponta da língua."],
+    ["intubacao-no-plantao", "Intubação no Plantão", "Intube com a calma de quem já fez isso mil vezes", "Da indicação ao tubo no lugar: o preparo, a sequência rápida e as doses, para você conduzir a via aérea com a mão firme."],
+    ["taquiarritmias", "Taquiarritmias", "Taquicardia no monitor e você sabe na hora: remédio ou choque", "Reconheça a taquicardia no eletro, separe o estável do instável e tome a decisão certa nos minutos que importam."],
+    ["bradiarritmias", "Bradiarritmias", "Frequência de 38 e você sabe o próximo passo, mesmo quando a atropina não resolve", "Do bloqueio no eletro ao marcapasso: a sequência inteira para o paciente com o coração batendo devagar demais."],
+    ["dor-toracica", "Dor Torácica", "Nunca mais mande para casa uma dor no peito que podia matar", "O que mata primeiro, como afastar cada um e por que um eletro normal não encerra a investigação."],
+    ["insuficiencia-cardiaca", "Insuficiência Cardíaca", "Edema agudo de pulmão na sua frente e você sabe exatamente por onde começar", "A insuficiência cardíaca descompensada que chega na porta: como avaliar, o que fazer primeiro e o que não pode faltar na conduta."],
+    ["crise-hipertensiva", "Crise Hipertensiva", "Pressão 220 por 130 e você sabe se é para correr ou para esperar", "Separe urgência de emergência hipertensiva e saiba quando baixar a pressão rápido e quando isso faz mais mal do que bem."],
+    ["dose-certa", "Dose Certa", "A dose certa na sua mão em segundos, sem fazer conta com o paciente na sua frente", "Escolha a medicação, informe o peso e o app mostra como preparar, quanto programar na bomba em mL/h e o que conferir. Vasoativas, antiarrítmicos e sedação para intubação, num toque."],
+    ["ecg-go", "ECG GO", "Treine eletro no celular e chegue afiado em todo plantão", "Plantão simulado com eletros reais, poucos minutos por dia. A leitura vira automática antes de o caso chegar."],
+    ["preceptoria-ecg", "PreceptorIA ECG", "Um preceptor de eletro no seu bolso, 24 horas por dia", "Uma IA treinada no método do Dr. Vitor para responder sua dúvida de eletro na hora, até de madrugada."],
+    ["preceptoria-emergencias", "PreceptorIA Emergências", "A dúvida de conduta respondida no meio do plantão", "A mesma IA, treinada nas aulas de emergência do Clube, para quando você precisa de uma resposta e não tem para quem perguntar."]
+  ];
+  const cf = $("cf"), n = C.length;
+  cf.innerHTML = C.map(c => `<figure class="cf-card"><img src="img/cursos/${c[0]}.webp" width="720" height="960" alt="${c[1]}" draggable="false" loading="lazy"></figure>`).join("");
+  const cards = [...cf.children];
+  $("painel").innerHTML = C.map(c => `<div class="item"><h3>${c[1]}</h3><p class="promessa">${c[2]}</p><p class="desc">${c[3]}</p></div>`).join("");
+  const itens = [...$("painel").children];
+  let atual = 0, x0 = null, arrastou = false, timer = null, visto = false;
+  function desenha() {
+    const passo = cards[0].offsetWidth * (innerWidth < 900 ? 0.52 : 0.62);
+    cards.forEach((el, i) => {
+      let d = i - atual; if (d > n / 2) d -= n; if (d < -n / 2) d += n;
+      const a = Math.abs(d);
+      el.style.transform = `translateX(${d * passo}px) translateZ(${-a * 150}px) rotateY(${-Math.sign(d) * Math.min(a, 1) * 34}deg) scale(${a ? 0.84 : 1})`;
+      el.style.opacity = a > 2 ? 0 : a === 2 ? 0.35 : 1;
+      el.style.visibility = a > 2 ? "hidden" : "visible";
+      el.style.zIndex = 50 - a; el.style.filter = a ? "brightness(.55)" : "none";
+    });
+    itens.forEach((el, i) => el.classList.toggle("ver", i === atual));
+  }
+  const vai = k => { atual = (atual + k + n) % n; desenha(); };
+  const auto = () => { if (calmo || !visto) return; clearInterval(timer); timer = setInterval(() => vai(1), 5000); };
+  document.querySelectorAll(".setas button").forEach(b => b.addEventListener("click", () => { vai(+b.dataset.dir); auto(); }));
+  cards.forEach((el, i) => el.addEventListener("click", () => { if (arrastou) { arrastou = false; return; } if (i !== atual) { atual = i; desenha(); auto(); } }));
+  cf.addEventListener("pointerdown", e => { x0 = e.clientX; arrastou = false; });
+  addEventListener("pointerup", e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) { arrastou = true; vai(dx < 0 ? 1 : -1); auto(); } });
+  addEventListener("pointercancel", () => { x0 = null; });
+  cf.addEventListener("mouseenter", () => clearInterval(timer)); cf.addEventListener("mouseleave", auto);
+  addEventListener("resize", desenha); desenha();
+  new IntersectionObserver((es, ob) => { if (es[0].isIntersecting) { visto = true; auto(); ob.disconnect(); } }, { threshold: 0.5 }).observe(cf);
+
+  // ---------- contagem até o fim da condição de aluno (sábado, 07/11/2026, 23h59 de Brasília) ----------
+  const FIM = new Date("2026-11-07T23:59:59-03:00").getTime();
+  const UNID = [["dias", 86400], ["horas", 3600], ["min", 60], ["seg", 1]];
+  const placas = [...document.querySelectorAll("[data-placar]")].map(box => {
+    box.innerHTML = UNID.map((u, i) => (i ? '<span class="sep" aria-hidden="true">:</span>' : "") +
+      `<div class="u"><div class="par"><span class="fl"></span><span class="fl"></span></div><span class="r">${u[0]}</span></div>`).join("");
+    const fls = [...box.querySelectorAll(".fl")];
+    fls.forEach(el => { el.innerHTML = '<span class="h t"><i></i></span><span class="h b"><i></i></span>'; el.v = null; });
+    return fls;
+  });
+  function vira(el, v) {
+    if (el.v === v) return;
+    const velho = el.v; el.v = v;
+    const t = el.querySelector(".t i"), b = el.querySelector(".b i");
+    el.querySelectorAll(".ft,.fb").forEach(x => x.remove());
+    if (velho === null || calmo || document.hidden) { t.textContent = b.textContent = v; return; }
+    t.textContent = v; b.textContent = velho;
+    const ft = document.createElement("span"), fb = document.createElement("span");
+    ft.className = "h ft"; ft.innerHTML = "<i>" + velho + "</i>";
+    fb.className = "h fb"; fb.innerHTML = "<i>" + v + "</i>";
+    const fim = () => { if (!fb.isConnected) return; b.textContent = v; ft.remove(); fb.remove(); };
+    fb.addEventListener("animationend", fim); setTimeout(fim, 900);
+    el.append(ft, fb);
+  }
+  const barraT = $("barra-t");
+  function conta() {
+    const t = Math.floor(Math.max(0, FIM - Date.now()) / 1000);
+    const k = UNID.map(([, s], i) => i ? Math.floor(t % UNID[i - 1][1] / s) : Math.floor(t / s));
+    const digitos = k.map(x => dois(Math.min(x, 99))).join("");
+    placas.forEach(fls => fls.forEach((el, i) => vira(el, digitos[i])));
+    barraT.textContent = (k[0] ? k[0] + "d " : "") + [k[1], k[2], k[3]].map(dois).join(":");
+  }
+  conta(); setInterval(conta, 1000);
+
+  addEventListener("contextmenu", e => { if (e.target.closest("figure,.video,.caixa,.cf")) e.preventDefault(); });
+  addEventListener("dragstart", e => { if (e.target.closest && e.target.closest("img,figure,.video")) e.preventDefault(); });
+
+  // ---------- barra fixa: aparece quando o botão da primeira dobra sai da tela por cima ----------
+  const barra = $("barra");
+  new IntersectionObserver(es => { const fora = !es[0].isIntersecting && es[0].boundingClientRect.top < 0; barra.classList.toggle("ver", fora); barra.setAttribute("aria-hidden", !fora); }).observe($("bt-abre"));
+})();
+</script>
+</body>
+</html>

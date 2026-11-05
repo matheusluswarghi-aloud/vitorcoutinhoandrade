@@ -9,9 +9,13 @@
  Página de vendas do Clube do Plantonista para os alunos do ECG Descomplicado que não compraram na live de 04/11/2026.
  Carrinho dos alunos aberto até sábado; a contagem vai até FIM (no script, horário de Brasília).
  Oferta = a da live (07-entregaveis/black-plantonista/live-alunos/roteiro-live-alunos-v2.md e slides 55–74 do deck):
- empilhamento de R$ 7.471, 12x R$ 199,90 ou R$ 1.998, garantia de 30 dias. Fora: sorteio, Plantão Mensal, acesso extra,
- Cursos Convidados (não entrou no empilhamento da live). A Comunidade não é chamada de vitalícia (12 meses × vitalício em aberto).
- Os botões levam ao bloco do preço (#oferta); só o botão desse bloco vai para clube.vitorcoutinhoandrade.com/pagina (origem "pagina" → checkout mkvniz3k).
+ empilhamento de R$ 7.471 e garantia de 30 dias. O preço NÃO aparece na página (05/11): só no checkout. Fora: sorteio,
+ Plantão Mensal, acesso extra, Cursos Convidados. A Comunidade não é chamada de vitalícia (12 meses × vitalício em aberto).
+ Endereço divulgado: clube.vitorcoutinhoandrade.com/pv-bf26-alunos/ (rewrite da Vercel para esta pasta; caminhos relativos).
+ Todo botão [data-popup] abre o pop-up (nome, e-mail, WhatsApp). O envio grava no Supabase coutinho-dados
+ (pv_bf26_alunos_salvar → tabela pv_bf26_alunos_leads; mapa em 07-entregaveis/black-plantonista/pv-bf26-alunos/LEIAME.md)
+ e segue para a Hotmart (src=pagina, sck=black-alunos_pagina, UTMs da página) com name, email, phoneac e phonenumber,
+ mesmo se a gravação falhar. ?teste=1 grava com teste = true.
  Visual: o da captação da Black geral (pc-bf26-v1), Jornal à noite, só Schibsted Grotesk.
  O VÍDEO: embed da VTurb entre os marcadores VTURB e /VTURB no corpo (player 6aecdbbcd1189b35ed0778b7, conta ECG, 05/11).
 -->
@@ -168,7 +172,7 @@ section{padding:80px 0}
 .oferta .de{font-weight:600;font-size:17px;line-height:1.45;color:var(--cinza)}
 .oferta .de s{color:var(--marfim);font-weight:800;text-decoration-color:var(--vermelho);text-decoration-thickness:2px}
 .oferta .aluno{font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--vermelho);margin-top:22px}
-.oferta .parc{font-weight:900;font-size:clamp(50px,15vw,84px);line-height:1;letter-spacing:-.05em;margin-top:8px}
+.oferta .parc{font-weight:900;font-size:clamp(34px,9.6vw,56px);line-height:1.02;letter-spacing:-.045em;margin-top:8px}
 .oferta .parc small{font-size:.4em;letter-spacing:-.02em;font-weight:800;margin-right:.12em}
 .oferta .vista{font-weight:700;font-size:20px;margin-top:10px}
 .oferta .forma{font-size:15px;color:var(--cinza);margin-top:6px}
@@ -219,7 +223,51 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
   .barra .lado{max-width:900px;padding:0 24px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cf-card,.barra,.painel .item{transition:none}.fl .ft,.fl .fb,.chamada i{animation:none}}
+
+/* ---------- pop-up (05/11): nome, e-mail e WhatsApp antes do checkout; o mesmo da captação da Black geral ---------- */
+.insc{position:fixed;left:0;right:0;top:0;height:100%;z-index:200;display:flex;align-items:flex-start;justify-content:center;padding:16px 16px calc(16px + env(safe-area-inset-bottom));background:rgba(8,7,6,.82);overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;transition:opacity .18s,visibility 0s .18s}
+.insc[hidden]{display:none}
+.insc.ver{opacity:1;visibility:visible;transition:opacity .18s}
+html.travado,html.travado body{overflow:hidden}
+.insc .caixa-i{position:relative;width:100%;max-width:460px;margin:2vh auto auto;background:var(--fundo2);border:1px solid var(--fio);border-radius:4px;padding:26px 20px 22px;transform:translateY(10px);transition:transform .18s}
+.insc.ver .caixa-i{transform:none}
+.insc h2{font-size:23px;line-height:1.22;font-weight:800;letter-spacing:-.02em;padding-right:34px}
+.insc .x{position:absolute;top:10px;right:10px;width:40px;height:40px;border:0;background:none;color:var(--cinza);font-size:26px;line-height:1;cursor:pointer;font-family:inherit}
+.insc form{margin-top:18px;display:flex;flex-direction:column;gap:14px}
+.insc label{display:block;font-size:15px;font-weight:600;color:var(--cinza);margin-bottom:6px}
+.insc .in{display:block;width:100%;background:var(--fundo3);border:1px solid var(--fio);border-radius:4px;color:var(--marfim);font:500 17px/1.3 "Schibsted Grotesk",system-ui,sans-serif;padding:15px 14px;outline:0;transition:border-color .15s;-webkit-appearance:none;appearance:none}
+.insc .in:focus{border-color:var(--cinza2)}
+.insc .tel{position:relative}
+.insc .tel>.in{padding-left:104px}
+.insc .ddi{position:absolute;left:1px;top:1px;bottom:1px;display:flex;align-items:center;gap:7px;padding:0 10px 0 13px;background:none;border:0;border-right:1px solid var(--fio);color:var(--marfim);font:500 16px "Schibsted Grotesk",system-ui,sans-serif;cursor:pointer;z-index:2}
+.insc .ddi img{border-radius:2px;display:block;object-fit:cover}
+.insc .ddi i{font-style:normal;font-size:10px;color:var(--cinza)}
+.insc .paises{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--fundo3);border:1px solid var(--fio);border-radius:4px;padding:8px;z-index:10;box-shadow:0 18px 40px rgba(0,0,0,.55)}
+.insc .paises .in{margin:0 0 6px;padding:11px 12px;font-size:16px;background:var(--fundo2)}
+.insc .paises ul{list-style:none;max-height:min(240px,36dvh);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.insc .paises li{display:flex;align-items:center;gap:10px;padding:10px;border-radius:4px;cursor:pointer;font-size:15px}
+.insc .paises li:hover,.insc .paises li:active{background:rgba(255,255,255,.06)}
+.insc .paises li span{flex:1}
+.insc .paises li b{font-weight:500;color:var(--cinza)}
+.insc .erro{font-size:15px;line-height:1.4;color:#F08A7E}
+.insc .erro[hidden]{display:none}
+.insc button.bt{border:0;cursor:pointer;font-family:inherit;max-width:none;margin-top:4px;font-size:19px;padding:18px 14px}
+.insc .seguro{font-size:13px;line-height:1.4;color:var(--cinza2);text-align:center}
+@media (min-width:600px){.insc{align-items:center}.insc .caixa-i{margin:auto;padding:34px 32px 28px}.insc h2{font-size:26px}}
+@media (prefers-reduced-motion:reduce){.insc,.insc .caixa-i{transition:none}}
 </style>
+<!-- Meta Pixel (05/11): os mesmos dois da captação da Black geral. 1165898412096025 = "PIXEL - TypeBot" (o dos anúncios
+     e da Utmify) e 1742493520573514 = "Pixel Instituto VC". PageView ao abrir; Lead no envio do pop-up; InitiateCheckout
+     na ida para a Hotmart (script no fim da página). Nenhum dado pessoal vai nos eventos. -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1165898412096025');
+fbq('init','1742493520573514');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1165898412096025&ev=PageView&noscript=1"><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1742493520573514&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
 <header class="topo"><div class="lado">
@@ -241,7 +289,7 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
     <vturb-smartplayer id="vid-6aecdbbcd1189b35ed0778b7" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/135cfe07-108d-4275-a884-f7567ee21964/players/6aecdbbcd1189b35ed0778b7/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
     <!-- /VTURB -->
   </div>
-  <a class="bt" href="#oferta" id="bt-abre">Quero entrar no Clube do Plantonista</a>
+  <a class="bt" href="https://pay.hotmart.com/Q108311655C?off=mkvniz3k&amp;src=pagina&amp;sck=black-alunos_pagina&amp;utm_source=pagina&amp;utm_campaign=black-alunos" data-popup id="bt-abre">Quero entrar no Clube do Plantonista</a>
   <p class="depois">Condição de aluno com 30 dias de garantia.</p>
   <a class="chamada" href="#cursos"><b>Confira tudo o que está incluso no Clube do Plantonista nesta Black Friday</b><i aria-hidden="true">↓</i></a>
 </div></div>
@@ -307,21 +355,19 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
     <li><b>Acesso vitalício</b> aos cursos e às ferramentas do Clube.</li>
     <li><b>Tudo o que o Dr. Vitor lançar daqui para a frente</b> dentro do Clube entra para você, sem pagar nada a mais.</li>
   </ul>
-  <a class="bt" href="#oferta">Quero entrar no Clube do Plantonista</a>
+  <a class="bt" href="https://pay.hotmart.com/Q108311655C?off=mkvniz3k&amp;src=pagina&amp;sck=black-alunos_pagina&amp;utm_source=pagina&amp;utm_campaign=black-alunos" data-popup>Quero entrar no Clube do Plantonista</a>
 </div></section>
 
-<!-- 5 · o ticket (logo depois da ancoragem; o único botão que vai para o checkout) -->
+<!-- 5 · fechamento logo depois da ancoragem (05/11: sem preço na página; o preço aparece só no checkout) -->
 <section class="fecha" id="oferta"><div class="lado">
   <div class="estreito">
     <h2>Essa condição é só para quem é aluno.</h2>
     <div class="oferta">
       <p class="de">Clube do Plantonista completo: mais de 10 cursos de emergência, Dose Certa, ECG GO, Kit de Bolso, PreceptorIAs e Comunidade. Separado, <s>R$ 7.471</s></p>
       <p class="aluno">Para quem é aluno</p>
-      <p class="parc"><small>12x</small>R$ 199,90</p>
-      <p class="vista">ou R$ 1.998 à vista</p>
-      <p class="forma">Pix ou cartão · R$ 1.000 a menos do que para quem não é aluno</p>
-      <a class="bt" href="https://clube.vitorcoutinhoandrade.com/pagina">Quero entrar no Clube do Plantonista</a>
-      <p class="gar">30 dias de garantia</p>
+      <p class="parc">Condição de Black Friday</p>
+      <p class="forma">Pix ou cartão, com 30 dias de garantia</p>
+      <a class="bt" href="https://pay.hotmart.com/Q108311655C?off=mkvniz3k&amp;src=pagina&amp;sck=black-alunos_pagina&amp;utm_source=pagina&amp;utm_campaign=black-alunos" data-popup>Quero garantir minha condição de aluno</a>
     </div>
     <div class="placar" data-placar role="timer" aria-label="Tempo até o fim da condição de aluno"></div>
     <p class="quando">A condição de aluno acaba sábado, 07/11, às 23h59.</p>
@@ -354,7 +400,32 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
 
 <footer>Instituto VC de Ensino Médico LTDA · CNPJ 62.218.072/0001-67 · Ubá/MG</footer>
 
-<div class="barra" id="barra" aria-hidden="true"><div class="lado"><p class="info">Acaba em<b id="barra-t">--:--:--</b></p><a class="bt" href="#oferta" tabindex="-1">Quero entrar no Clube</a></div></div>
+<div class="barra" id="barra" aria-hidden="true"><div class="lado"><p class="info">Acaba em<b id="barra-t">--:--:--</b></p><a class="bt" href="https://pay.hotmart.com/Q108311655C?off=mkvniz3k&amp;src=pagina&amp;sck=black-alunos_pagina&amp;utm_source=pagina&amp;utm_campaign=black-alunos" data-popup tabindex="-1">Quero entrar no Clube</a></div></div>
+
+<div class="insc" id="insc" role="dialog" aria-modal="true" aria-labelledby="insc-t" hidden>
+  <div class="caixa-i">
+    <button type="button" class="x" id="insc-x" aria-label="Fechar">×</button>
+    <h2 id="insc-t">Preencha abaixo para prosseguir e garantir a sua condição de aluno</h2>
+    <form id="insc-f" novalidate>
+      <div><label for="i-nome">Nome</label><input class="in" id="i-nome" name="nome" autocomplete="name" autocapitalize="words" maxlength="120" required></div>
+      <div><label for="i-email">E-mail</label><input class="in" id="i-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" maxlength="200" required></div>
+      <div><label for="i-whats">WhatsApp</label>
+        <div class="tel">
+          <button type="button" class="ddi" id="i-ddi" aria-haspopup="listbox" aria-expanded="false" aria-controls="i-paises"><img id="i-flag" src="https://flagcdn.com/w40/br.png" width="22" height="16" alt="" draggable="false"><span id="i-cod">+55</span><i aria-hidden="true">▾</i></button>
+          <input class="in" id="i-whats" name="telefone" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" placeholder="(11) 99999-9999" required>
+          <div class="paises" id="i-paises" hidden>
+            <input class="in" id="i-busca" type="search" placeholder="Buscar país" autocomplete="off" aria-label="Buscar país">
+            <ul id="i-lista" role="listbox" aria-label="Países"></ul>
+          </div>
+        </div>
+      </div>
+      <p class="erro" id="insc-erro" role="alert" hidden></p>
+      <button class="bt" type="submit" id="insc-bt">Prosseguir</button>
+      <p class="seguro">Na próxima tela você conclui a inscrição no checkout seguro da Hotmart.</p>
+    </form>
+  </div>
+</div>
+<script src="paises.js" defer></script>
 
 <script>
 (function () {
@@ -445,6 +516,127 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
 
   addEventListener("contextmenu", e => { if (e.target.closest("figure,.video,.caixa,.cf")) e.preventDefault(); });
   addEventListener("dragstart", e => { if (e.target.closest && e.target.closest("img,figure,.video")) e.preventDefault(); });
+
+  // ---------- pop-up (05/11): nome, e-mail e WhatsApp → grava no Supabase → checkout da Hotmart já preenchido ----------
+  // A gravação espera no máximo 2,5 s; se falhar, a pessoa segue para a Hotmart do mesmo jeito.
+  const SUPA = "https://hzpekxhdosiyovimgwfe.supabase.co", SUPA_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6cGVreGhkb3NpeW92aW1nd2ZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzMDgwMzEsImV4cCI6MjEwNTg4NDAzMX0.G0Hmx_MzX3CF_PuqEQd5g9hlwWATrd3Z8s18i-iF0n8";
+  const CHECKOUT = "https://pay.hotmart.com/Q108311655C?off=mkvniz3k&src=pagina&sck=black-alunos_pagina&utm_source=pagina&utm_campaign=black-alunos";
+  const aqui = new URLSearchParams(location.search), TESTE = aqui.get("teste") === "1";
+  const UTMS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+  const API_PAIS = "https://raio-x-plantao.vercel.app/api/pais"; // o mesmo da captação da Black geral (país pelo IP)
+  const insc = $("insc"), fI = $("insc-f"), erroI = $("insc-erro"), whats = $("i-whats"), btDdi = $("i-ddi"), caixaP = $("i-paises"), busca = $("i-busca"), listaP = $("i-lista");
+  const BR = { nome: "Brasil", cod: "br", num: 55 };
+  let ddi = BR, ultimoFoco = null, indo = false;
+  const bandeira = c => `https://flagcdn.com/w40/${c}.png`;
+  const semAcento = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const escH = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const mascara = (v, d0) => {
+    const cru = String(v || ""), k = String(d0.num);
+    let d = cru.replace(/\D/g, "");
+    if ((cru.trim().startsWith("+") || (d0.num === 55 && d.length > 11)) && d.startsWith(k)) d = d.slice(k.length);
+    if (d0.num !== 55) return d.slice(0, 15);
+    d = d.replace(/^0+/, ""); if (d.length > 11 && d.startsWith("55")) d = d.slice(2);
+    d = d.slice(0, 11);
+    return d.length > 6 ? `(${d.slice(0, 2)}) ${d.slice(2, d.length - 4)}-${d.slice(-4)}` : d.length > 2 ? `(${d.slice(0, 2)}) ${d.slice(2)}` : d;
+  };
+  const poeDdi = (novo, limpar) => {
+    ddi = novo; $("i-flag").src = bandeira(ddi.cod); $("i-cod").textContent = "+" + ddi.num;
+    btDdi.setAttribute("aria-label", `Código do país: ${ddi.nome} +${ddi.num}`);
+    whats.placeholder = ddi.num === 55 ? "(11) 99999-9999" : "Número com código de área";
+    if (limpar) whats.value = "";
+  };
+  let paisIp = null;
+  const acharPais = () => paisIp || (paisIp = fetch(API_PAIS).then(r => r.json()).then(j => j.pais || "").catch(() => ""));
+  const desenhaP = (filtro = "") => {
+    if (typeof PAISES === "undefined") return;
+    const q2 = filtro.trim(), dig = /^[+\d]/.test(q2) ? q2.replace(/\D/g, "") : null, fl = semAcento(q2);
+    listaP.innerHTML = PAISES.filter(([nm, , k]) => dig !== null ? String(k).startsWith(dig) : semAcento(nm).includes(fl))
+      .map(([nm, cod, k]) => `<li role="option" data-c="${cod}"><img src="${bandeira(cod)}" width="22" height="16" alt="" loading="lazy" draggable="false"><span>${escH(nm)}</span><b>+${k}</b></li>`).join("");
+  };
+  const abreP = sim => {
+    caixaP.hidden = !sim; btDdi.setAttribute("aria-expanded", sim);
+    if (!sim) return;
+    busca.value = ""; desenhaP(); caixaP.scrollIntoView({ block: "nearest" });
+    if (!matchMedia("(pointer:coarse)").matches) setTimeout(() => busca.focus(), 50);
+  };
+  const escolheP = li => { const x = PAISES.find(p => p[1] === li.dataset.c); poeDdi({ nome: x[0], cod: x[1], num: x[2] }, true); abreP(false); whats.focus(); };
+  btDdi.onclick = () => abreP(caixaP.hidden);
+  busca.oninput = () => desenhaP(busca.value);
+  busca.onkeydown = e => {
+    if (e.key === "Enter") { e.preventDefault(); const li = listaP.querySelector("li"); if (li) escolheP(li); }
+    else if (e.key === "Escape") { e.stopPropagation(); abreP(false); btDdi.focus(); }
+  };
+  listaP.onclick = e => { const li = e.target.closest("li"); if (li) escolheP(li); };
+  whats.oninput = () => { whats.value = mascara(whats.value, ddi); };
+
+  // o teclado do celular encolhe a área visível: o pop-up acompanha a altura que sobra
+  const vv = window.visualViewport;
+  const ajustaAltura = () => { if (vv) { insc.style.height = vv.height + "px"; insc.style.top = vv.offsetTop + "px"; } };
+  if (vv) { vv.addEventListener("resize", ajustaAltura); vv.addEventListener("scroll", ajustaAltura); }
+  fI.addEventListener("focusin", e => { if (e.target.matches(".in")) setTimeout(() => e.target.scrollIntoView({ block: "center", behavior: "smooth" }), 250); });
+
+  let guardado = {};
+  try { guardado = JSON.parse(localStorage.getItem("pv-bf26-alunos-contato") || "{}"); } catch (e) {}
+  function abrir(a) {
+    ultimoFoco = a; erroI.hidden = true;
+    if (!fI.nome.value && guardado.nome) fI.nome.value = guardado.nome;
+    if (!fI.email.value && guardado.email) fI.email.value = guardado.email;
+    if (!whats.value && guardado.ddi) { poeDdi(guardado.ddi); whats.value = mascara(guardado.tel || "", ddi); }
+    if (!whats.value && !guardado.ddi) acharPais().then(cod => {
+      const x = cod && typeof PAISES !== "undefined" && PAISES.find(p => p[1] === cod);
+      if (x && !whats.value) poeDdi({ nome: x[0], cod: x[1], num: x[2] });
+    });
+    insc.hidden = false; ajustaAltura();
+    void insc.offsetWidth; insc.classList.add("ver"); // força o layout antes, para a transição rodar
+    document.documentElement.classList.add("travado");
+    if (!matchMedia("(pointer:coarse)").matches) setTimeout(() => fI.nome.focus(), 60);
+  }
+  function fechar() {
+    insc.classList.remove("ver"); abreP(false);
+    document.documentElement.classList.remove("travado");
+    setTimeout(() => { if (!insc.classList.contains("ver")) insc.hidden = true; }, 200);
+    if (ultimoFoco) ultimoFoco.focus({ preventScroll: true });
+  }
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a[data-popup]");
+    if (a) { e.preventDefault(); abrir(a); return; }
+    if (!caixaP.hidden && !e.target.closest(".paises, .ddi")) abreP(false);
+  });
+  $("insc-x").onclick = fechar;
+  insc.addEventListener("click", e => { if (e.target === insc) fechar(); });
+  addEventListener("keydown", e => { if (e.key === "Escape" && insc.classList.contains("ver")) fechar(); });
+  addEventListener("pageshow", e => { if (e.persisted) { indo = false; $("insc-bt").textContent = "Prosseguir"; } }); // voltou do checkout
+
+  const falha = (msg, campo) => { erroI.textContent = msg; erroI.hidden = false; if (campo) campo.focus(); };
+  fI.addEventListener("submit", async e => {
+    e.preventDefault();
+    if (indo) return;
+    erroI.hidden = true;
+    const nome = fI.nome.value.trim().replace(/\s+/g, " "), email = fI.email.value.trim().toLowerCase();
+    const num = ddi.num === 55 ? whats.value.replace(/\D/g, "").replace(/^0+/, "").replace(/^55(?=\d{10,11}$)/, "") : whats.value.replace(/\D/g, "");
+    if (nome.length < 2) return falha("Escreva o seu nome.", fI.nome);
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return falha("Confira o e-mail.", fI.email);
+    if (ddi.num === 55 ? !/^[1-9]\d(9\d{8}|[2-8]\d{7})$/.test(num) : num.length < 6) return falha(ddi.num === 55 ? "Coloque o WhatsApp com DDD." : "Confira o número do WhatsApp.", whats);
+    try { localStorage.setItem("pv-bf26-alunos-contato", JSON.stringify({ nome, email, tel: num, ddi })); } catch (err) {}
+    indo = true; $("insc-bt").textContent = "Abrindo o checkout…";
+
+    // checkout: a origem da página (src e sck fixos), as UTMs que chegaram aqui e os dados para a Hotmart preencher
+    const u = new URL(CHECKOUT);
+    UTMS.forEach(k => { if (aqui.get(k)) u.searchParams.set(k, aqui.get(k)); });
+    u.searchParams.set("name", nome); u.searchParams.set("email", email);
+    if (ddi.num === 55) { u.searchParams.set("phoneac", num.slice(0, 2)); u.searchParams.set("phonenumber", num.slice(2)); }
+
+    const utm = {}; UTMS.forEach(k => { if (aqui.get(k)) utm[k] = aqui.get(k); });
+    const corpo = { d: { nome, email, whatsapp: String(ddi.num) + num, utm, src: aqui.get("src") || aqui.get("origem") || "",
+      url: location.origin + location.pathname, referrer: document.referrer, fbclid: aqui.get("fbclid") || "", teste: TESTE } };
+    const grava = fetch(SUPA + "/rest/v1/rpc/pv_bf26_alunos_salvar", {
+      method: "POST", keepalive: true, body: JSON.stringify(corpo),
+      headers: { apikey: SUPA_ANON, authorization: "Bearer " + SUPA_ANON, "content-type": "application/json" },
+    }).catch(() => {});
+    if (typeof fbq === "function") { fbq("track", "Lead", { content_name: "pv-bf26-alunos" }); fbq("track", "InitiateCheckout", { content_name: "Clube do Plantonista", content_ids: ["8869297"] }); }
+    await Promise.all([Promise.race([grava, new Promise(r => setTimeout(r, 2500))]), new Promise(r => setTimeout(r, 400))]); // 400 ms para os pixels saírem
+    location.href = u.toString();
+  });
 
   // ---------- barra fixa: aparece quando o botão da primeira dobra sai da tela por cima ----------
   const barra = $("barra");

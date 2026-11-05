@@ -13,7 +13,7 @@
  Cursos Convidados (não entrou no empilhamento da live). A Comunidade não é chamada de vitalícia (12 meses × vitalício em aberto).
  Todo botão vai para clube.vitorcoutinhoandrade.com/pagina (origem "pagina" do projeto link-checkout-vitor → checkout mkvniz3k).
  Visual: o da captação da Black geral (pc-bf26-v1), Jornal à noite, só Schibsted Grotesk.
- O VÍDEO: procure o marcador VTURB no corpo e troque o que está entre ele e o /VTURB pelo embed da VTurb.
+ O VÍDEO: embed da VTurb entre os marcadores VTURB e /VTURB no corpo (player 6aecdbbcd1189b35ed0778b7, conta ECG, 05/11).
 -->
 <meta name="description" content="O Clube do Plantonista abriu em primeira mão para os alunos do Dr. Vitor Coutinho: todos os cursos de emergência, os aplicativos e a comunidade, com condição de aluno até sábado.">
 <meta property="og:type" content="website">
@@ -23,6 +23,15 @@
 <meta property="og:image" content="https://vitorcoutinhoandrade.com/clube-alunos/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0F0E0D">
+<!-- VTurb: player "Pitch live alunos 04-11 · Clube do Plantonista" (conta ECG), código de velocidade -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/135cfe07-108d-4275-a884-f7567ee21964/players/6aecdbbcd1189b35ed0778b7/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/135cfe07-108d-4275-a884-f7567ee21964/6aecdbaf7f66ceca138953e5/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -226,9 +235,9 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
   <h1>Você nunca mais vai dar plantão <span class="vm">sozinho.</span></h1>
   <p class="sub-t">O <b>Clube do Plantonista</b> abriu em primeira mão para quem é aluno do Dr. Vitor. Dê o play e veja o que tem dentro.</p>
   <div class="video" id="video">
-    <!-- Vídeo de vendas (corte do pitch da live, 16:9): troque tudo o que está entre VTURB e /VTURB pelo embed do player. -->
+    <!-- Vídeo de vendas (corte do pitch da live, 16:9, 18:10): para trocar o player, troque o que está entre VTURB e /VTURB. -->
     <!-- VTURB -->
-    <div class="espera"><img src="img/hero-caixas.webp" srcset="img/hero-caixas.webp 1200w, img/hero-caixas-2x.webp 2000w" sizes="(min-width:900px) 880px, 100vw" width="1200" height="943" alt="Dr. Vitor Coutinho no meio dos cursos do Clube do Plantonista" fetchpriority="high" draggable="false"></div>
+    <vturb-smartplayer id="vid-6aecdbbcd1189b35ed0778b7" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/135cfe07-108d-4275-a884-f7567ee21964/players/6aecdbbcd1189b35ed0778b7/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
     <!-- /VTURB -->
   </div>
   <a class="bt" href="https://clube.vitorcoutinhoandrade.com/pagina" id="bt-abre">Quero entrar no Clube do Plantonista</a>

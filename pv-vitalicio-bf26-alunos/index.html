@@ -59,7 +59,7 @@ h1{font-weight:900;font-size:clamp(32px,8.6vw,60px);line-height:1.02;letter-spac
 .sub-t b{color:var(--marfim);font-weight:600}
 
 /* vídeo vertical (1080x1920): coluna estreita no centro, para caber título + vídeo sem rolar demais */
-.video{position:relative;margin:24px auto 0;width:100%;max-width:min(380px,calc((100svh - 150px) * 9 / 16));min-width:260px;aspect-ratio:9/16;background:#000;overflow:hidden;border-radius:6px;box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+.video{position:relative;margin:24px auto 0;width:100%;max-width:min(380px,calc((100svh - 280px) * 9 / 16));min-width:220px;aspect-ratio:9/16;background:#000;overflow:hidden;border-radius:6px;box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
 .video vturb-smartplayer{display:block;width:100%}
 .video .vazio{position:absolute;inset:0;display:grid;place-items:center;color:var(--cinza2);font-size:15px;border:1px dashed var(--fio)}
 
@@ -77,7 +77,7 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
 @media (min-width:900px){
   .lado{padding:0 24px}
   .abre{padding:56px 0 96px}
-  .video{margin:32px auto 0;max-width:min(420px,calc((100svh - 190px) * 9 / 16))}
+  .video{margin:32px auto 0;max-width:min(420px,calc((100svh - 300px) * 9 / 16))}
 }
 @media (prefers-reduced-motion:reduce){.bt{transition:none}}
 </style>
@@ -140,6 +140,10 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
     mostrado = true;
     try { localStorage.setItem(CHAVE_VISTO, "1"); } catch (e) {}
     bloco.classList.remove("esconder");
+    // quando o preço aparece, o botão fica logo abaixo do vídeo: leva até ele (não na prévia ?teste=1 nem sem vídeo)
+    if (!teste && PLAYER && BOTAO_EM !== null) {
+      setTimeout(function () { bloco.scrollIntoView({ behavior: "smooth", block: "center" }); }, 150);
+    }
   }
 
   if (teste || BOTAO_EM === null || !PLAYER) { aoMostrar(); return; }

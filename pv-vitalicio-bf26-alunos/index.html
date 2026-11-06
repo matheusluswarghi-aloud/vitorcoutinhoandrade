@@ -27,7 +27,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
-<!-- VTURB-HEAD: código de velocidade do player novo entra aqui -->
+<!-- VTURB-HEAD: player "[UPGRADE] ECG vitalício · alunos BF26" (conta ECG, 06/11), código de velocidade -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/135cfe07-108d-4275-a884-f7567ee21964/players/6aee139995062e6d56ede57f/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/135cfe07-108d-4275-a884-f7567ee21964/6aee1391882703ca9fa69902/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
 <style>
 :root{
   --fundo:#0F0E0D; --fundo2:#161412; --fio:#2E2A26;
@@ -52,7 +58,8 @@ h1{font-weight:900;font-size:clamp(32px,8.6vw,60px);line-height:1.02;letter-spac
 .sub-t{font-size:17px;line-height:1.5;color:var(--cinza);margin:14px auto 0;max-width:600px}
 .sub-t b{color:var(--marfim);font-weight:600}
 
-.video{position:relative;margin:26px -20px 0;aspect-ratio:16/9;background:#000;overflow:hidden}
+/* vídeo vertical (1080x1920): coluna estreita no centro, para caber título + vídeo sem rolar demais */
+.video{position:relative;margin:24px auto 0;width:100%;max-width:min(380px,calc((100svh - 150px) * 9 / 16));min-width:260px;aspect-ratio:9/16;background:#000;overflow:hidden;border-radius:6px;box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
 .video vturb-smartplayer{display:block;width:100%}
 .video .vazio{position:absolute;inset:0;display:grid;place-items:center;color:var(--cinza2);font-size:15px;border:1px dashed var(--fio)}
 
@@ -70,7 +77,7 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
 @media (min-width:900px){
   .lado{padding:0 24px}
   .abre{padding:56px 0 96px}
-  .video{margin:34px auto 0;max-width:880px;border-radius:6px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
+  .video{margin:32px auto 0;max-width:min(420px,calc((100svh - 190px) * 9 / 16))}
 }
 @media (prefers-reduced-motion:reduce){.bt{transition:none}}
 </style>
@@ -85,7 +92,7 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
     <!-- Vídeo do upgrade (Vitor + telas do ECG GO, ~4 min): para trocar o player, troque o que está entre VTURB e /VTURB
          e ponha o id em PLAYER no script. Enquanto não houver player, fica o aviso abaixo. -->
     <!-- VTURB -->
-    <div class="vazio">O vídeo entra aqui</div>
+    <vturb-smartplayer id="vid-6aee139995062e6d56ede57f" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/135cfe07-108d-4275-a884-f7567ee21964/players/6aee139995062e6d56ede57f/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
     <!-- /VTURB -->
   </div>
 
@@ -102,8 +109,8 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
 (function () {
   // ---------- ligar aqui ----------
   var CHECKOUT = "https://pay.hotmart.com/Q105615633U?off=sqi8ftl2";   // oferta "Vitalicio BF26 alunos" (curso 7649305)
-  var PLAYER = "";        // id do player da VTurb, conta ECG (o mesmo do vid-<id> do embed)
-  var BOTAO_EM = null;    // segundo do vídeo em que o preço aparece (null = botão desde o início)
+  var PLAYER = "6aee139995062e6d56ede57f";   // "[UPGRADE] ECG vitalício · alunos BF26", conta ECG (vid-<id> do embed)
+  var BOTAO_EM = 172;     // "R$ 597 à vista" entra na tela aos 2:52 de vital-final.mp4 (whisper, 06/11); null = desde o início
   var ORIGEM = { src: "api", sck: "vitalicio-bf26_api", utm_source: "api", utm_campaign: "vitalicio-bf26" };
   // ---------------------------------
 

@@ -53,13 +53,15 @@ p{text-wrap:pretty}
 .vm{color:var(--vermelho)}
 
 main{flex:1}
-.abre{padding:36px 0 72px;background:radial-gradient(ellipse 80% 40% at 50% 34%,var(--brasa),transparent 72%);text-align:center}
-h1{font-weight:900;font-size:clamp(32px,8.6vw,60px);line-height:1.02;letter-spacing:-.045em;margin:0 auto;max-width:900px}
-.sub-t{font-size:17px;line-height:1.5;color:var(--cinza);margin:14px auto 0;max-width:600px}
+/* faixa de urgência (Matheus, 06/11): "ATENÇÃO, ALUNO" */
+.faixa{background:var(--vermelho);color:#fff;text-align:center;font-weight:900;font-size:15px;letter-spacing:.14em;text-transform:uppercase;line-height:1;padding:11px 16px}
+.abre{padding:22px 0 72px;background:radial-gradient(ellipse 80% 40% at 50% 34%,var(--brasa),transparent 72%);text-align:center}
+h1{font-weight:900;font-size:clamp(28px,7.4vw,56px);line-height:1.04;letter-spacing:-.045em;margin:0 auto;max-width:900px}
+.sub-t{font-size:16px;line-height:1.45;color:var(--cinza);margin:12px auto 0;max-width:600px}
 .sub-t b{color:var(--marfim);font-weight:600}
 
 /* vídeo vertical (1080x1920): coluna estreita no centro, para caber título + vídeo sem rolar demais */
-.video{position:relative;margin:24px auto 0;width:100%;max-width:min(380px,calc((100svh - 280px) * 9 / 16));min-width:220px;aspect-ratio:9/16;background:#000;overflow:hidden;border-radius:6px;box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+.video{position:relative;margin:18px auto 0;width:100%;max-width:min(380px,calc((100svh - 330px) * 9 / 16));min-width:220px;aspect-ratio:9/16;background:#000;overflow:hidden;border-radius:6px;box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
 .video vturb-smartplayer{display:block;width:100%}
 .video .vazio{position:absolute;inset:0;display:grid;place-items:center;color:var(--cinza2);font-size:15px;border:1px dashed var(--fio)}
 
@@ -76,17 +78,20 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
 }
 @media (min-width:900px){
   .lado{padding:0 24px}
-  .abre{padding:56px 0 96px}
-  .video{margin:32px auto 0;max-width:min(420px,calc((100svh - 300px) * 9 / 16))}
+  .abre{padding:40px 0 96px}
+  .faixa{font-size:17px;padding:13px 16px}
+  .sub-t{font-size:18px}
+  .video{margin:28px auto 0;max-width:min(420px,calc((100svh - 340px) * 9 / 16))}
 }
 @media (prefers-reduced-motion:reduce){.bt{transition:none}}
 </style>
 </head>
 <body>
+<p class="faixa">Atenção, aluno</p>
 <main>
 <div class="abre"><div class="lado">
-  <h1>O seu ECG Descomplicado agora pode ser <span class="vm">vitalício.</span></h1>
-  <p class="sub-t">Só para quem já é aluno. Assista ao vídeo até o fim: é curto, e o Dr. Vitor mostra <b>tudo o que entra</b>.</p>
+  <h1>Garanta agora <span class="vm">70% de desconto</span> no vitalício do seu curso de ECG.</h1>
+  <p class="sub-t">O desconto é absurdo, por isso vai durar pouco. Assista ao vídeo abaixo para liberar o seu desconto.</p>
 
   <div class="video" id="video">
     <!-- Vídeo do upgrade (Vitor + telas do ECG GO, ~4 min): para trocar o player, troque o que está entre VTURB e /VTURB

@@ -552,7 +552,8 @@ fbq('track','PageView');
     if (!enviado && typeof fbq === "function") fbq("track", "Lead", { content_name: "black-aberta", content_category: "pc-bf26-" + V });
     enviado = true;
     $("insc-bt").textContent = "Abrindo o grupo…";
-    setTimeout(() => { location.href = destino; }, 150);
+    // 08/11: depois do envio a pessoa passa pela página de obrigado; o botão de lá leva ao grupo com a mesma query.
+    setTimeout(() => { location.href = "/ob-bf26-geral/" + new URL(destino).search + (TESTE ? "&teste=1" : ""); }, 150);
   });
 
   // ---------- os produtos (Doc "Clube do Plantonista · produtos da oferta"; sem valor nem contagem na página) ----------

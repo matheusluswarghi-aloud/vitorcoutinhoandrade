@@ -7,7 +7,7 @@
 <title>Clube do Plantonista · condição de aluno</title>
 <!--
  Página de vendas do Clube do Plantonista para os alunos do ECG Descomplicado que não compraram na live de 04/11/2026.
- Carrinho dos alunos aberto até sábado; a contagem vai até FIM (no script, horário de Brasília).
+ Segue no ar depois de sábado, 07/11 (09/11): sem contador e sem data, só "condição exclusiva de aluno na Black".
  Oferta = a da live (07-entregaveis/black-plantonista/live-alunos/roteiro-live-alunos-v2.md e slides 55–74 do deck):
  empilhamento de R$ 7.471 e garantia de 30 dias. O preço NÃO aparece na página (05/11): só no checkout. Fora: sorteio,
  Plantão Mensal, acesso extra, Cursos Convidados. A Comunidade não é chamada de vitalícia (12 meses × vitalício em aberto).
@@ -19,10 +19,10 @@
  Visual: o da captação da Black geral (pc-bf26-v1), Jornal à noite, só Schibsted Grotesk.
  O VÍDEO: embed da VTurb entre os marcadores VTURB e /VTURB no corpo (player 6aecdbbcd1189b35ed0778b7, conta ECG, 05/11).
 -->
-<meta name="description" content="O Clube do Plantonista abriu em primeira mão para os alunos do Dr. Vitor Coutinho: todos os cursos de emergência, os aplicativos e a comunidade, com condição de aluno até sábado.">
+<meta name="description" content="O Clube do Plantonista abriu em primeira mão para os alunos do Dr. Vitor Coutinho: todos os cursos de emergência, os aplicativos e a comunidade, com condição exclusiva de aluno na Black.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://clube.vitorcoutinhoandrade.com/pv-bf26-alunos/">
-<meta property="og:title" content="Clube do Plantonista · condição de aluno até sábado">
+<meta property="og:title" content="Clube do Plantonista · condição exclusiva de aluno na Black">
 <meta property="og:description" content="Todos os cursos de emergência do Dr. Vitor, os aplicativos e a comunidade, num lugar só.">
 <meta property="og:image" content="https://vitorcoutinhoandrade.com/clube-alunos/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -66,31 +66,12 @@ h2{font-weight:800;font-size:clamp(30px,7.6vw,52px);line-height:1.05;letter-spac
 .depois{margin-top:12px;font-size:15px;line-height:1.45;color:var(--cinza)}
 section{padding:80px 0}
 
-/* placar da contagem: plaquinhas que viram (o mesmo da página da Black geral) */
-.placar{display:flex;justify-content:center;align-items:flex-start;gap:6px;--fh:32px}
-.placar .u{display:flex;flex-direction:column;align-items:center;gap:5px}
-.placar .par{display:flex;gap:3px}
-.placar .r{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cinza2);line-height:1}
-.placar .sep{font-weight:800;font-size:calc(var(--fh)*.5);line-height:var(--fh);color:var(--vermelho)}
-.fl{position:relative;width:calc(var(--fh)*.7);height:var(--fh);perspective:300px;font-weight:800;font-size:calc(var(--fh)*.7);letter-spacing:-.02em;color:var(--marfim);font-variant-numeric:tabular-nums;border-radius:4px;box-shadow:0 8px 16px -8px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.03)}
-.fl .h{position:absolute;left:0;right:0;height:50%;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden}
-.fl .h i{display:block;height:var(--fh);line-height:var(--fh);text-align:center;font-style:normal}
-.fl .t,.fl .ft{top:0;background:linear-gradient(180deg,#2C2824,#24211D);border-radius:4px 4px 0 0}
-.fl .b,.fl .fb{bottom:0;background:linear-gradient(180deg,#1F1C19,#191715);border-radius:0 0 4px 4px}
-.fl .b i,.fl .fb i{margin-top:calc(var(--fh)/-2)}
-.fl .ft{z-index:2;transform-origin:50% 100%;animation:flT .3s ease-in forwards}
-.fl .fb{z-index:2;transform-origin:50% 0;transform:rotateX(90deg);animation:flB .3s .3s ease-out forwards}
-.fl::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:#0B0A09;z-index:3}
-.fl::before{content:"";position:absolute;top:50%;left:-2px;right:-2px;height:6px;margin-top:-3px;z-index:4;background:linear-gradient(90deg,#3A3530 0 3px,transparent 3px calc(100% - 3px),#3A3530 calc(100% - 3px));border-radius:1px}
-@keyframes flT{to{transform:rotateX(-90deg)}}
-@keyframes flB{to{transform:rotateX(0)}}
 
 /* topo: a contagem de Black Friday */
 .topo{position:relative;z-index:5;background:linear-gradient(180deg,#1A1311,var(--fundo));border-bottom:1px solid var(--fio)}
 .topo .lado{display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:12px;padding-bottom:12px}
 .topo .aviso{font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--marfim);line-height:1.2;text-align:center}
 .topo .aviso span{color:var(--vermelho)}
-.topo .quando{font-size:14px;line-height:1.3;color:var(--cinza);text-align:center}
 
 /* 1 · primeira dobra: título e o vídeo */
 .abre{position:relative;padding:28px 0 64px;background:radial-gradient(ellipse 80% 40% at 50% 34%,var(--brasa),transparent 72%);text-align:center}
@@ -178,7 +159,6 @@ section{padding:80px 0}
 .oferta .forma{font-size:15px;color:var(--cinza);margin-top:6px}
 .oferta .bt{margin:26px auto 0;max-width:none}
 .oferta .gar{font-size:15px;color:var(--cinza);margin-top:14px}
-.fecha .placar{--fh:40px;margin-top:34px}
 .fecha .quando{font-size:15px;color:var(--cinza);margin-top:14px}
 
 footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1px solid var(--fio);font-size:14px;color:var(--cinza2);text-align:center}
@@ -187,22 +167,17 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
 .barra{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(15,14,13,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--fio);padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.75,.2,1)}
 .barra.ver{transform:none}
 .barra .lado{display:flex;align-items:center;gap:12px;padding:0}
-.barra .info{flex:none;font-size:12px;line-height:1.25;color:var(--cinza);text-align:center}
-.barra .info b{display:block;font-weight:800;font-size:17px;color:var(--marfim);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
 .barra .bt{max-width:none;padding:13px 10px;font-size:15px;box-shadow:none}
 
 @media (min-width:600px){
   .bt{font-size:20px;padding:21px 16px}
   .oferta{padding:40px 40px}
-  .fecha .placar{--fh:58px;gap:9px}
-}
+  }
 @media (min-width:900px){
   section{padding:112px 0}
   .lado{padding:0 24px}
   .topo .lado{flex-direction:row;justify-content:center;gap:28px}
-  .topo .placar{--fh:38px}
-  .topo .quando{text-align:left}
-  .abre{padding:48px 0 88px}
+    .abre{padding:48px 0 88px}
   .video{margin:34px auto 0;max-width:880px;border-radius:6px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
   .cursos .palco{grid-template-columns:1.1fr .9fr;gap:40px}
   .cf{height:520px}
@@ -218,11 +193,10 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
   .prova blockquote{font-size:23px}
   .garantia .grade{grid-template-columns:auto 1fr;gap:64px}
   .garantia .txt{text-align:left}
-  .barra .info{text-align:left;font-size:13px}
-  .barra .bt{width:auto;margin-left:auto;padding:16px 34px}
+    .barra .bt{width:auto;margin:0 auto;padding:16px 34px}
   .barra .lado{max-width:900px;padding:0 24px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cf-card,.barra,.painel .item{transition:none}.fl .ft,.fl .fb,.chamada i{animation:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cf-card,.barra,.painel .item{transition:none}.chamada i{animation:none}}
 
 /* ---------- pop-up (05/11): nome, e-mail e WhatsApp antes do checkout; o mesmo da captação da Black geral ---------- */
 .insc{position:fixed;left:0;right:0;top:0;height:100%;z-index:200;display:flex;align-items:flex-start;justify-content:center;padding:16px 16px calc(16px + env(safe-area-inset-bottom));background:rgba(8,7,6,.82);overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;transition:opacity .18s,visibility 0s .18s}
@@ -270,11 +244,7 @@ fbq('track','PageView');
 </head>
 <body>
 <header class="topo"><div class="lado">
-  <div>
-    <p class="aviso"><span>Black Friday</span> · condição de aluno</p>
-    <p class="quando">Sai do ar em</p>
-  </div>
-  <div class="placar" data-placar role="timer" aria-label="Tempo até o fim da condição de aluno"></div>
+  <p class="aviso"><span>Black Friday</span> · condição exclusiva de aluno</p>
 </div></header>
 
 <main>
@@ -368,8 +338,7 @@ fbq('track','PageView');
       <p class="forma">Pix ou cartão, com 30 dias de garantia</p>
       <a class="bt" href="https://pay.hotmart.com/Q108311655C?off=mkvniz3k&amp;src=pagina&amp;sck=black-alunos_pagina&amp;utm_source=pagina&amp;utm_campaign=black-alunos" data-popup>Quero garantir minha condição de aluno</a>
     </div>
-    <div class="placar" data-placar role="timer" aria-label="Tempo até o fim da condição de aluno"></div>
-    <p class="quando">A condição de aluno acaba sábado, 07/11, às 23h59.</p>
+    <p class="quando">Condição exclusiva de aluno na Black.</p>
   </div>
 </div></section>
 
@@ -399,7 +368,7 @@ fbq('track','PageView');
 
 <footer>Instituto VC de Ensino Médico LTDA · CNPJ 62.218.072/0001-67 · Ubá/MG</footer>
 
-<div class="barra" id="barra" aria-hidden="true"><div class="lado"><p class="info">Acaba em<b id="barra-t">--:--:--</b></p><a class="bt" href="https://pay.hotmart.com/Q108311655C?off=mkvniz3k&amp;src=pagina&amp;sck=black-alunos_pagina&amp;utm_source=pagina&amp;utm_campaign=black-alunos" data-popup tabindex="-1">Quero entrar no Clube</a></div></div>
+<div class="barra" id="barra" aria-hidden="true"><div class="lado"><a class="bt" href="https://pay.hotmart.com/Q108311655C?off=mkvniz3k&amp;src=pagina&amp;sck=black-alunos_pagina&amp;utm_source=pagina&amp;utm_campaign=black-alunos" data-popup tabindex="-1">Quero entrar no Clube</a></div></div>
 
 <div class="insc" id="insc" role="dialog" aria-modal="true" aria-labelledby="insc-t" hidden>
   <div class="caixa-i">
@@ -478,39 +447,6 @@ fbq('track','PageView');
   addEventListener("resize", desenha); desenha();
   new IntersectionObserver((es, ob) => { if (es[0].isIntersecting) { visto = true; auto(); ob.disconnect(); } }, { threshold: 0.5 }).observe(cf);
 
-  // ---------- contagem até o fim da condição de aluno (sábado, 07/11/2026, 23h59 de Brasília) ----------
-  const FIM = new Date("2026-11-07T23:59:59-03:00").getTime();
-  const UNID = [["dias", 86400], ["horas", 3600], ["min", 60], ["seg", 1]];
-  const placas = [...document.querySelectorAll("[data-placar]")].map(box => {
-    box.innerHTML = UNID.map((u, i) => (i ? '<span class="sep" aria-hidden="true">:</span>' : "") +
-      `<div class="u"><div class="par"><span class="fl"></span><span class="fl"></span></div><span class="r">${u[0]}</span></div>`).join("");
-    const fls = [...box.querySelectorAll(".fl")];
-    fls.forEach(el => { el.innerHTML = '<span class="h t"><i></i></span><span class="h b"><i></i></span>'; el.v = null; });
-    return fls;
-  });
-  function vira(el, v) {
-    if (el.v === v) return;
-    const velho = el.v; el.v = v;
-    const t = el.querySelector(".t i"), b = el.querySelector(".b i");
-    el.querySelectorAll(".ft,.fb").forEach(x => x.remove());
-    if (velho === null || calmo || document.hidden) { t.textContent = b.textContent = v; return; }
-    t.textContent = v; b.textContent = velho;
-    const ft = document.createElement("span"), fb = document.createElement("span");
-    ft.className = "h ft"; ft.innerHTML = "<i>" + velho + "</i>";
-    fb.className = "h fb"; fb.innerHTML = "<i>" + v + "</i>";
-    const fim = () => { if (!fb.isConnected) return; b.textContent = v; ft.remove(); fb.remove(); };
-    fb.addEventListener("animationend", fim); setTimeout(fim, 900);
-    el.append(ft, fb);
-  }
-  const barraT = $("barra-t");
-  function conta() {
-    const t = Math.floor(Math.max(0, FIM - Date.now()) / 1000);
-    const k = UNID.map(([, s], i) => i ? Math.floor(t % UNID[i - 1][1] / s) : Math.floor(t / s));
-    const digitos = k.map(x => dois(Math.min(x, 99))).join("");
-    placas.forEach(fls => fls.forEach((el, i) => vira(el, digitos[i])));
-    barraT.textContent = (k[0] ? k[0] + "d " : "") + [k[1], k[2], k[3]].map(dois).join(":");
-  }
-  conta(); setInterval(conta, 1000);
 
   addEventListener("contextmenu", e => { if (e.target.closest("figure,.video,.caixa,.cf")) e.preventDefault(); });
   addEventListener("dragstart", e => { if (e.target.closest && e.target.closest("img,figure,.video")) e.preventDefault(); });

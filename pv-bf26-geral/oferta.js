@@ -7,10 +7,10 @@ const LIBERACAO_FUTURA = "Entra no Clube depois da compra, com data avisada lá 
 window.OFERTA = {
   // Link cru da oferta nova na Hotmart: https://pay.hotmart.com/Q108311655C?off=XXXX. A página acrescenta src, sck, UTMs e os dados do pop-up.
   // NUNCA o checkout dos alunos (mkvniz3k) nem o redirecionamento /pagina do domínio clube, que aponta para ele. Com o dos alunos, o pop-up não segue.
-  // 10/11: oferta da Black geral no produto novo "Clube do Plantonista" (K108438880Y). Pode mudar quando o Matheus acertar as turmas.
-  LINK_CHECKOUT: "https://pay.hotmart.com/K108438880Y?bid=1794363238614",
+  // 11/11: combo da Black geral do Caitto (8940936, oferta f755wxoa), R$ 2.597 ou 12x de R$ 269,90 (Matheus: "Fica 2.597").
+  LINK_CHECKOUT: "https://pay.hotmart.com/K108438880Y",
 
-  // Desenho de 05/11: a página não mostra preço. Deixe como está. Só se o Matheus mandar mostrar: "12x de R$ 249,90".
+  // Desenho de 05/11: a página não mostra preço. Deixe como está. Só se o Matheus mandar mostrar: "12x de R$ 269,90".
   PRECO: "{{PRECO}}",
 
   // ID do player na VTurb (conta ECG): "6aecdbbcd...". Vazio = sem vídeo: a primeira dobra usa a foto do Vitor com as caixas.

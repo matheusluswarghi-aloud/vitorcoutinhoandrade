@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Black do Plantonista · Clube do Plantonista</title>
+<!--
+ Página de vendas da Black geral (live de 11/11/2026, carrinho até 14/11, 23h59). Na live o link vai direto ao checkout;
+ esta página serve ao pós-abertura e a quem estava de plantão. Modelo: 09-site-vsl/clube-alunos, Jornal à noite, só Schibsted Grotesk.
+ O QUE MUDA NA OFERTA MORA EM oferta.js: checkout, preço, vídeo, datas, textos das duas fases e a lista de produtos (a soma é calculada).
+ Fases, pelo relógio de Brasília: 1 = até 23h59 de 11/11 (ECG GO e Dose Certa vitalícios); 2 = de 12/11 até o fim do carrinho (um ano de acesso aos apps).
+ Sem preço na página e com pop-up antes do checkout (desenho de 05/11, o mesmo dos alunos). O envio grava no Supabase coutinho-dados
+ (pv_bf26_geral_salvar; SQL em ../001_leads.sql) e segue para a Hotmart mesmo se a gravação falhar.
+ Fora do domínio do Vitor (prévia local) e com ?teste=1 nenhum pixel dispara; fora do domínio nada grava. Com ?teste=1, ?fase=1 ou ?fase=2 força a fase.
+ Endereço a divulgar: clube.vitorcoutinhoandrade.com/pv-bf26-geral/ (rewrite da Vercel; caminhos relativos). Passo a passo em ../LEIAME.md.
+-->
+<meta name="description" content="O Clube do Plantonista reúne os cursos de emergência do Dr. Vitor Coutinho, os aplicativos e a comunidade, com condição de Black Friday.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clube.vitorcoutinhoandrade.com/pv-bf26-geral/">
+<meta property="og:title" content="Black do Plantonista · todos os cursos de emergência do Dr. Vitor">
+<meta property="og:description" content="Os cursos de emergência do Dr. Vitor, os aplicativos e a comunidade, num lugar só.">
+<meta property="og:image" content="https://vitorcoutinhoandrade.com/pv-bf26-geral/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F0E0D">
+<script src="oferta.js"></script>
+<script>if (window.OFERTA.VTURB_PLAYER) document.documentElement.classList.add("com-video");</script>
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fundo:#0F0E0D; --fundo2:#161412; --fundo3:#1D1A17; --fio:#2E2A26;
+  --marfim:#F2ECE4; --cinza:#ADA59C; --cinza2:#7F776F;
+  --vermelho:#D63A2E; --vermelho-h:#BC2F24; --brasa:rgba(214,58,46,.30);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--fundo);overflow-x:hidden;scroll-behavior:smooth}
+html,body{max-width:100%;overflow-x:clip}
+body{background:var(--fundo);color:var(--marfim);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto;-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;pointer-events:none}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--marfim);outline-offset:3px}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+.lado{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
+.estreito{max-width:760px;margin:0 auto;text-align:center}
+h1{font-weight:900;font-size:clamp(34px,9.4vw,64px);line-height:1;letter-spacing:-.045em}
+h2{font-weight:800;font-size:clamp(30px,7.6vw,52px);line-height:1.05;letter-spacing:-.035em}
+.vm{color:var(--vermelho)}
+[data-soma]{white-space:nowrap}
+.texto{font-size:18px;line-height:1.55;color:var(--cinza);margin-top:18px}
+.texto b{color:var(--marfim);font-weight:600}
+.bt{display:block;text-align:center;width:100%;max-width:460px;background:var(--vermelho);color:#fff;text-decoration:none;font-weight:800;font-size:16px;letter-spacing:-.01em;padding:15px 14px;border-radius:4px;box-shadow:0 18px 40px -16px rgba(214,58,46,.7);transition:background .15s,transform .15s}
+.bt:hover{background:var(--vermelho-h);transform:translateY(-1px)}
+.depois{margin-top:12px;font-size:15px;line-height:1.45;color:var(--cinza)}
+section{padding:80px 0}
+
+/* placar da contagem: plaquinhas que viram (o mesmo da página da Black geral) */
+.placar{display:flex;justify-content:center;align-items:flex-start;gap:6px;--fh:32px}
+.placar .u{display:flex;flex-direction:column;align-items:center;gap:5px}
+.placar .par{display:flex;gap:3px}
+.placar .r{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cinza2);line-height:1}
+.placar .sep{font-weight:800;font-size:calc(var(--fh)*.5);line-height:var(--fh);color:var(--vermelho)}
+.fl{position:relative;width:calc(var(--fh)*.7);height:var(--fh);perspective:300px;font-weight:800;font-size:calc(var(--fh)*.7);letter-spacing:-.02em;color:var(--marfim);font-variant-numeric:tabular-nums;border-radius:4px;box-shadow:0 8px 16px -8px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.03)}
+.fl .h{position:absolute;left:0;right:0;height:50%;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.fl .h i{display:block;height:var(--fh);line-height:var(--fh);text-align:center;font-style:normal}
+.fl .t,.fl .ft{top:0;background:linear-gradient(180deg,#2C2824,#24211D);border-radius:4px 4px 0 0}
+.fl .b,.fl .fb{bottom:0;background:linear-gradient(180deg,#1F1C19,#191715);border-radius:0 0 4px 4px}
+.fl .b i,.fl .fb i{margin-top:calc(var(--fh)/-2)}
+.fl .ft{z-index:2;transform-origin:50% 100%;animation:flT .3s ease-in forwards}
+.fl .fb{z-index:2;transform-origin:50% 0;transform:rotateX(90deg);animation:flB .3s .3s ease-out forwards}
+.fl::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:#0B0A09;z-index:3}
+.fl::before{content:"";position:absolute;top:50%;left:-2px;right:-2px;height:6px;margin-top:-3px;z-index:4;background:linear-gradient(90deg,#3A3530 0 3px,transparent 3px calc(100% - 3px),#3A3530 calc(100% - 3px));border-radius:1px}
+@keyframes flT{to{transform:rotateX(-90deg)}}
+@keyframes flB{to{transform:rotateX(0)}}
+
+/* topo: a contagem de Black Friday */
+.topo{position:relative;z-index:5;background:linear-gradient(180deg,#1A1311,var(--fundo));border-bottom:1px solid var(--fio)}
+.topo .lado{display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:12px;padding-bottom:12px}
+.topo .aviso{font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--marfim);line-height:1.2;text-align:center}
+.topo .aviso span{color:var(--vermelho)}
+.topo .quando{font-size:14px;line-height:1.3;color:var(--cinza);text-align:center}
+
+/* 1 · primeira dobra: título e o vídeo */
+.abre{position:relative;padding:28px 0 64px;background:radial-gradient(ellipse 80% 40% at 50% 34%,var(--brasa),transparent 72%);text-align:center}
+.abre .sub-t{font-size:17px;line-height:1.5;color:var(--cinza);margin:14px auto 0;max-width:620px}
+.abre .sub-t b{color:var(--marfim);font-weight:600}
+/* sem vídeo: a foto do Vitor com as caixas. Com vídeo (classe com-video, ligada por VTURB_PLAYER em oferta.js): título, vídeo e botão, como nos alunos. */
+.abre .hero{margin:-20px -20px 0}
+.abre .hero img{width:100%;aspect-ratio:1/.62;object-fit:cover;object-position:50% 12%;-webkit-mask-image:linear-gradient(180deg,#000 74%,transparent 100%);mask-image:linear-gradient(180deg,#000 74%,transparent 100%)}
+.abre .texto-abre{position:relative;margin-top:-30px}
+.video{display:none;position:relative;margin:24px -20px 0;aspect-ratio:16/9;background:#000;overflow:hidden}
+.so-video{display:none}
+.com-video .hero,.com-video .sem-video{display:none}
+.com-video .so-video,.com-video .video{display:block}
+.com-video .abre .texto-abre{margin-top:0}
+.abre .bt{margin:24px auto 0}
+.chamada{display:flex;flex-direction:column;align-items:center;gap:10px;margin:44px auto 0;max-width:560px;text-decoration:none}
+.chamada b{font-weight:800;font-size:23px;line-height:1.2;letter-spacing:-.02em}
+.chamada i{font-style:normal;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--fio);color:var(--vermelho);font-size:20px;animation:desce 1.8s ease-in-out infinite}
+@keyframes desce{50%{transform:translateY(6px)}}
+
+/* 2 · os cursos: carrossel com o painel do curso */
+.cursos{overflow:hidden;background:var(--fundo2)}
+.cursos .estreito .texto{max-width:620px;margin-left:auto;margin-right:auto}
+.palco{display:grid;gap:24px;margin-top:36px;align-items:center}
+.cf{position:relative;height:396px;perspective:1200px;touch-action:pan-y;user-select:none;-webkit-user-select:none;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%)}
+.cf-card{position:absolute;left:50%;top:0;width:270px;margin-left:-135px;border-radius:8px;overflow:hidden;transition:transform .6s cubic-bezier(.2,.75,.2,1),opacity .45s,filter .45s;box-shadow:0 30px 70px rgba(0,0,0,.6);cursor:pointer;margin-top:0}
+.cf-card img{width:100%;aspect-ratio:3/4}
+.painel{text-align:center}
+.painel h3{font-weight:800;font-size:clamp(28px,6.6vw,40px);line-height:1.04;letter-spacing:-.03em}
+.painel .promessa{font-weight:700;font-size:19px;line-height:1.35;color:var(--marfim);margin-top:14px}
+.painel .desc{font-size:17px;color:var(--cinza);margin-top:10px}
+.painel .troca{display:grid}
+.painel .item{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.painel .item.ver{opacity:1;visibility:visible}
+.setas{display:flex;justify-content:center;gap:12px;margin-top:22px}
+.setas button{width:52px;height:52px;border-radius:50%;border:1px solid var(--fio);background:var(--fundo3);color:var(--marfim);font-size:20px;cursor:pointer;font-family:inherit}
+.setas button:hover{border-color:var(--cinza2)}
+
+/* 3 · promessa: as cenas do plantão */
+.promessa-s .grade{display:grid;gap:34px}
+.promessa-s .cab{text-align:center}
+.cenas{list-style:none;border-top:1px solid var(--fio)}
+.cenas li{padding:22px 0 22px 26px;border-bottom:1px solid var(--fio);position:relative;font-size:19px;line-height:1.45;color:var(--cinza)}
+.cenas li::before{content:"";position:absolute;left:0;top:33px;width:12px;height:3px;background:var(--vermelho)}
+.cenas li b{display:block;color:var(--marfim);font-weight:700;font-size:21px;line-height:1.3;letter-spacing:-.015em;margin-bottom:4px}
+
+/* 4 · empilhamento */
+.leva{background:var(--fundo2);overflow:hidden}
+.leva .caixa{margin:30px 0 0 -6%;width:112%;max-width:none}
+.pilha{list-style:none;max-width:760px;margin:26px auto 0;border-top:1px solid var(--fio)}
+.pilha li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--fio)}
+.pilha h3{font-weight:700;font-size:19px;line-height:1.3;letter-spacing:-.015em}
+.pilha p{grid-column:1/-1;font-size:16px;line-height:1.45;color:var(--cinza)}
+.pilha .v{font-weight:800;font-size:18px;white-space:nowrap;color:var(--marfim)}
+.pilha .v.gratis{color:var(--vermelho)}
+.pilha p.lib{font-size:15px;line-height:1.4;font-weight:500;color:var(--cinza)}
+.pilha p.lib.apps{font-weight:700;color:var(--marfim)}
+.soma{max-width:760px;margin:34px auto 0;text-align:center}
+.soma p{font-weight:700;font-size:17px;letter-spacing:.08em;text-transform:uppercase;color:var(--cinza)}
+.soma s{display:inline-block;font-weight:900;font-size:clamp(58px,17vw,104px);line-height:1;letter-spacing:-.05em;color:var(--vermelho);text-decoration-thickness:.08em;text-decoration-color:var(--marfim);margin-top:8px}
+.mais{list-style:none;max-width:620px;margin:30px auto 0;display:grid;gap:12px;text-align:left}
+.mais li{position:relative;padding-left:30px;font-size:18px;line-height:1.45;color:var(--cinza)}
+.mais li::before{content:"+";position:absolute;left:4px;top:-2px;font-weight:900;font-size:24px;color:var(--vermelho)}
+.mais li b{color:var(--marfim);font-weight:700}
+.leva .bt{margin:36px auto 0}
+
+/* 5 · os bônus */
+.bonus .lista-b{list-style:none;max-width:760px;margin:34px auto 0;border-top:1px solid var(--fio);text-align:center}
+.bonus .lista-b li{padding:30px 0;border-bottom:1px solid var(--fio)}
+.bonus .lista-b li[hidden]{display:none}
+.bonus h3{font-weight:800;font-size:clamp(24px,6vw,32px);line-height:1.12;letter-spacing:-.025em}
+.bonus .lista-b p{font-size:18px;line-height:1.5;color:var(--cinza);margin-top:12px}
+
+/* 5 · depoimentos */
+.prova .falas{display:grid;gap:0;max-width:980px;margin:34px auto 0;border-top:1px solid var(--fio)}
+.prova figure{padding:28px 0;border-bottom:1px solid var(--fio)}
+.prova blockquote{font-weight:600;font-size:21px;line-height:1.4;letter-spacing:-.015em;position:relative;padding-top:30px}
+.prova blockquote::before{content:"“";position:absolute;top:-10px;left:-2px;font-weight:900;font-size:64px;line-height:1;color:var(--vermelho)}
+.prova figcaption{margin-top:14px;font-size:16px;color:var(--cinza2);font-weight:700}
+
+/* 6 · garantia */
+.garantia{background:var(--fundo2)}
+.garantia .grade{display:grid;gap:26px;align-items:center;max-width:980px;margin:0 auto}
+.selo{display:flex;align-items:baseline;justify-content:center;gap:12px;line-height:.85}
+.selo b{font-weight:900;font-size:clamp(120px,36vw,200px);letter-spacing:-.06em;color:var(--vermelho)}
+.selo span{font-weight:900;font-size:clamp(34px,9vw,54px);letter-spacing:-.03em;text-transform:uppercase}
+.garantia .txt{text-align:center}
+.garantia .txt p.texto+p.texto{margin-top:12px}
+
+/* quem é */
+.quem .grade{display:grid;gap:32px;align-items:center}
+.quem figure img{width:100%;aspect-ratio:4/4.2;object-fit:cover;object-position:50% 25%;border-radius:4px}
+.quem .texto-quem{text-align:center}
+.quem p.texto+p.texto{margin-top:14px}
+
+/* perguntas */
+.perguntas .lista{max-width:700px;margin:34px auto 0}
+.perguntas details{border-top:1px solid var(--fio)}
+.perguntas details:last-child{border-bottom:1px solid var(--fio)}
+.perguntas details[hidden]{display:none}
+.perguntas summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:22px 2px;font-weight:700;font-size:18px;line-height:1.35}
+.perguntas summary::-webkit-details-marker{display:none}
+.perguntas summary::after{content:"+";font-weight:400;font-size:28px;color:var(--cinza2);transition:transform .2s;flex:none}
+.perguntas details[open] summary::after{transform:rotate(45deg)}
+.perguntas details p{padding:0 2px 22px;color:var(--cinza);font-size:17px}
+.perguntas .final{margin-top:40px}
+.perguntas .final .bt{margin:0 auto}
+
+/* carrinho encerrado (FIM_CARRINHO passou e a página ainda está no ar): some a contagem, fica o resto */
+.encerrado .placar,.encerrado .topo .quando,.encerrado .barra .info,.encerrado .fecha .quando,.encerrado .fecha h2{display:none}
+
+/* 7 · o ticket */
+.fecha{text-align:center;background:radial-gradient(ellipse 80% 50% at 50% 40%,rgba(214,58,46,.16),transparent 72%)}
+.oferta{margin:30px auto 0;max-width:580px;padding:30px 18px;border:1px solid var(--fio);border-radius:8px;background:var(--fundo3)}
+.oferta .de{font-weight:600;font-size:17px;line-height:1.45;color:var(--cinza)}
+.oferta .de s{color:var(--marfim);font-weight:800;text-decoration-color:var(--vermelho);text-decoration-thickness:2px}
+.oferta .rotulo{font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--vermelho);margin-top:22px}
+.oferta .parc{font-weight:900;font-size:clamp(34px,9.6vw,56px);line-height:1.02;letter-spacing:-.045em;margin-top:8px}
+.oferta .parc small{font-size:.4em;letter-spacing:-.02em;font-weight:800;margin-right:.12em}
+.oferta .vista{font-weight:700;font-size:20px;margin-top:10px}
+.oferta .forma{font-size:15px;color:var(--cinza);margin-top:6px}
+.oferta .bt{margin:26px auto 0;max-width:none}
+.oferta .gar{font-size:15px;color:var(--cinza);margin-top:14px}
+.fecha .placar{--fh:40px;margin-top:34px}
+.fecha .quando{font-size:15px;color:var(--cinza);margin-top:14px}
+
+footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1px solid var(--fio);font-size:14px;color:var(--cinza2);text-align:center}
+
+/* barra fixa: o tempo que falta e o botão */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(15,14,13,.95);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--fio);padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.75,.2,1)}
+.barra.ver{transform:none}
+.barra .lado{display:flex;align-items:center;gap:12px;padding:0}
+.barra .info{flex:none;font-size:12px;line-height:1.25;color:var(--cinza);text-align:center}
+.barra .info b{display:block;font-weight:800;font-size:17px;color:var(--marfim);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.barra .bt{max-width:none;padding:13px 10px;font-size:15px;box-shadow:none}
+
+@media (min-width:600px){
+  .bt{font-size:20px;padding:21px 16px}
+  .oferta{padding:40px 40px}
+  .fecha .placar{--fh:58px;gap:9px}
+}
+@media (min-width:900px){
+  section{padding:112px 0}
+  .lado{padding:0 24px}
+  .topo .lado{flex-direction:row;justify-content:center;gap:28px}
+  .topo .placar{--fh:38px}
+  .topo .quando{text-align:left}
+  .abre{padding:48px 0 88px}
+  .video{margin:34px auto 0;max-width:880px;border-radius:4px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
+  html:not(.com-video) .abre{padding:20px 0 72px;background:radial-gradient(ellipse 46% 60% at 72% 46%,var(--brasa),transparent 70%)}
+  html:not(.com-video) .abre .grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);align-items:center;min-height:min(calc(100vh - 150px),680px)}
+  html:not(.com-video) .abre .texto-abre{text-align:left;order:-1;margin-top:0;max-width:540px;position:relative;z-index:2}
+  html:not(.com-video) .abre .sub-t{margin-left:0;font-size:19px}
+  html:not(.com-video) .abre .bt{margin:30px 0 0}
+  html:not(.com-video) .abre h1{font-size:clamp(48px,4.7vw,66px)}
+  .abre .hero{margin:0 0 0 16px}
+  .abre .hero img{aspect-ratio:1200/943;-webkit-mask-image:linear-gradient(180deg,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,#000 82%,transparent 100%)}
+  .cursos .palco{grid-template-columns:1.1fr .9fr;gap:40px}
+  .cf{height:520px}
+  .cf-card{width:330px;margin-left:-165px}
+  .painel{text-align:left}
+  .setas{justify-content:flex-start}
+  .promessa-s .grade{grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+  .promessa-s .cab{text-align:left;position:sticky;top:40px}
+  .leva .caixa{width:100%;max-width:960px;margin:44px auto 0}
+  .pilha li{padding:20px 0}
+  .pilha h3{font-size:21px}
+  .prova .falas{grid-template-columns:1fr 1fr;column-gap:56px}
+  .prova blockquote{font-size:23px}
+  .garantia .grade{grid-template-columns:auto 1fr;gap:64px}
+  .garantia .txt{text-align:left}
+  .quem .grade{grid-template-columns:1fr 1fr;gap:64px}
+  .quem .texto-quem{text-align:left}
+  .barra .info{text-align:left;font-size:13px}
+  .barra .bt{width:auto;margin-left:auto;padding:16px 34px}
+  .barra .lado{max-width:900px;padding:0 24px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cf-card,.barra,.painel .item{transition:none}.fl .ft,.fl .fb,.chamada i{animation:none}}
+
+/* ---------- pop-up (05/11): nome, e-mail e WhatsApp antes do checkout; o mesmo da captação da Black geral ---------- */
+.insc{position:fixed;left:0;right:0;top:0;height:100%;z-index:200;display:flex;align-items:flex-start;justify-content:center;padding:16px 16px calc(16px + env(safe-area-inset-bottom));background:rgba(8,7,6,.82);overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;transition:opacity .18s,visibility 0s .18s}
+.insc[hidden]{display:none}
+.insc.ver{opacity:1;visibility:visible;transition:opacity .18s}
+html.travado,html.travado body{overflow:hidden}
+.insc .caixa-i{position:relative;width:100%;max-width:460px;margin:2vh auto auto;background:var(--fundo2);border:1px solid var(--fio);border-radius:4px;padding:26px 20px 22px;transform:translateY(10px);transition:transform .18s}
+.insc.ver .caixa-i{transform:none}
+.insc h2{font-size:23px;line-height:1.22;font-weight:800;letter-spacing:-.02em;text-align:center;padding:0 30px}
+.insc .x{position:absolute;top:10px;right:10px;width:40px;height:40px;border:0;background:none;color:var(--cinza);font-size:26px;line-height:1;cursor:pointer;font-family:inherit}
+.insc form{margin-top:18px;display:flex;flex-direction:column;gap:14px}
+.insc label{display:block;font-size:15px;font-weight:600;color:var(--cinza);margin-bottom:6px}
+.insc .in{display:block;width:100%;background:var(--fundo3);border:1px solid var(--fio);border-radius:4px;color:var(--marfim);font:500 17px/1.3 "Schibsted Grotesk",system-ui,sans-serif;padding:15px 14px;outline:0;transition:border-color .15s;-webkit-appearance:none;appearance:none}
+.insc .in:focus{border-color:var(--cinza2)}
+.insc .tel{position:relative}
+.insc .tel>.in{padding-left:104px}
+.insc .ddi{position:absolute;left:1px;top:1px;bottom:1px;display:flex;align-items:center;gap:7px;padding:0 10px 0 13px;background:none;border:0;border-right:1px solid var(--fio);color:var(--marfim);font:500 16px "Schibsted Grotesk",system-ui,sans-serif;cursor:pointer;z-index:2}
+.insc .ddi img{border-radius:2px;display:block;object-fit:cover}
+.insc .ddi i{font-style:normal;font-size:10px;color:var(--cinza)}
+.insc .paises{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--fundo3);border:1px solid var(--fio);border-radius:4px;padding:8px;z-index:10;box-shadow:0 18px 40px rgba(0,0,0,.55)}
+.insc .paises .in{margin:0 0 6px;padding:11px 12px;font-size:16px;background:var(--fundo2)}
+.insc .paises ul{list-style:none;max-height:min(240px,36dvh);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.insc .paises li{display:flex;align-items:center;gap:10px;padding:10px;border-radius:4px;cursor:pointer;font-size:15px}
+.insc .paises li:hover,.insc .paises li:active{background:rgba(255,255,255,.06)}
+.insc .paises li span{flex:1}
+.insc .paises li b{font-weight:500;color:var(--cinza)}
+.insc .erro{font-size:15px;line-height:1.4;color:#F08A7E}
+.insc .erro[hidden]{display:none}
+.insc button.bt{border:0;cursor:pointer;font-family:inherit;max-width:none;margin-top:4px;font-size:19px;padding:18px 14px}
+@media (min-width:600px){.insc{align-items:center}.insc .caixa-i{margin:auto;padding:34px 32px 28px}.insc h2{font-size:26px}}
+@media (prefers-reduced-motion:reduce){.insc,.insc .caixa-i{transition:none}}
+</style>
+<!-- Meta Pixel: os mesmos dois das outras páginas do domínio (1165898412096025 "PIXEL - TypeBot" e 1742493520573514 "Pixel Instituto VC").
+     PageView ao abrir; InitiateCheckout no envio do pop-up, sem dado pessoal. Sem Lead (somaria no CPL da captação, que usa estes pixels) e sem Purchase. Só dispara no domínio do Vitor e fora de ?teste=1. -->
+<script>
+if (/(^|\.)vitorcoutinhoandrade\.com$/.test(location.hostname) && new URLSearchParams(location.search).get("teste") !== "1") {
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1165898412096025');
+fbq('init','1742493520573514');
+fbq('track','PageView');
+}
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1165898412096025&ev=PageView&noscript=1"><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1742493520573514&ev=PageView&noscript=1"></noscript>
+</head>
+<body>
+<header class="topo"><div class="lado">
+  <div>
+    <p class="aviso"><span>Black Friday</span> · Clube do Plantonista</p>
+    <p class="quando" data-f="topoQuando"></p>
+  </div>
+  <div class="placar" data-placar role="timer"></div>
+</div></header>
+
+<main>
+<!-- 1 · primeira dobra -->
+<div class="abre"><div class="lado">
+  <div class="grade">
+    <figure class="hero"><img src="img/hero-caixas.webp" srcset="img/hero-caixas.webp 1200w, img/hero-caixas-2x.webp 2000w" sizes="(min-width:900px) 54vw, 100vw" width="1200" height="943" alt="Dr. Vitor Coutinho de jaleco, no meio dos cursos do Clube do Plantonista" fetchpriority="high" draggable="false"></figure>
+    <div class="texto-abre">
+      <h1>Todos os meus cursos de emergência. <span class="vm">Vitalícios.</span></h1>
+      <p class="sub-t sem-video">O <b>Clube do Plantonista</b> é a plataforma com todos os meus cursos de emergência, dois aplicativos e uma turma de plantonistas comigo, para você abrir a porta do plantão sabendo o que fazer, qual dose e com quem confirmar.</p>
+      <p class="sub-t so-video">Assista ao vídeo abaixo e veja tudo o que está incluso no <b>Clube do Plantonista</b>.</p>
+      <div class="video" id="video"></div>
+      <a class="bt" href="#oferta" data-popup id="bt-abre">Quero entrar no Clube do Plantonista</a>
+      <p class="depois" data-f="botaoDepois"></p>
+    </div>
+  </div>
+  <a class="chamada" href="#cursos"><b>Confira tudo o que está incluso no Clube do Plantonista nesta Black Friday</b><i aria-hidden="true">↓</i></a>
+</div></div>
+
+<!-- 2 · os cursos, um por um -->
+<section class="cursos" id="cursos"><div class="lado">
+  <div class="estreito">
+    <h2>Conheça o <span class="vm">Clube do Plantonista</span></h2>
+    <p class="texto">Todos os cursos de emergência, os aplicativos e a comunidade, num lugar só. Cada um descomplica uma parte do seu plantão.</p>
+  </div>
+  <div class="palco">
+    <div class="cf" id="cf" aria-label="Cursos e ferramentas do Clube do Plantonista"></div>
+    <div class="painel" aria-live="polite">
+      <div class="troca" id="painel"></div>
+      <div class="setas"><button type="button" data-dir="-1" aria-label="Anterior">←</button><button type="button" data-dir="1" aria-label="Próximo">→</button></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 3 · promessa -->
+<section class="promessa-s"><div class="lado"><div class="grade">
+  <div class="cab">
+    <h2>Seja o médico que a equipe chama quando o caso <span class="vm">complica.</span></h2>
+    <p class="texto">O Clube junta tudo o que eu ensino de emergência, as ferramentas que fazem a conta por você e uma turma de plantonistas comigo lá dentro. É como ter um plantão inteiro de gente boa do seu lado, todo dia.</p>
+  </div>
+  <ul class="cenas">
+    <li><b>A porta abre e entram três pacientes graves.</b>Você sabe para qual olhar primeiro.</li>
+    <li><b>O monitor dispara em 180.</b>Você decide entre choque e remédio sem travar.</li>
+    <li><b>A pressão caiu e o paciente está chocado.</b>Você sabe qual droga, quanto e como diluir, até quando a UPA não tem bomba de infusão.</li>
+    <li><b>A frequência despencou para 30 e poucos.</b>Atropina, marca-passo ou dá para esperar: você sabe o próximo passo.</li>
+    <li><b>Três da manhã, um eletro estranho na sua mão.</b>Em vez de mandar foto para um colega e torcer para ele estar acordado, você manda na Comunidade.</li>
+  </ul>
+</div></div></section>
+
+<!-- 4 · empilhamento: a lista e a soma vêm de oferta.js -->
+<section class="leva" id="leva"><div class="lado">
+  <div class="estreito">
+    <h2>Tudo o que você leva entrando no Clube</h2>
+  </div>
+  <img class="caixa" src="img/caixa-completa-15.webp" srcset="img/caixa-completa-15.webp 1200w, img/caixa-completa-15-2x.webp 1920w" sizes="(min-width:900px) 960px, 112vw" width="1200" height="933" alt="As caixas dos cursos e ferramentas do Clube do Plantonista" loading="lazy" draggable="false">
+  <ol class="pilha" id="pilha"></ol>
+  <div class="soma">
+    <p>Tudo isso, separado</p>
+    <s data-soma></s>
+  </div>
+  <ul class="mais">
+    <li><b>Acesso vitalício</b> a todos os cursos do Clube.</li>
+    <li><b>Tudo o que eu lançar daqui para a frente</b> dentro do Clube entra para você, sem pagar nada a mais.</li>
+  </ul>
+</div></section>
+
+<!-- 5 · os bônus, antes do botão da oferta -->
+<section class="bonus" id="bonus"><div class="lado">
+  <div class="estreito"><h2>E entrando agora, você ainda leva</h2></div>
+  <ul class="lista-b">
+    <li><h3 data-f="appsTitulo"></h3><p data-f="appsTexto"></p></li>
+    <li id="b-extra"><h3 id="b-extra-t"></h3><p>Um acesso extra completo para você dar de presente: para o colega que divide plantão com você, para o marido ou a esposa que também é médico, para o amigo que acabou de começar. Mais <b data-soma></b> em conteúdo para outra pessoa. Depois da compra, é só indicar quem vai ganhar.</p></li>
+  </ul>
+</div></section>
+
+<!-- 6 · fechamento (sem preço na página; o preço aparece só no checkout) -->
+<section class="fecha" id="oferta"><div class="lado">
+  <div class="estreito">
+    <h2 data-f="fechaTitulo"></h2>
+    <div class="oferta">
+      <p class="de">Clube do Plantonista completo: os cursos de emergência, Dose Certa, ECG GO, Kit de Bolso, PreceptorIAs e Comunidade. Separado, <s data-soma></s></p>
+      <p class="rotulo">Na Black do Plantonista</p>
+      <p class="parc" id="condicao">Condição especial de Black Friday</p>
+      <p class="forma">Pix ou cartão, com 30 dias de garantia</p>
+      <a class="bt" href="#oferta" data-popup>Quero garantir minha condição</a>
+    </div>
+    <div class="placar" data-placar role="timer"></div>
+    <p class="quando" data-f="fechaQuando"></p>
+  </div>
+</div></section>
+
+<!-- 7 · depoimentos (os escritos do e-book "10 verdades", os mesmos da live dos alunos) -->
+<section class="prova"><div class="lado">
+  <div class="estreito">
+    <h2>Mais de 600 alunos já estudam eletro e emergência comigo</h2>
+  </div>
+  <div class="falas">
+    <figure><blockquote>Suas aulas são ótimas, didática excelente. Muitas vezes, quando estamos na emergência, chegam casos muito parecidos.</blockquote><figcaption>Larissa L.</figcaption></figure>
+    <figure><blockquote>Discutir casos clínicos na prática com um professor de cardio tão bom é sensacional. Me ajudou a destravar vários pontos.</blockquote><figcaption>Mayara R.</figcaption></figure>
+    <figure><blockquote>Agradeço ao mestre Dr. Vitor Coutinho por nos fornecer tantos materiais para nos auxiliar na prática!</blockquote><figcaption>Allan S.</figcaption></figure>
+    <figure><blockquote>Didática boa e de fácil entendimento. Direto ao ponto.</blockquote><figcaption>Lucas F.</figcaption></figure>
+  </div>
+</div></section>
+
+<!-- 8 · quem é: quem não é aluno ainda não conhece o Dr. Vitor -->
+<section class="quem"><div class="lado"><div class="grade">
+  <figure><img src="img/quem-vitor.webp" width="1200" height="1800" alt="Dr. Vitor Coutinho no consultório" loading="lazy" draggable="false"></figure>
+  <div class="texto-quem">
+    <h2>Prazer, eu sou o <span style="white-space:nowrap">Dr. Vitor.</span></h2>
+    <p class="texto">Sou cardiologista, doutor em Cardiologia pela USP, e passei pelo InCor, pelo Hospital Albert Einstein e pela Beneficência Portuguesa. Foram dez anos de emergência.</p>
+    <p class="texto">Hoje sou professor de emergências cardiológicas. No Clube do Plantonista eu junto tudo o que ensino sobre plantão num lugar só, e tudo o que eu lançar depois entra para você.</p>
+  </div>
+</div></div></section>
+
+<!-- 9 · garantia -->
+<section class="garantia"><div class="lado"><div class="grade">
+  <div class="selo" aria-hidden="true"><b>30</b><span>dias</span></div>
+  <div class="txt">
+    <h2>O risco fica todo comigo.</h2>
+    <p class="texto">Você tem <b>30 dias de garantia</b>, o máximo que a plataforma permite. Entre e use nos seus próximos plantões, sem correr contra o prazo como nos cursos que dão só 7 dias.</p>
+    <p class="texto">Se dentro desses 30 dias achar que não é para você, peça o reembolso e receba o seu dinheiro de volta, inteiro, sem pergunta e sem burocracia. E se passarem os 30 dias e alguma coisa não te agradar, fale com a equipe ou comigo: o seu caso vai ser olhado de perto.</p>
+  </div>
+</div></div></section>
+
+<!-- 10 · perguntas -->
+<section class="perguntas"><div class="lado">
+  <div class="estreito"><h2>Algumas perguntas</h2></div>
+  <div class="lista">
+    <details><summary>Preciso ter feito o ECG Descomplicado?</summary><p>Não. O ECG Descomplicado já vem dentro do Clube, junto com os outros cursos.</p></details>
+    <details><summary>O Clube é para mim?</summary><p>Ele foi feito para o médico que dá plantão, formado há pouco ou há muitos anos. Se você é estudante, pode entrar, sabendo que o foco é o plantão. Se é de outra área da saúde, saiba que a abordagem é focada no médico.</p></details>
+    <details><summary>Recebo tudo no dia da compra?</summary><p>Não. O que está pronto você abre na hora, como o ECG Descomplicado, o ECG GO e o Dose Certa, e o resto vai entrando com data, avisada dentro do Clube. A Comunidade começa com a Black.</p></details>
+    <details><summary>Por quanto tempo tenho acesso?</summary><p data-f="faqTempo"></p></details>
+    <details id="faq-preco"><summary>Quanto custa?</summary><p>A condição especial aparece no próximo passo, à vista e parcelada, antes de qualquer pagamento. Dá para pagar com Pix ou cartão.</p></details>
+  </div>
+  <div class="final"><a class="bt" href="#oferta" data-popup>Quero entrar no Clube do Plantonista</a></div>
+</div></section>
+</main>
+
+<footer>Instituto VC de Ensino Médico LTDA · CNPJ 62.218.072/0001-67 · Ubá/MG</footer>
+
+<div class="barra" id="barra" aria-hidden="true"><div class="lado"><p class="info">Acaba em<b id="barra-t">--:--:--</b></p><a class="bt" href="#oferta" data-popup tabindex="-1">Quero entrar no Clube</a></div></div>
+
+<div class="insc" id="insc" role="dialog" aria-modal="true" aria-labelledby="insc-t" hidden>
+  <div class="caixa-i">
+    <button type="button" class="x" id="insc-x" aria-label="Fechar">×</button>
+    <h2 id="insc-t">Preencha abaixo para prosseguir e garantir a sua condição especial</h2>
+    <form id="insc-f" novalidate>
+      <div><label for="i-nome">Nome</label><input class="in" id="i-nome" name="nome" autocomplete="name" autocapitalize="words" maxlength="120" required></div>
+      <div><label for="i-email">E-mail</label><input class="in" id="i-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" maxlength="200" required></div>
+      <div><label for="i-whats">WhatsApp</label>
+        <div class="tel">
+          <button type="button" class="ddi" id="i-ddi" aria-haspopup="listbox" aria-expanded="false" aria-controls="i-paises"><img id="i-flag" src="https://flagcdn.com/w40/br.png" width="22" height="16" alt="" draggable="false"><span id="i-cod">+55</span><i aria-hidden="true">▾</i></button>
+          <input class="in" id="i-whats" name="telefone" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" placeholder="(11) 99999-9999" required>
+          <div class="paises" id="i-paises" hidden>
+            <input class="in" id="i-busca" type="search" placeholder="Buscar país" autocomplete="off" aria-label="Buscar país">
+            <ul id="i-lista" role="listbox" aria-label="Países"></ul>
+          </div>
+        </div>
+      </div>
+      <p class="erro" id="insc-erro" role="alert" hidden></p>
+      <button class="bt" type="submit" id="insc-bt">Prosseguir</button>
+    </form>
+  </div>
+</div>
+<script src="paises.js" defer></script>
+
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const O = window.OFERTA;
+  const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const dois = k => String(k).padStart(2, "0");
+  const aqui = new URLSearchParams(location.search), TESTE = aqui.get("teste") === "1";
+  const NO_AR = /(^|\.)vitorcoutinhoandrade\.com$/.test(location.hostname); // prévia local não grava lead
+  const preenchido = v => !!v && !/\{\{/.test(v);
+
+  // ---------- a lista de produtos: carrossel, empilhamento e soma saem daqui ----------
+  const ATIVOS = O.PRODUTOS.filter(p => p.ativo);
+  const reais = v => "R$ " + v.toLocaleString("pt-BR");
+  const SOMA = reais(ATIVOS.reduce((t, p) => t + p.valor, 0));
+  const valorDe = capa => { const p = O.PRODUTOS.find(x => x.capa === capa); return reais(p.valor); };
+  document.querySelectorAll("[data-soma]").forEach(el => { el.textContent = SOMA; });
+  $("pilha").innerHTML = ATIVOS.filter(p => p.noEmpilhamento !== false).map(p => `<li><h3>${p.nomePilha || p.nome}</h3><span class="v${p.valor ? "" : " gratis"}">${p.valor ? reais(p.valor) + (p.sufixo || "") : "Grátis"}</span><p>${p.linha || p.promessa}.</p>${p.apps ? '<p class="lib apps" data-f="appsNaLista"></p>' : ""}${p.libera ? `<p class="lib">${p.libera}</p>` : ""}</li>`).join("");
+
+  // ---------- as duas fases: todo texto que depende da data vem de O.FASES, pelos data-f ----------
+  const VIRADA = new Date(O.VIRADA_APPS).getTime(), FIM_CARRINHO = new Date(O.FIM_CARRINHO).getTime();
+  const pedida = (TESTE || !NO_AR) ? +aqui.get("fase") : 0; // ?fase= só vale na prévia ou com ?teste=1
+  const travada = O.FORCAR_FASE || pedida;
+  let fase = travada || (Date.now() <= VIRADA ? 1 : 2);
+  const preenche = t => t.replace(/\{(ecg-go|dose-certa|soma)\}/g, (_, k) => k === "soma" ? SOMA : valorDe(k));
+  function pinta() {
+    const F = O.FASES[fase];
+    document.querySelectorAll("[data-f]").forEach(el => { el.innerHTML = preenche(F[el.dataset.f]); });
+    document.querySelectorAll("[data-placar]").forEach(el => el.setAttribute("aria-label", F.topoAria));
+    const soAteVirada = O.ACESSO_EXTRA_SO_ATE_A_VIRADA;
+    $("b-extra-t").textContent = "O Clube inteiro, em dobro" + (soAteVirada ? ", só até 11/11, às 23h59" : "");
+    $("b-extra").hidden = soAteVirada && fase === 2;
+  }
+  pinta();
+
+  // preço: fora da página até o Matheus mandar mostrar (PRECO preenchido em oferta.js)
+  if (preenchido(O.PRECO)) { $("condicao").textContent = O.PRECO; $("faq-preco").hidden = true; }
+
+  // ---------- o vídeo do pitch: entra só com VTURB_PLAYER preenchido; sem ele, a primeira dobra usa a foto ----------
+  if (O.VTURB_PLAYER) {
+    $("video").innerHTML = `<vturb-smartplayer id="vid-${O.VTURB_PLAYER}" style="display:block;margin:0 auto;width:100%"><div class="vturb-player-placeholder" style="position:relative;width:100%;padding:56.25% 0 0;z-index:0;background-color:black"></div></vturb-smartplayer>`;
+    const s = document.createElement("script");
+    s.src = `https://scripts.converteai.net/${O.VTURB_CONTA}/players/${O.VTURB_PLAYER}/v4/player.js`; s.async = true;
+    document.head.appendChild(s);
+  }
+
+  // ---------- os produtos com capa: carrossel com o painel do curso ----------
+  const C = ATIVOS.filter(p => p.capa);
+  const cf = $("cf"), n = C.length;
+  cf.innerHTML = C.map(c => `<figure class="cf-card"><img src="img/cursos/${c.capa}.webp" width="720" height="960" alt="${c.nome}" draggable="false" loading="lazy"></figure>`).join("");
+  const cards = [...cf.children];
+  $("painel").innerHTML = C.map(c => `<div class="item"><h3>${c.nome}</h3><p class="promessa">${c.promessa}</p><p class="desc">${c.desc}</p></div>`).join("");
+  const itens = [...$("painel").children];
+  let atual = 0, x0 = null, arrastou = false, timer = null, visto = false;
+  function desenha() {
+    const passo = cards[0].offsetWidth * (innerWidth < 900 ? 0.52 : 0.62);
+    cards.forEach((el, i) => {
+      let d = i - atual; if (d > n / 2) d -= n; if (d < -n / 2) d += n;
+      const a = Math.abs(d);
+      el.style.transform = `translateX(${d * passo}px) translateZ(${-a * 150}px) rotateY(${-Math.sign(d) * Math.min(a, 1) * 34}deg) scale(${a ? 0.84 : 1})`;
+      el.style.opacity = a > 2 ? 0 : a === 2 ? 0.35 : 1;
+      el.style.visibility = a > 2 ? "hidden" : "visible";
+      el.style.zIndex = 50 - a; el.style.filter = a ? "brightness(.55)" : "none";
+    });
+    itens.forEach((el, i) => el.classList.toggle("ver", i === atual));
+  }
+  const vai = k => { atual = (atual + k + n) % n; desenha(); };
+  const auto = () => { if (calmo || !visto) return; clearInterval(timer); timer = setInterval(() => vai(1), 5000); };
+  document.querySelectorAll(".setas button").forEach(b => b.addEventListener("click", () => { vai(+b.dataset.dir); auto(); }));
+  cards.forEach((el, i) => el.addEventListener("click", () => { if (arrastou) { arrastou = false; return; } if (i !== atual) { atual = i; desenha(); auto(); } }));
+  cf.addEventListener("pointerdown", e => { x0 = e.clientX; arrastou = false; });
+  addEventListener("pointerup", e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) { arrastou = true; vai(dx < 0 ? 1 : -1); auto(); } });
+  addEventListener("pointercancel", () => { x0 = null; });
+  cf.addEventListener("mouseenter", () => clearInterval(timer)); cf.addEventListener("mouseleave", auto);
+  addEventListener("resize", desenha); desenha();
+  new IntersectionObserver((es, ob) => { if (es[0].isIntersecting) { visto = true; auto(); ob.disconnect(); } }, { threshold: 0.5 }).observe(cf);
+
+
+  // ---------- contagem: na fase 1 até a virada dos apps, na fase 2 até o fim do carrinho ----------
+  const UNID = [["dias", 86400], ["horas", 3600], ["min", 60], ["seg", 1]];
+  const placas = [...document.querySelectorAll("[data-placar]")].map(box => {
+    box.innerHTML = UNID.map((u, i) => (i ? '<span class="sep" aria-hidden="true">:</span>' : "") +
+      `<div class="u"><div class="par"><span class="fl"></span><span class="fl"></span></div><span class="r">${u[0]}</span></div>`).join("");
+    const fls = [...box.querySelectorAll(".fl")];
+    fls.forEach(el => { el.innerHTML = '<span class="h t"><i></i></span><span class="h b"><i></i></span>'; el.v = null; });
+    return fls;
+  });
+  function vira(el, v) {
+    if (el.v === v) return;
+    const velho = el.v; el.v = v;
+    const t = el.querySelector(".t i"), b = el.querySelector(".b i");
+    el.querySelectorAll(".ft,.fb").forEach(x => x.remove());
+    if (velho === null || calmo || document.hidden) { t.textContent = b.textContent = v; return; }
+    t.textContent = v; b.textContent = velho;
+    const ft = document.createElement("span"), fb = document.createElement("span");
+    ft.className = "h ft"; ft.innerHTML = "<i>" + velho + "</i>";
+    fb.className = "h fb"; fb.innerHTML = "<i>" + v + "</i>";
+    const fim = () => { if (!fb.isConnected) return; b.textContent = v; ft.remove(); fb.remove(); };
+    fb.addEventListener("animationend", fim); setTimeout(fim, 900);
+    el.append(ft, fb);
+  }
+  const barraT = $("barra-t");
+  function conta() {
+    if (!travada && fase === 1 && Date.now() > VIRADA) { fase = 2; pinta(); } // virou meia-noite com a página aberta
+    const fim = fase === 1 ? VIRADA : FIM_CARRINHO;
+    const t = Math.floor(Math.max(0, fim - Date.now()) / 1000);
+    document.documentElement.classList.toggle("encerrado", fase === 2 && t === 0);
+    const k = UNID.map(([, s], i) => i ? Math.floor(t % UNID[i - 1][1] / s) : Math.floor(t / s));
+    const digitos = k.map(x => dois(Math.min(x, 99))).join("");
+    placas.forEach(fls => fls.forEach((el, i) => vira(el, digitos[i])));
+    barraT.textContent = (k[0] ? k[0] + "d " : "") + [k[1], k[2], k[3]].map(dois).join(":");
+  }
+  conta(); setInterval(conta, 1000);
+
+  addEventListener("contextmenu", e => { if (e.target.closest("figure,.video,.caixa,.cf,.hero")) e.preventDefault(); });
+  addEventListener("dragstart", e => { if (e.target.closest && e.target.closest("img,figure,.video")) e.preventDefault(); });
+
+  // ---------- pop-up: nome, e-mail e WhatsApp → grava no Supabase → checkout da Hotmart já preenchido ----------
+  // A gravação espera no máximo 2,5 s; se falhar, a pessoa segue para a Hotmart do mesmo jeito.
+  const SUPA = "https://hzpekxhdosiyovimgwfe.supabase.co", SUPA_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh6cGVreGhkb3NpeW92aW1nd2ZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzMDgwMzEsImV4cCI6MjEwNTg4NDAzMX0.G0Hmx_MzX3CF_PuqEQd5g9hlwWATrd3Z8s18i-iF0n8";
+  const LINK = O.LINK_CHECKOUT, LINK_OK = /^https:\/\/pay\.hotmart\.com\//.test(LINK) && !/mkvniz3k/.test(LINK); // o checkout dos alunos nunca passa
+  const UTMS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+  const API_PAIS = "https://raio-x-plantao.vercel.app/api/pais"; // o mesmo da captação da Black geral (país pelo IP)
+  const insc = $("insc"), fI = $("insc-f"), erroI = $("insc-erro"), whats = $("i-whats"), btDdi = $("i-ddi"), caixaP = $("i-paises"), busca = $("i-busca"), listaP = $("i-lista");
+  const BR = { nome: "Brasil", cod: "br", num: 55 };
+  let ddi = BR, ultimoFoco = null, indo = false;
+  const bandeira = c => `https://flagcdn.com/w40/${c}.png`;
+  const semAcento = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const escH = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const mascara = (v, d0) => {
+    const cru = String(v || ""), k = String(d0.num);
+    let d = cru.replace(/\D/g, "");
+    if ((cru.trim().startsWith("+") || (d0.num === 55 && d.length > 11)) && d.startsWith(k)) d = d.slice(k.length);
+    if (d0.num !== 55) return d.slice(0, 15);
+    d = d.replace(/^0+/, ""); if (d.length > 11 && d.startsWith("55")) d = d.slice(2);
+    d = d.slice(0, 11);
+    return d.length > 6 ? `(${d.slice(0, 2)}) ${d.slice(2, d.length - 4)}-${d.slice(-4)}` : d.length > 2 ? `(${d.slice(0, 2)}) ${d.slice(2)}` : d;
+  };
+  const poeDdi = (novo, limpar) => {
+    ddi = novo; $("i-flag").src = bandeira(ddi.cod); $("i-cod").textContent = "+" + ddi.num;
+    btDdi.setAttribute("aria-label", `Código do país: ${ddi.nome} +${ddi.num}`);
+    whats.placeholder = ddi.num === 55 ? "(11) 99999-9999" : "Número com código de área";
+    if (limpar) whats.value = "";
+  };
+  let paisIp = null;
+  const acharPais = () => paisIp || (paisIp = fetch(API_PAIS).then(r => r.json()).then(j => j.pais || "").catch(() => ""));
+  const desenhaP = (filtro = "") => {
+    if (typeof PAISES === "undefined") return;
+    const q2 = filtro.trim(), dig = /^[+\d]/.test(q2) ? q2.replace(/\D/g, "") : null, fl = semAcento(q2);
+    listaP.innerHTML = PAISES.filter(([nm, , k]) => dig !== null ? String(k).startsWith(dig) : semAcento(nm).includes(fl))
+      .map(([nm, cod, k]) => `<li role="option" data-c="${cod}"><img src="${bandeira(cod)}" width="22" height="16" alt="" loading="lazy" draggable="false"><span>${escH(nm)}</span><b>+${k}</b></li>`).join("");
+  };
+  const abreP = sim => {
+    caixaP.hidden = !sim; btDdi.setAttribute("aria-expanded", sim);
+    if (!sim) return;
+    busca.value = ""; desenhaP(); caixaP.scrollIntoView({ block: "nearest" });
+    if (!matchMedia("(pointer:coarse)").matches) setTimeout(() => busca.focus(), 50);
+  };
+  const escolheP = li => { const x = PAISES.find(p => p[1] === li.dataset.c); poeDdi({ nome: x[0], cod: x[1], num: x[2] }, true); abreP(false); whats.focus(); };
+  btDdi.onclick = () => abreP(caixaP.hidden);
+  busca.oninput = () => desenhaP(busca.value);
+  busca.onkeydown = e => {
+    if (e.key === "Enter") { e.preventDefault(); const li = listaP.querySelector("li"); if (li) escolheP(li); }
+    else if (e.key === "Escape") { e.stopPropagation(); abreP(false); btDdi.focus(); }
+  };
+  listaP.onclick = e => { const li = e.target.closest("li"); if (li) escolheP(li); };
+  whats.oninput = () => { whats.value = mascara(whats.value, ddi); };
+
+  // o teclado do celular encolhe a área visível: o pop-up acompanha a altura que sobra
+  const vv = window.visualViewport;
+  const ajustaAltura = () => { if (vv) { insc.style.height = vv.height + "px"; insc.style.top = vv.offsetTop + "px"; } };
+  if (vv) { vv.addEventListener("resize", ajustaAltura); vv.addEventListener("scroll", ajustaAltura); }
+  fI.addEventListener("focusin", e => { if (e.target.matches(".in")) setTimeout(() => e.target.scrollIntoView({ block: "center", behavior: "smooth" }), 250); });
+
+  let guardado = {};
+  try { guardado = JSON.parse(localStorage.getItem("pv-bf26-geral-contato") || "{}"); } catch (e) {}
+  function abrir(a) {
+    ultimoFoco = a; erroI.hidden = true;
+    if (!fI.nome.value && guardado.nome) fI.nome.value = guardado.nome;
+    if (!fI.email.value && guardado.email) fI.email.value = guardado.email;
+    if (!whats.value && guardado.ddi) { poeDdi(guardado.ddi); whats.value = mascara(guardado.tel || "", ddi); }
+    if (!whats.value && !guardado.ddi) acharPais().then(cod => {
+      const x = cod && typeof PAISES !== "undefined" && PAISES.find(p => p[1] === cod);
+      if (x && !whats.value) poeDdi({ nome: x[0], cod: x[1], num: x[2] });
+    });
+    insc.hidden = false; ajustaAltura();
+    void insc.offsetWidth; insc.classList.add("ver"); // força o layout antes, para a transição rodar
+    document.documentElement.classList.add("travado");
+    if (!matchMedia("(pointer:coarse)").matches) setTimeout(() => fI.nome.focus(), 60);
+  }
+  function fechar() {
+    insc.classList.remove("ver"); abreP(false);
+    document.documentElement.classList.remove("travado");
+    setTimeout(() => { if (!insc.classList.contains("ver")) insc.hidden = true; }, 200);
+    if (ultimoFoco) ultimoFoco.focus({ preventScroll: true });
+  }
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a[data-popup]");
+    if (a) { e.preventDefault(); abrir(a); return; }
+    if (!caixaP.hidden && !e.target.closest(".paises, .ddi")) abreP(false);
+  });
+  $("insc-x").onclick = fechar;
+  insc.addEventListener("click", e => { if (e.target === insc) fechar(); });
+  addEventListener("keydown", e => { if (e.key === "Escape" && insc.classList.contains("ver")) fechar(); });
+  addEventListener("pageshow", e => { if (e.persisted) { indo = false; $("insc-bt").textContent = "Prosseguir"; } }); // voltou do checkout
+
+  const falha = (msg, campo) => { erroI.textContent = msg; erroI.hidden = false; if (campo) campo.focus(); };
+  fI.addEventListener("submit", async e => {
+    e.preventDefault();
+    if (indo) return;
+    erroI.hidden = true;
+    if (!LINK_OK) return falha("O checkout desta página ainda não foi configurado.");
+    const nome = fI.nome.value.trim().replace(/\s+/g, " "), email = fI.email.value.trim().toLowerCase();
+    const num = ddi.num === 55 ? whats.value.replace(/\D/g, "").replace(/^0+/, "").replace(/^55(?=\d{10,11}$)/, "") : whats.value.replace(/\D/g, "");
+    if (nome.length < 2) return falha("Escreva o seu nome.", fI.nome);
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return falha("Confira o e-mail.", fI.email);
+    if (ddi.num === 55 ? !/^[1-9]\d(9\d{8}|[2-8]\d{7})$/.test(num) : num.length < 6) return falha(ddi.num === 55 ? "Coloque o WhatsApp com DDD." : "Confira o número do WhatsApp.", whats);
+    try { localStorage.setItem("pv-bf26-geral-contato", JSON.stringify({ nome, email, tel: num, ddi })); } catch (err) {}
+    indo = true; $("insc-bt").textContent = "Abrindo o checkout…";
+
+    // checkout: a origem da página (src e sck fixos), as UTMs que chegaram aqui e os dados para a Hotmart preencher
+    const u = new URL(LINK);
+    u.searchParams.set("src", "pagina"); u.searchParams.set("sck", "black-geral_pagina");
+    u.searchParams.set("utm_source", "pagina"); u.searchParams.set("utm_campaign", "black-geral");
+    UTMS.forEach(k => { if (aqui.get(k)) u.searchParams.set(k, aqui.get(k)); });
+    u.searchParams.set("name", nome); u.searchParams.set("email", email);
+    if (ddi.num === 55) { u.searchParams.set("phoneac", num.slice(0, 2)); u.searchParams.set("phonenumber", num.slice(2)); }
+
+    const utm = {}; UTMS.forEach(k => { if (aqui.get(k)) utm[k] = aqui.get(k); });
+    const corpo = { d: { nome, email, whatsapp: String(ddi.num) + num, utm, src: aqui.get("src") || aqui.get("origem") || "",
+      url: location.origin + location.pathname, referrer: document.referrer, fbclid: aqui.get("fbclid") || "", teste: TESTE } };
+    const grava = !NO_AR ? Promise.resolve() : fetch(SUPA + "/rest/v1/rpc/pv_bf26_geral_salvar", {
+      method: "POST", keepalive: true, body: JSON.stringify(corpo),
+      headers: { apikey: SUPA_ANON, authorization: "Bearer " + SUPA_ANON, "content-type": "application/json" },
+    }).catch(() => {});
+    if (typeof fbq === "function") { fbq("track", "InitiateCheckout", { content_name: "Clube do Plantonista", content_ids: ["8869297"] }); }
+    await Promise.all([Promise.race([grava, new Promise(r => setTimeout(r, 2500))]), new Promise(r => setTimeout(r, 400))]); // 400 ms para os pixels saírem
+    location.href = u.toString();
+  });
+
+  // ---------- barra fixa: aparece quando o botão da primeira dobra sai da tela por cima ----------
+  const barra = $("barra");
+  // e some enquanto o bloco do preço está na tela (o botão dele já vai para o checkout)
+  let passou = false, noPreco = false;
+  const mostra = () => { const v = passou && !noPreco; barra.classList.toggle("ver", v); barra.setAttribute("aria-hidden", !v); };
+  new IntersectionObserver(es => { passou = !es[0].isIntersecting && es[0].boundingClientRect.top < 0; mostra(); }).observe($("bt-abre"));
+  new IntersectionObserver(es => { noPreco = es[0].isIntersecting; mostra(); }, { threshold: 0.25 }).observe($("oferta"));
+})();
+</script>
+</body>
+</html>

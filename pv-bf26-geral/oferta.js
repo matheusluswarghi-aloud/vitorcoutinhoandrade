@@ -15,7 +15,8 @@ window.OFERTA = {
   PRECO: "{{PRECO}}",
 
   // ID do player na VTurb (conta ECG): "6aecdbbcd...". Vazio = sem vídeo: a primeira dobra usa a foto do Vitor com as caixas.
-  VTURB_PLAYER: "",
+  // 12/11: corte do pitch da live geral de 11/11, 23:05 (../../corte-pitch-live-geral/). Aprovado pelo Matheus: "Aprovado, sobe".
+  VTURB_PLAYER: "6af64c56bb399ceddb9f24e7",
   VTURB_CONTA: "135cfe07-108d-4275-a884-f7567ee21964",
 
   // As duas fases trocam sozinhas pelo relógio de Brasília. FORCAR_FASE: 1 ou 2 trava uma delas; 0 = automático.

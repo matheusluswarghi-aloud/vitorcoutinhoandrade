@@ -35,6 +35,8 @@
   --fundo:#0F0E0D; --fundo2:#161412; --fundo3:#1D1A17; --fio:#2E2A26;
   --marfim:#F2ECE4; --cinza:#ADA59C; --cinza2:#7F776F;
   --vermelho:#D63A2E; --vermelho-h:#BC2F24; --brasa:rgba(214,58,46,.30);
+  /* botão de ação é verde (Matheus, 12/11: verde = a escolha certa; vermelho = recusar). Branco sobre #15803D: 5,0:1 */
+  --verde:#15803D; --verde-h:#126B33;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;background:var(--fundo);overflow-x:hidden;scroll-behavior:smooth}
@@ -53,8 +55,8 @@ h2{font-weight:800;font-size:clamp(30px,7.6vw,52px);line-height:1.05;letter-spac
 [data-soma]{white-space:nowrap}
 .texto{font-size:18px;line-height:1.55;color:var(--cinza);margin-top:18px}
 .texto b{color:var(--marfim);font-weight:600}
-.bt{display:block;text-align:center;width:100%;max-width:460px;background:var(--vermelho);color:#fff;text-decoration:none;font-weight:800;font-size:16px;letter-spacing:-.01em;padding:15px 14px;border-radius:4px;box-shadow:0 18px 40px -16px rgba(214,58,46,.7);transition:background .15s,transform .15s}
-.bt:hover{background:var(--vermelho-h);transform:translateY(-1px)}
+.bt{display:block;text-align:center;width:100%;max-width:460px;background:var(--verde);color:#fff;text-decoration:none;font-weight:800;font-size:16px;letter-spacing:-.01em;padding:15px 14px;border-radius:4px;box-shadow:0 18px 40px -16px rgba(21,128,61,.7);transition:background .15s,transform .15s}
+.bt:hover{background:var(--verde-h);transform:translateY(-1px)}
 .depois{margin-top:12px;font-size:15px;line-height:1.45;color:var(--cinza)}
 section{padding:80px 0}
 

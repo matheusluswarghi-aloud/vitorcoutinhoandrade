@@ -704,6 +704,9 @@ fbq('track','PageView');
     u.searchParams.set("src", "pagina"); u.searchParams.set("sck", "black-geral_pagina");
     u.searchParams.set("utm_source", "pagina"); u.searchParams.set("utm_campaign", "black-geral");
     UTMS.forEach(k => { if (aqui.get(k)) u.searchParams.set(k, aqui.get(k)); });
+    // link numerado da mensagem (gp-48, api-12: whatsapp/links-numerados.json) vira o sck, para saber qual mensagem vendeu
+    const marca = aqui.get("utm_content") || "";
+    if (/^[a-z]+-\d+$/.test(marca)) u.searchParams.set("sck", "black-geral_" + marca);
     u.searchParams.set("name", nome); u.searchParams.set("email", email);
     if (ddi.num === 55) { u.searchParams.set("phoneac", num.slice(0, 2)); u.searchParams.set("phonenumber", num.slice(2)); }
 

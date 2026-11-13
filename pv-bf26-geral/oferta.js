@@ -16,7 +16,11 @@ window.OFERTA = {
 
   // ID do player na VTurb (conta ECG): "6aecdbbcd...". Vazio = sem vídeo: a primeira dobra usa a foto do Vitor com as caixas.
   // 12/11: corte do pitch da live geral de 11/11, 23:05 (../../corte-pitch-live-geral/). Aprovado pelo Matheus: "Aprovado, sobe".
-  VTURB_PLAYER: "6af64c56bb399ceddb9f24e7",
+  // 13/11: corte VERTICAL do pitch (1080x1920, 1:53, "var pitch live venda 5"), pedido do Matheus: "Eu quero esse vídeo na
+  // página de vendas... a maioria dos acessos são no mobile. Esse vídeo está bem mais direto ao ponto." A página mostra o vídeo
+  // em 9:16. Para voltar ao horizontal de 23 min: VTURB_PLAYER "6af64c56bb399ceddb9f24e7" e, no index.html, aspect-ratio
+  // 16/9 no .video e padding 56.25% no placeholder.
+  VTURB_PLAYER: "6af6cdfdaa4d6c7f9588c31b",
   VTURB_CONTA: "135cfe07-108d-4275-a884-f7567ee21964",
 
   // As duas fases trocam sozinhas pelo relógio de Brasília. FORCAR_FASE: 1 ou 2 trava uma delas; 0 = automático.

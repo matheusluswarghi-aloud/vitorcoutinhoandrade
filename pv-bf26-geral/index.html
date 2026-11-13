@@ -94,11 +94,16 @@ section{padding:80px 0}
 .abre .hero{margin:-20px -20px 0}
 .abre .hero img{width:100%;aspect-ratio:1/.62;object-fit:cover;object-position:50% 12%;-webkit-mask-image:linear-gradient(180deg,#000 74%,transparent 100%);mask-image:linear-gradient(180deg,#000 74%,transparent 100%)}
 .abre .texto-abre{position:relative;margin-top:-30px}
-.video{display:none;position:relative;margin:24px -20px 0;aspect-ratio:16/9;background:#000;overflow:hidden}
+/* 13/11: vídeo vertical (9:16), quase a tela toda no celular. A largura sai da altura da tela menos o espaço do botão
+   (--alt-video) e nunca passa da tela; a caixa já nasce 9:16, então a página não pula quando o player carrega. */
+:root{--alt-video:calc(100vh - 96px)}
+@supports (height:100svh){:root{--alt-video:calc(100svh - 96px)}}
+.video{display:none;position:relative;--w:min(calc(100% + 40px),calc(var(--alt-video) * .5625));width:var(--w);margin:16px 0 0 calc(50% - var(--w) / 2);aspect-ratio:9/16;background:#000;overflow:hidden}
 .so-video{display:none}
 .com-video .hero,.com-video .sem-video{display:none}
 .com-video .so-video,.com-video .video{display:block}
 .com-video .abre .texto-abre{margin-top:0}
+@media (max-width:599px){.com-video .abre{padding-top:20px}.com-video .abre h1{font-size:clamp(28px,8vw,34px)}.com-video .abre .so-video{display:none}.com-video .abre .bt{margin-top:16px}}
 .abre .bt{margin:24px auto 0}
 .chamada{display:flex;flex-direction:column;align-items:center;gap:10px;margin:44px auto 0;max-width:560px;text-decoration:none}
 .chamada b{font-weight:800;font-size:23px;line-height:1.2;letter-spacing:-.02em}
@@ -233,7 +238,8 @@ footer{padding:30px 24px calc(110px + env(safe-area-inset-bottom));border-top:1p
   .topo .placar{--fh:38px}
   .topo .quando{text-align:left}
   .abre{padding:48px 0 88px}
-  .video{margin:34px auto 0;max-width:880px;border-radius:4px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
+  :root{--alt-video:80vh}
+  .video{--w:min(880px,calc(var(--alt-video) * .5625));margin:30px 0 0 calc(50% - var(--w) / 2);border-radius:4px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
   html:not(.com-video) .abre{padding:20px 0 72px;background:radial-gradient(ellipse 46% 60% at 72% 46%,var(--brasa),transparent 70%)}
   html:not(.com-video) .abre .grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);align-items:center;min-height:min(calc(100vh - 150px),680px)}
   html:not(.com-video) .abre .texto-abre{text-align:left;order:-1;margin-top:0;max-width:540px;position:relative;z-index:2}
@@ -521,7 +527,7 @@ fbq('track','PageView');
 
   // ---------- o vídeo do pitch: entra só com VTURB_PLAYER preenchido; sem ele, a primeira dobra usa a foto ----------
   if (O.VTURB_PLAYER) {
-    $("video").innerHTML = `<vturb-smartplayer id="vid-${O.VTURB_PLAYER}" style="display:block;margin:0 auto;width:100%"><div class="vturb-player-placeholder" style="position:relative;width:100%;padding:56.25% 0 0;z-index:0;background-color:black"></div></vturb-smartplayer>`;
+    $("video").innerHTML = `<vturb-smartplayer id="vid-${O.VTURB_PLAYER}" style="display:block;margin:0 auto;width:100%"><div class="vturb-player-placeholder" style="position:relative;width:100%;padding:177.78% 0 0;z-index:0;background-color:black"></div></vturb-smartplayer>`;
     const s = document.createElement("script");
     s.src = `https://scripts.converteai.net/${O.VTURB_CONTA}/players/${O.VTURB_PLAYER}/v4/player.js`; s.async = true;
     document.head.appendChild(s);

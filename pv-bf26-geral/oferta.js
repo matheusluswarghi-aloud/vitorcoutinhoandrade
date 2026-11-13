@@ -57,7 +57,7 @@ window.OFERTA = {
 
   // A lista manda em tudo: a ordem do carrossel e do empilhamento, e a soma riscada, que é calculada aqui.
   // Ordem dos 4 pilares, começando pelo ECG, igual ao slide 39 do pitch da live geral (11/11): reconhecer, decidir, executar,
-  // Plantão Seguro e Kit, Comunidade por último como fecho. Soma: R$ 8.167, igual ao slide 40.
+  // Plantão Seguro e Kit, Comunidade por último como fecho. Soma: R$ 8.663 com o POCUS (12/11); o slide 40 e o vídeo falam R$ 8.167.
   //   ativo: false fica de fora da página e da soma. POCUS segue desligado.
   //   capa: arquivo em img/cursos (sem capa, o item entra no empilhamento mas não no carrossel).
   //   valor: 0 aparece como "Grátis". apps: true recebe a linha da fase. libera: linha de prazo no empilhamento (nunca data de liberação).
@@ -105,9 +105,11 @@ window.OFERTA = {
     { ativo: true, capa: "plantao-seguro", nome: "Plantão Seguro", valor: 498,
       promessa: "Entre em qualquer plantão sabendo exatamente o que fazer",
       desc: "Tudo o que a faculdade não ensinou: como o plantão funciona de verdade, a passagem que não deixa nada se perder e o raciocínio que protege você e o paciente." },
-    // Desligado (11/11): sem capa e sem caixa no mockup.
-    { ativo: false, capa: "", nome: "POCUS na Emergência", valor: 496,
-      promessa: "O ultrassom à beira do leito ajudando você a decidir na hora" },
+    // 12/11: ligado com a capa aprovada (sem rosto, lilás). Entra somando, R$ 496 (Matheus: "não coloca grátis não, pode somar
+    // para deixar uma ancoragem maior"). A soma da página vira R$ 8.663; o vídeo do pitch segue falando R$ 8.167.
+    { ativo: true, capa: "pocus-na-emergencia", nome: "POCUS na Emergência", valor: 496,
+      promessa: "O ultrassom à beira do leito ajudando você a decidir na hora",
+      desc: "Curso convidado: o ultrassom point of care usado à beira do leito, para somar ao exame clínico na hora de decidir." },
     { ativo: true, capa: "", nome: "Kit de Bolso", valor: 0,
       promessa: "Os guias de consulta rápida do plantão, na palma da mão" },
     { ativo: true, capa: "preceptoria-ecg", nome: "PreceptorIA ECG", nomePilha: "As duas PreceptorIAs", valor: 0,

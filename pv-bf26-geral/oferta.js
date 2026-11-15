@@ -30,6 +30,8 @@ window.OFERTA = {
 
   // Acesso extra: os DOIS bônus de urgência acabam à meia-noite de 11/11, os apps vitalícios e o acesso extra (Vitor e Matheus,
   // 10/11, 22:01). true = "só até" a virada no título do bônus, e o bloco some na fase 2.
+  // 13/11: o acesso extra voltou na Black geral, mas fica fora da página (Matheus: "nao precisa colcoar na pagina nao
+  // sobre o acesso exrta"). O presente vale pelo formulário /acesso-extra/.
   ACESSO_EXTRA_SO_ATE_A_VIRADA: true,
 
   // Os textos que dependem da fase. {ecg-go}, {dose-certa} e {soma} viram os valores da lista de produtos.

@@ -715,6 +715,16 @@ fbq('track','PageView');
     // link numerado da mensagem (gp-48, api-12: whatsapp/links-numerados.json) vira o sck, para saber qual mensagem vendeu
     const marca = aqui.get("utm_content") || "";
     if (/^[a-z]+-\d+$/.test(marca)) u.searchParams.set("sck", "black-geral_" + marca);
+    // 14/11: visita do anúncio do Meta (utm_source=FB, utm_content "nome|id") vira sck black-geral_fb-<id do anúncio> e
+    // xcod black-geral_cj-<id do conjunto>, que vem no utm_medium "nome|id". A Hotmart guarda sck/src/xcod e ignora utm_*.
+    // Só dígitos entram no id; a Hotmart aceita até 255 caracteres (já chegaram sck de 255 em vendas reais).
+    const doMeta = /^(fb|facebook|ig|instagram|meta)$/i.test(aqui.get("utm_source") || "") || /\|\d+$/.test(marca);
+    if (doMeta) {
+      const id = t => ((t || "").match(/\|(\d{6,25})\s*$/) || [])[1] || "";
+      const anuncio = id(marca), conjunto = id(aqui.get("utm_medium"));
+      u.searchParams.set("sck", "black-geral_fb" + (anuncio ? "-" + anuncio : ""));
+      if (conjunto) u.searchParams.set("xcod", "black-geral_cj-" + conjunto);
+    }
     u.searchParams.set("name", nome); u.searchParams.set("email", email);
     if (ddi.num === 55) { u.searchParams.set("phoneac", num.slice(0, 2)); u.searchParams.set("phonenumber", num.slice(2)); }
 

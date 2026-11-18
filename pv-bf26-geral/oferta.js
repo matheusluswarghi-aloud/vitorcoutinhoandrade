@@ -25,7 +25,12 @@ window.OFERTA = {
 
   // As duas fases trocam sozinhas pelo relógio de Brasília. FORCAR_FASE: 1 ou 2 trava uma delas; 0 = automático.
   VIRADA_APPS: "2026-11-11T23:59:59-03:00", // até aqui, fase 1: ECG GO e Dose Certa vitalícios
-  FIM_CARRINHO: "2026-11-14T23:59:59-03:00", // até aqui, fase 2: um ano de acesso aos apps
+  // 16/11: o carrinho segue aberto até 30/11. A página não mostra esta data em lugar nenhum e nada fecha nela.
+  FIM_CARRINHO: "2026-11-30T23:59:59-03:00",
+  // 18/11: a contagem da fase 2 vai até aqui, só os números, sem texto (Matheus: "Bota um timer só. Não precisa de nenhuma
+  // cópia... Pra não ser mentira... uma contagem que acaba em... nessa sexta-feira... chegando na sexta, a gente vê o que a
+  // gente faz com o timer"). Zerou: a contagem some, sem mensagem; botão, checkout e oferta seguem iguais.
+  TIMER_ATE: "2026-11-20T23:59:59-03:00",
   FORCAR_FASE: 0,
 
   // Acesso extra: os DOIS bônus de urgência acabam à meia-noite de 11/11, os apps vitalícios e o acesso extra (Vitor e Matheus,
@@ -40,6 +45,7 @@ window.OFERTA = {
     1: {
       topoQuando: "Apps vitalícios e acesso extra acabam em",
       topoAria: "Tempo até o fim dos apps vitalícios e do acesso extra",
+      barraQuando: "Acaba em",
       botaoDepois: "Apps vitalícios e acesso extra de presente só até 11/11, às 23h59.",
       appsTitulo: "ECG GO e Dose Certa vitalícios, só até 11/11, às 23h59",
       appsTexto: "Por ano, o ECG GO custa {ecg-go} e o Dose Certa, {dose-certa}. Entrando até 23h59 de 11/11, os dois ficam com você para sempre. A partir de 12/11, o acesso é de um ano.",
@@ -49,14 +55,16 @@ window.OFERTA = {
       faqTempo: "Os cursos são vitalícios, os de hoje e os próximos que eu lançar no Clube. A Comunidade é por 12 meses. O ECG GO e o Dose Certa ficam vitalícios para quem entrar até 11/11, às 23h59. A partir de 12/11, o acesso aos dois é de um ano.",
     },
     2: {
-      topoQuando: "A condição especial acaba em",
-      topoAria: "Tempo até o fim da condição especial de Black Friday",
+      // 18/11: a contagem vai sem texto nenhum (só os números); vazio some da página
+      topoQuando: "",
+      topoAria: "Contagem",
+      barraQuando: "",
       botaoDepois: "Pix ou cartão, com 30 dias de garantia.",
       appsTitulo: "Um ano de ECG GO e de Dose Certa incluído",
       appsTexto: "Por ano, o ECG GO custa {ecg-go} e o Dose Certa, {dose-certa}. Entrando agora, um ano de acesso aos dois já vem junto.",
       appsNaLista: "Um ano de acesso incluído.",
-      fechaTitulo: "A condição especial acaba no sábado.",
-      fechaQuando: "A condição especial de Black Friday acaba sábado, 14/11, às 23h59.",
+      fechaTitulo: "",
+      fechaQuando: "",
       faqTempo: "Os cursos são vitalícios, os de hoje e os próximos que eu lançar no Clube. A Comunidade é por 12 meses. O ECG GO e o Dose Certa vêm com um ano de acesso.",
     },
   },

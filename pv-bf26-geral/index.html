@@ -200,6 +200,8 @@ section{padding:80px 0}
 
 /* carrinho encerrado (FIM_CARRINHO passou e a página ainda está no ar): some a contagem, fica o resto */
 .encerrado .placar,.encerrado .topo .quando,.encerrado .barra .info,.encerrado .fecha .quando,.encerrado .fecha h2{display:none}
+/* 18/11: texto da fase vazio (a contagem vai sem cópia) some da página */
+[data-f]:empty{display:none}
 
 /* 7 · o ticket */
 .fecha{text-align:center;background:radial-gradient(ellipse 80% 50% at 50% 40%,rgba(214,58,46,.16),transparent 72%)}
@@ -462,7 +464,7 @@ fbq('track','PageView');
 
 <footer>Instituto VC de Ensino Médico LTDA · CNPJ 62.218.072/0001-67 · Ubá/MG</footer>
 
-<div class="barra" id="barra" aria-hidden="true"><div class="lado"><p class="info">Acaba em<b id="barra-t">--:--:--</b></p><a class="bt" href="#oferta" data-popup tabindex="-1">Quero entrar no Clube</a></div></div>
+<div class="barra" id="barra" aria-hidden="true"><div class="lado"><p class="info"><span data-f="barraQuando"></span><b id="barra-t">--:--:--</b></p><a class="bt" href="#oferta" data-popup tabindex="-1">Quero entrar no Clube</a></div></div>
 
 <div class="insc" id="insc" role="dialog" aria-modal="true" aria-labelledby="insc-t" hidden>
   <div class="caixa-i">
@@ -496,6 +498,10 @@ fbq('track','PageView');
   const dois = k => String(k).padStart(2, "0");
   const aqui = new URLSearchParams(location.search), TESTE = aqui.get("teste") === "1";
   const NO_AR = /(^|\.)vitorcoutinhoandrade\.com$/.test(location.hostname); // prévia local não grava lead
+  // 18/11: teste A/B com a página do vídeo (pv-bf26-geral-video define PAGINA_VERSAO). A versão vai no src e no sck do
+  // checkout e no lead do pop-up. AB = cookie do sorteio do clube (links-checkout/middleware.js): pagina | video | vazio.
+  const VERSAO = window.PAGINA_VERSAO || "pagina";
+  const AB = (document.cookie.match(/(?:^|;\s*)pv_bf26_ab=(pagina|video)/) || [])[1] || "";
   const preenchido = v => !!v && !/\{\{/.test(v);
 
   // ---------- a lista de produtos: carrossel, empilhamento e soma saem daqui ----------
@@ -591,7 +597,8 @@ fbq('track','PageView');
   const barraT = $("barra-t");
   function conta() {
     if (!travada && fase === 1 && Date.now() > VIRADA) { fase = 2; pinta(); } // virou meia-noite com a página aberta
-    const fim = fase === 1 ? VIRADA : FIM_CARRINHO;
+    // 18/11: na fase 2 a contagem vai até O.TIMER_ATE (a sexta), não até o fim do carrinho; zerou, ela some e nada trava
+    const fim = fase === 1 ? VIRADA : (O.TIMER_ATE ? new Date(O.TIMER_ATE).getTime() : FIM_CARRINHO);
     const t = Math.floor(Math.max(0, fim - Date.now()) / 1000);
     document.documentElement.classList.toggle("encerrado", fase === 2 && t === 0);
     const k = UNID.map(([, s], i) => i ? Math.floor(t % UNID[i - 1][1] / s) : Math.floor(t / s));
@@ -709,7 +716,7 @@ fbq('track','PageView');
 
     // checkout: a origem da página (src e sck fixos), as UTMs que chegaram aqui e os dados para a Hotmart preencher
     const u = new URL(LINK);
-    u.searchParams.set("src", "pagina"); u.searchParams.set("sck", "black-geral_pagina");
+    u.searchParams.set("src", VERSAO); u.searchParams.set("sck", "black-geral_" + VERSAO);
     u.searchParams.set("utm_source", "pagina"); u.searchParams.set("utm_campaign", "black-geral");
     UTMS.forEach(k => { if (aqui.get(k)) u.searchParams.set(k, aqui.get(k)); });
     // link numerado da mensagem (gp-48, api-12: whatsapp/links-numerados.json) vira o sck, para saber qual mensagem vendeu
@@ -730,7 +737,8 @@ fbq('track','PageView');
 
     const utm = {}; UTMS.forEach(k => { if (aqui.get(k)) utm[k] = aqui.get(k); });
     const corpo = { d: { nome, email, whatsapp: String(ddi.num) + num, utm, src: aqui.get("src") || aqui.get("origem") || "",
-      url: location.origin + location.pathname, referrer: document.referrer, fbclid: aqui.get("fbclid") || "", teste: TESTE } };
+      url: location.origin + location.pathname, referrer: document.referrer, fbclid: aqui.get("fbclid") || "", teste: TESTE,
+      versao: VERSAO, ab: aqui.get("v") ? "" : AB } };
     const grava = !NO_AR ? Promise.resolve() : fetch(SUPA + "/rest/v1/rpc/pv_bf26_geral_salvar", {
       method: "POST", keepalive: true, body: JSON.stringify(corpo),
       headers: { apikey: SUPA_ANON, authorization: "Bearer " + SUPA_ANON, "content-type": "application/json" },
@@ -739,6 +747,21 @@ fbq('track','PageView');
     await Promise.all([Promise.race([grava, new Promise(r => setTimeout(r, 2500))]), new Promise(r => setTimeout(r, 400))]); // 400 ms para os pixels saírem
     location.href = u.toString();
   });
+
+  // ---------- 18/11: visita por versão para o teste A/B (tabela pv_bf26_ab_visitas, resumo em pv_bf26_ab_resumo) ----------
+  if (NO_AR) {
+    let visitante = "";
+    try {
+      visitante = localStorage.getItem("pv_bf26_visitante") || "";
+      if (!visitante) { visitante = (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2)); localStorage.setItem("pv_bf26_visitante", visitante); }
+    } catch (err) {}
+    fetch(SUPA + "/rest/v1/rpc/pv_bf26_ab_visita", {
+      method: "POST", keepalive: true,
+      body: JSON.stringify({ d: { versao: VERSAO, visitante, host: location.hostname, ab: AB, forcada: aqui.get("v") || "",
+        utm_source: aqui.get("utm_source") || "", utm_content: aqui.get("utm_content") || "", teste: TESTE } }),
+      headers: { apikey: SUPA_ANON, authorization: "Bearer " + SUPA_ANON, "content-type": "application/json" },
+    }).catch(() => {});
+  }
 
   // ---------- barra fixa: aparece quando o botão da primeira dobra sai da tela por cima ----------
   const barra = $("barra");

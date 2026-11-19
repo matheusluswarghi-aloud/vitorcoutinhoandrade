@@ -254,7 +254,10 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
     var u = new URL(b.checkout);
     var nome = b.id === "clube" ? "clube" : "vitalicio";
     // padrão desta página; o que vier na URL (utm_*) vence, menos src e sck, que são sempre os do botão
-    var origem = { src: CAMPANHA + "_" + (marca || "api"), sck: CAMPANHA + "_" + nome + (marca ? "_" + marca : ""),
+    // Clube: sck no padrão que o painel de vendas da Black lê (black-alunos_api-12 → canal API, mensagem api-12; sem número,
+    // black-alunos_recado). O número do link é reservado com a descrição do recado. Upgrade: produto fora do painel da Black.
+    var sck = b.id === "clube" ? "black-alunos_" + (marca || "recado") : CAMPANHA + "_" + nome + (marca ? "_" + marca : "");
+    var origem = { src: CAMPANHA + "_" + (marca || "api"), sck: sck,
                    utm_source: "api", utm_medium: "whatsapp", utm_campaign: CAMPANHA };
     ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(function (k) {
       var v = params.get(k) || origem[k];

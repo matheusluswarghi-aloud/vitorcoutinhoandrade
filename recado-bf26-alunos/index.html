@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Recado do Dr. Vitor · alunos do ECG Descomplicado</title>
+<!--
+ Página fechada do "Recado aos alunos · Clube + ECG vitalício" (18/11/2026), só para alunos do ECG Descomplicado.
+ Chega pelo disparo da API do WhatsApp ("recado do Dr. Vitor sobre o seu acesso no curso"). Só o vídeo e dois botões:
+   1. Clube do Plantonista, condição de aluno (off=mkvniz3k, R$ 1.998), surge aos 2:21 do vídeo;
+   2. ECG Descomplicado vitalício + ECG GO (off=sqi8ftl2, R$ 597), surge aos 3:01,7.
+ A seta do vídeo aponta para os botões aos 3:09,6: dali em diante os dois estão na tela.
+ Sem data, sem contador (memória condicao-aluno-sem-data), sem 🖤, CTA verde, sem pixel. Roteiro: ../fonte.md.
+ Modelo: 09-site-vsl/pv-vitalicio-bf26-alunos/ (upgrade vitalício de 06/11).
+
+ PARA LIGAR (constantes no script do fim):
+   PLAYER  id do player da VTurb (conta ECG). Vazio = sem vídeo e os dois botões aparecem na hora.
+   O embed vai entre os marcadores VTURB e /VTURB (o código de velocidade, se a VTurb der, em VTURB-HEAD).
+ Origem: cada botão leva src, sck e utm_* próprios. Disparo numerado (utm_content=api-12) vira sck recado-alunos_clube_api-12.
+ ?teste=1 mostra os dois botões na hora.
+-->
+<meta name="description" content="Recado do Dr. Vitor Coutinho para quem é aluno do ECG Descomplicado, sobre o seu acesso no curso.">
+<meta name="theme-color" content="#0F0E0D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<!-- VTURB-HEAD: player "[RECADO] Clube + ECG vitalício · alunos BF26" (conta ECG, 19/11), código de velocidade -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/135cfe07-108d-4275-a884-f7567ee21964/players/6aff45c30558bd738efa412c/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/135cfe07-108d-4275-a884-f7567ee21964/6aff45bafb5475d1d204e809/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+<!-- /VTURB-HEAD -->
+<style>
+:root{
+  --fundo:#0F0E0D; --fundo2:#161412; --fio:#2E2A26;
+  --marfim:#F2ECE4; --cinza:#ADA59C; --cinza2:#7F776F;
+  --vermelho:#D63A2E; --brasa:rgba(214,58,46,.30);
+  --verde:#15803D; --verde-h:#126B33;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--fundo);overflow-x:hidden}
+html,body{max-width:100%;overflow-x:clip}
+body{background:var(--fundo);color:var(--marfim);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--marfim);outline-offset:3px}
+h1{text-wrap:balance}
+p{text-wrap:pretty}
+.lado{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
+.vm{color:var(--vermelho)}
+
+main{flex:1}
+.faixa{background:var(--vermelho);color:#fff;text-align:center;font-weight:900;font-size:15px;letter-spacing:.14em;text-transform:uppercase;line-height:1;padding:11px 16px}
+.abre{padding:22px 0 72px;background:radial-gradient(ellipse 80% 40% at 50% 34%,var(--brasa),transparent 72%);text-align:center}
+h1{font-weight:900;font-size:clamp(28px,7.4vw,52px);line-height:1.04;letter-spacing:-.045em;margin:0 auto;max-width:860px}
+.sub-t{font-size:16px;line-height:1.45;color:var(--cinza);margin:12px auto 0;max-width:600px}
+
+/* vídeo vertical (1080x1920): coluna estreita no centro, para caber título + vídeo na primeira tela */
+.video{position:relative;margin:18px auto 0;width:100%;max-width:min(380px,calc((100svh - 330px) * 9 / 16));min-width:220px;aspect-ratio:9/16;background:#000;overflow:hidden;border-radius:6px;box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+.video vturb-smartplayer{display:block;width:100%}
+.video .vazio{position:absolute;inset:0;display:grid;place-items:center;padding:20px;color:var(--cinza2);font-size:15px;border:1px dashed var(--fio)}
+
+.ofertas{margin:28px auto 0;max-width:460px;display:flex;flex-direction:column;gap:22px}
+.oferta.esconder{display:none}
+.bt{display:block;text-align:center;width:100%;background:var(--verde);color:#fff;text-decoration:none;font-weight:800;font-size:17px;line-height:1.25;letter-spacing:-.01em;padding:16px 14px;border-radius:4px;box-shadow:0 18px 40px -16px rgba(21,128,61,.75);transition:background .15s,transform .15s}
+.bt:hover{background:var(--verde-h);transform:translateY(-1px)}
+.forma{margin-top:10px;font-size:15px;line-height:1.45;color:var(--cinza)}
+.forma b{color:var(--marfim);font-weight:700}
+.oferta+.oferta{padding-top:22px;border-top:1px solid var(--fio)}
+
+footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--fio);font-size:14px;color:var(--cinza2);text-align:center}
+
+@media (min-width:600px){
+  .bt{font-size:20px;padding:20px 16px}
+}
+@media (min-width:900px){
+  .lado{padding:0 24px}
+  .abre{padding:40px 0 96px}
+  .faixa{font-size:17px;padding:13px 16px}
+  .sub-t{font-size:18px}
+  .video{margin:28px auto 0;max-width:min(420px,calc((100svh - 340px) * 9 / 16))}
+}
+@media (prefers-reduced-motion:reduce){.bt{transition:none}}
+</style>
+</head>
+<body>
+<p class="faixa">Atenção, aluno</p>
+<main>
+<div class="abre"><div class="lado">
+  <h1>Recado do Dr. Vitor para quem é aluno do <span class="vm">ECG Descomplicado</span></h1>
+  <p class="sub-t">É sobre o seu acesso no curso. Assista até o fim.</p>
+
+  <div class="video" id="video">
+    <!-- Vídeo do recado (RECADO_ALUNOS_CLUBE_VITALICIO, 3:22,6, vertical). Para ligar: embed entre VTURB e /VTURB e o id
+         em PLAYER no script. Enquanto não houver player, fica o aviso abaixo. -->
+    <!-- VTURB -->
+    <vturb-smartplayer id="vid-6aff45c30558bd738efa412c" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.77777777777777% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/135cfe07-108d-4275-a884-f7567ee21964/players/6aff45c30558bd738efa412c/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+    <!-- /VTURB -->
+  </div>
+
+  <div class="ofertas" id="ofertas">
+    <div class="oferta esconder" id="oferta-clube">
+      <a class="bt" id="bt-clube" href="#">Quero o Clube do Plantonista</a>
+      <p class="forma">Condição de aluno, vitalício e com o seu <b>ECG Descomplicado</b> dentro. Pix ou cartão em até 12x.</p>
+    </div>
+    <div class="oferta esconder" id="oferta-ecg">
+      <a class="bt" id="bt-ecg" href="#">Quero só o meu ECG vitalício + ECG GO</a>
+      <p class="forma">O seu curso de eletro para sempre, com as atualizações e o app. Pix ou cartão em até 12x.</p>
+    </div>
+  </div>
+</div></div>
+</main>
+
+<footer>Instituto VC de Ensino Médico LTDA · CNPJ 62.218.072/0001-67 · Ubá/MG</footer>
+
+<script>
+(function () {
+  // ---------- ligar aqui ----------
+  var PLAYER = "6aff45c30558bd738efa412c";   // id do player da VTurb (conta ECG, vid-<id> do embed); vazio = sem vídeo, botões na hora
+  var BOTOES = [
+    // Clube: "1.998, ou 12 de 199,90" entra aos 2:21 do vídeo final (pedido da gerente, 18/11)
+    { id: "clube", em: 141, checkout: "https://pay.hotmart.com/Q108311655C?off=mkvniz3k" },
+    // ECG vitalício + ECG GO: "597 reais" entra aos 3:01,7
+    { id: "ecg", em: 181.7, checkout: "https://pay.hotmart.com/Q105615633U?off=sqi8ftl2" },
+  ];
+  var CAMPANHA = "recado-alunos";
+  // ---------------------------------
+
+  var params = new URLSearchParams(location.search);
+  var teste = params.get("teste") === "1";
+  // link numerado do disparo (utm_content=api-12): entra no sck para saber qual mensagem vendeu
+  var marca = /^[a-z]+-\d+$/.test(params.get("utm_content") || "") ? params.get("utm_content") : "";
+
+  BOTOES.forEach(function (b) {
+    var u = new URL(b.checkout);
+    var nome = b.id === "clube" ? "clube" : "vitalicio";
+    // padrão desta página; o que vier na URL (utm_*) vence, menos src e sck, que são sempre os do botão
+    var origem = { src: CAMPANHA + "_" + (marca || "api"), sck: CAMPANHA + "_" + nome + (marca ? "_" + marca : ""),
+                   utm_source: "api", utm_medium: "whatsapp", utm_campaign: CAMPANHA };
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(function (k) {
+      var v = params.get(k) || origem[k];
+      if (v) u.searchParams.set(k, v.slice(0, 120));
+    });
+    u.searchParams.set("src", origem.src); u.searchParams.set("sck", origem.sck);
+    b.el = document.getElementById("oferta-" + b.id);
+    document.getElementById("bt-" + b.id).href = u.toString();
+    b.chave = "recado_alunos_bf26_" + b.id + "_visto";
+  });
+
+  function mostra(b, rolar) {
+    if (b.mostrado) return;
+    b.mostrado = true;
+    try { localStorage.setItem(b.chave, "1"); } catch (e) {}
+    b.el.classList.remove("esconder");
+    // o botão surge logo abaixo do vídeo: leva até ele (não na prévia ?teste=1 nem sem vídeo)
+    if (rolar) setTimeout(function () { b.el.scrollIntoView({ behavior: "smooth", block: "center" }); }, 150);
+  }
+
+  if (teste || !PLAYER) { BOTOES.forEach(function (b) { mostra(b, false); }); return; }
+  BOTOES.forEach(function (b) { try { if (localStorage.getItem(b.chave) === "1") mostra(b, false); } catch (e) {} });
+
+  // O mesmo desenho do upgrade vitalício (06/11): conta pelo tempo do vídeo (pausar não adianta o botão); a checagem de
+  // 1 em 1 s lê o tempo direto se o player ficou pronto antes do listener; sem player em 20 s, os botões aparecem.
+  var player = document.getElementById("vid-" + PLAYER);
+  if (!player) { BOTOES.forEach(function (b) { mostra(b, false); }); return; }
+  player.addEventListener("player:ready", function () {
+    BOTOES.forEach(function (b) {
+      try { player.displayHiddenElements(b.em, ["#oferta-" + b.id], { persist: true, callback: function () { mostra(b, true); } }); } catch (e) {}
+    });
+  });
+  var inicio = Date.now();
+  var vigia = setInterval(function () {
+    if (BOTOES.every(function (b) { return b.mostrado; })) { clearInterval(vigia); return; }
+    var t = Number(player.currentTime);
+    BOTOES.forEach(function (b) { if (t >= b.em) mostra(b, true); });
+    var carregou = (t > 0) || (Number(player.duration) > 0) ||
+      (window.smartplayer && smartplayer.instances && smartplayer.instances.length > 0);
+    if (!carregou && Date.now() - inicio > 20000) BOTOES.forEach(function (b) { mostra(b, false); });
+  }, 1000);
+})();
+</script>
+</body>
+</html>

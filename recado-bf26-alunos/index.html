@@ -57,6 +57,14 @@ main{flex:1}
 /* tarja fixa: surge quando a pessoa chega na oferta do Clube (fixa, não mexe na altura da página) */
 .tarja{position:fixed;left:0;right:0;top:0;z-index:50;background:var(--vermelho);color:#fff;text-align:center;font-weight:800;font-size:15px;line-height:1.3;padding:11px 16px calc(11px);padding-top:calc(11px + env(safe-area-inset-top));box-shadow:0 10px 30px -10px rgba(0,0,0,.8);transform:translateY(-110%);transition:transform .35s ease}
 .tarja.on{transform:none}
+/* botão de dúvidas no WhatsApp: escondido até a oferta aparecer; fixo, não mexe na altura da página */
+.zap{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-decoration:none;opacity:0;transform:translateY(20px) scale(.9);pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+.zap.on{opacity:1;transform:none;pointer-events:auto}
+.zap-balao{position:relative;background:#fff;color:#111;font-weight:800;font-size:14px;line-height:1;padding:9px 12px;border-radius:8px;box-shadow:0 8px 24px -8px rgba(0,0,0,.6)}
+.zap-balao::after{content:"";position:absolute;right:20px;bottom:-6px;width:12px;height:12px;background:#fff;transform:rotate(45deg);border-radius:2px}
+.zap-bola{width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 28px -8px rgba(0,0,0,.7)}
+.zap-bola svg{width:32px;height:32px}
+.zap:hover .zap-bola{background:#1EBE5A}
 .faixa{background:var(--vermelho);color:#fff;text-align:center;font-weight:900;font-size:15px;letter-spacing:.14em;text-transform:uppercase;line-height:1;padding:11px 16px}
 .abre{padding:22px 0 72px;background:radial-gradient(ellipse 80% 40% at 50% 34%,var(--brasa),transparent 72%);text-align:center}
 h1{font-weight:900;font-size:clamp(28px,7.4vw,52px);line-height:1.04;letter-spacing:-.045em;margin:0 auto;max-width:860px}
@@ -153,7 +161,7 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
   .sub-t{font-size:18px}
   .video{margin:28px auto 0;max-width:min(420px,calc((100svh - 340px) * 9 / 16))}
 }
-@media (prefers-reduced-motion:reduce){.bt,.bt2,.tarja{transition:none}}
+@media (prefers-reduced-motion:reduce){.bt,.bt2,.tarja,.zap{transition:none}}
 </style>
 </head>
 <body>
@@ -230,6 +238,13 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
 </div></div>
 </main>
 
+<!-- Botão de dúvidas (19/11, Matheus: "pode colocar o meu número pessoal mesmo"): surge com a tarja, quando o bloco do
+     Clube entra na tela. Abre o WhatsApp do Matheus com a mensagem pronta. -->
+<a class="zap" id="zap" href="https://wa.me/5514988099094?text=Oi%2C%20vi%20o%20recado%20do%20Dr.%20Vitor%20e%20fiquei%20com%20uma%20d%C3%BAvida" target="_blank" rel="noopener" aria-label="Tirar dúvidas no WhatsApp">
+  <span class="zap-balao">Dúvidas?</span>
+  <span class="zap-bola"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16.04 3C8.86 3 3.03 8.82 3.03 15.99c0 2.29.6 4.53 1.74 6.5L3 29l6.68-1.75a12.97 12.97 0 0 0 6.36 1.62h.01c7.17 0 13-5.82 13-12.99C29.05 8.82 23.22 3 16.04 3Zm0 23.68h-.01a10.8 10.8 0 0 1-5.5-1.5l-.4-.23-3.96 1.04 1.06-3.86-.26-.4a10.75 10.75 0 0 1-1.65-5.74c0-5.96 4.85-10.8 10.82-10.8 2.89 0 5.6 1.12 7.64 3.17a10.73 10.73 0 0 1 3.16 7.64c0 5.96-4.85 10.81-10.9 10.81Zm5.93-8.09c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.16-.22.33-.84 1.06-1.03 1.27-.19.22-.38.24-.71.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.63-1.93-1.82-2.26-.19-.33-.02-.5.14-.67.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.33-1.14 1.11-1.14 2.71s1.17 3.14 1.33 3.36c.16.22 2.3 3.51 5.57 4.92.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.14-.3-.22-.63-.38Z"/></svg></span>
+</a>
+
 <footer>Instituto VC de Ensino Médico LTDA · CNPJ 62.218.072/0001-67 · Ubá/MG</footer>
 
 <script>
@@ -273,7 +288,7 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
   var tarja = document.getElementById("tarja");
   if ("IntersectionObserver" in window) {
     var obs = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { tarja.classList.add("on"); obs.disconnect(); } });
+      es.forEach(function (e) { if (e.isIntersecting) { tarja.classList.add("on"); document.getElementById("zap").classList.add("on"); obs.disconnect(); } });
     }, { threshold: 0.15 });
     obs.observe(document.getElementById("oferta-clube"));
   }

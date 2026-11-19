@@ -40,7 +40,7 @@
   --fundo:#0F0E0D; --fundo2:#161412; --fio:#2E2A26;
   --marfim:#F2ECE4; --cinza:#ADA59C; --cinza2:#7F776F;
   --vermelho:#D63A2E; --brasa:rgba(214,58,46,.30);
-  --verde:#15803D; --verde-h:#126B33;
+  --verde:#15803D; --verde-h:#126B33; --verde-claro:#4ADE80;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;background:var(--fundo);overflow-x:hidden}
@@ -54,6 +54,9 @@ p{text-wrap:pretty}
 .vm{color:var(--vermelho)}
 
 main{flex:1}
+/* tarja fixa: surge quando a pessoa chega na oferta do Clube (fixa, não mexe na altura da página) */
+.tarja{position:fixed;left:0;right:0;top:0;z-index:50;background:var(--vermelho);color:#fff;text-align:center;font-weight:800;font-size:15px;line-height:1.3;padding:11px 16px calc(11px);padding-top:calc(11px + env(safe-area-inset-top));box-shadow:0 10px 30px -10px rgba(0,0,0,.8);transform:translateY(-110%);transition:transform .35s ease}
+.tarja.on{transform:none}
 .faixa{background:var(--vermelho);color:#fff;text-align:center;font-weight:900;font-size:15px;letter-spacing:.14em;text-transform:uppercase;line-height:1;padding:11px 16px}
 .abre{padding:22px 0 72px;background:radial-gradient(ellipse 80% 40% at 50% 34%,var(--brasa),transparent 72%);text-align:center}
 h1{font-weight:900;font-size:clamp(28px,7.4vw,52px);line-height:1.04;letter-spacing:-.045em;margin:0 auto;max-width:860px}
@@ -64,18 +67,84 @@ h1{font-weight:900;font-size:clamp(28px,7.4vw,52px);line-height:1.04;letter-spac
 .video vturb-smartplayer{display:block;width:100%}
 .video .vazio{position:absolute;inset:0;display:grid;place-items:center;padding:20px;color:var(--cinza2);font-size:15px;border:1px dashed var(--fio)}
 
-.ofertas{margin:28px auto 0;max-width:460px;display:flex;flex-direction:column;gap:22px}
+.ofertas{margin:28px auto 0;max-width:480px;display:flex;flex-direction:column;gap:20px;text-align:left}
 .oferta.esconder{display:none}
-.bt{display:block;text-align:center;width:100%;background:var(--verde);color:#fff;text-decoration:none;font-weight:800;font-size:17px;line-height:1.25;letter-spacing:-.01em;padding:16px 14px;border-radius:4px;box-shadow:0 18px 40px -16px rgba(21,128,61,.75);transition:background .15s,transform .15s}
+.bt{display:block;text-align:center;width:100%;background:var(--verde);color:#fff;text-decoration:none;font-weight:800;font-size:18px;line-height:1.25;letter-spacing:-.01em;padding:17px 14px;border-radius:4px;box-shadow:0 18px 40px -16px rgba(21,128,61,.75);transition:background .15s,transform .15s}
 .bt:hover{background:var(--verde-h);transform:translateY(-1px)}
-.forma{margin-top:10px;font-size:15px;line-height:1.45;color:var(--cinza)}
-.forma b{color:var(--marfim);font-weight:700}
-.oferta+.oferta{padding-top:22px;border-top:1px solid var(--fio)}
+
+/* bloco principal: o Clube, com destaque (borda e faixa vermelhas, botão cheio) */
+.bloco{background:var(--fundo2);border:1px solid var(--fio);border-radius:6px;overflow:hidden}
+.bloco-topo{background:var(--vermelho);color:#fff;font-weight:900;font-size:13px;letter-spacing:.12em;text-transform:uppercase;line-height:1;padding:10px 18px}
+.bloco-corpo{padding:22px 20px 22px}
+.oferta-clube{border:2px solid var(--vermelho);box-shadow:0 30px 70px -34px var(--brasa)}
+.bloco h2{font-weight:900;font-size:27px;line-height:1.08;letter-spacing:-.035em}
+.bloco .apoio{margin-top:8px;font-size:15.5px;line-height:1.45;color:var(--cinza)}
+.lista{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.lista li{position:relative;padding-left:26px;font-size:16px;line-height:1.4}
+.lista li::before{content:"";position:absolute;left:2px;top:5px;width:11px;height:6px;border-left:2.5px solid var(--verde-claro);border-bottom:2.5px solid var(--verde-claro);transform:rotate(-45deg)}
+.lista li b{font-weight:700}
+.lista li span{color:var(--cinza)}
+.preco{margin-top:22px;padding-top:18px;border-top:1px solid var(--fio)}
+.preco .de{font-size:15px;line-height:1.5;color:var(--cinza2)}
+.preco .de s{color:var(--cinza)}
+.preco .por{margin-top:6px;font-size:15px;color:var(--cinza)}
+.preco .valor{font-weight:900;font-size:46px;line-height:1;letter-spacing:-.04em;color:var(--marfim);margin-top:4px}
+.preco .parc{margin-top:6px;font-size:16px;color:var(--marfim)}
+.preco .parc span{color:var(--cinza)}
+.cursos{list-style:none;margin:8px 0 2px;padding:0;display:grid;grid-template-columns:1fr;gap:4px}
+.cursos li{padding:0 0 0 14px;position:relative;font-size:15px;line-height:1.35;color:var(--marfim)}
+.cursos li::before{content:"";position:absolute;left:2px;top:.6em;width:5px;height:5px;border-radius:50%;background:var(--vermelho);border:0;transform:none}
+.conta{margin-top:22px;border:1px solid var(--fio);border-radius:4px;overflow:hidden}
+.conta .linha{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 14px;font-size:15.5px;border-bottom:1px solid var(--fio)}
+.conta .linha span{color:var(--cinza)}
+.conta .linha s{white-space:nowrap;color:var(--cinza);font-size:17px}
+.conta .desc{background:rgba(74,222,128,.10)}
+.conta .desc span{color:var(--marfim);font-weight:600}
+.conta .aviso{background:var(--vermelho);color:#fff;font-weight:800;font-size:15px;line-height:1.3;text-align:center;padding:10px 12px}
+.conta .desc b{white-space:nowrap;flex-shrink:0;color:var(--verde-claro);font-weight:900;font-size:22px;letter-spacing:-.02em}
+.conta .total{border-bottom:0;padding:22px 30px 10px 14px}
+.conta .total span{color:var(--marfim);font-weight:700;font-size:17px}
+.conta .total b{white-space:nowrap;font-weight:900;font-size:40px;line-height:1;letter-spacing:-.04em}
+.circulado{position:relative;display:inline-block}
+.rabisco{position:absolute;left:-18px;right:-14px;top:-15px;bottom:-13px;width:calc(100% + 32px);height:calc(100% + 28px);overflow:visible;pointer-events:none}
+.rabisco path{fill:none;stroke:var(--verde-claro);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1;animation:rabisca .9s .35s ease-out forwards}
+@keyframes rabisca{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.rabisco path{animation:none;stroke-dashoffset:0}}
+.conta .parc{padding:2px 14px 14px;text-align:right;font-size:15px;color:var(--cinza)}
+.bloco .bt{margin-top:18px}
+.garantia{margin-top:12px;font-size:14px;line-height:1.45;color:var(--cinza);text-align:center}
+
+/* segunda opção (downsell): mais discreta, botão só com contorno verde */
+.ou{text-align:center;font-size:15px;line-height:1.45;color:var(--cinza);padding:4px 10px 0}
+.oferta-ecg .bloco-corpo{padding:20px 20px 20px}
+.oferta-ecg h2{font-size:22px}
+.oferta-ecg .valor{font-size:34px}
+.bt2{display:block;text-align:center;width:100%;margin-top:16px;background:transparent;color:#4ADE80;border:2px solid var(--verde);text-decoration:none;font-weight:800;font-size:16px;line-height:1.25;padding:14px 12px;border-radius:4px;transition:background .15s}
+.bt2:hover{background:rgba(21,128,61,.18)}
 
 footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--fio);font-size:14px;color:var(--cinza2);text-align:center}
 
+
+.titulo-clube{display:flex;align-items:center;justify-content:center;gap:clamp(10px,3vw,16px);flex-wrap:nowrap}
+.titulo-clube img{display:block;height:auto;width:clamp(112px,38vw,190px);flex-shrink:0;-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none;pointer-events:none}
+.sublinha{white-space:nowrap;font-size:clamp(23px,7.4vw,34px);text-decoration:underline;text-decoration-color:var(--vermelho);text-decoration-thickness:4px;text-underline-offset:7px}
+.bloco-topo{font-size:clamp(10.5px,3.4vw,12.5px);letter-spacing:.07em;white-space:nowrap;padding-left:10px;padding-right:10px}
+/* 19/11, Matheus: textos dos blocos centralizados; só as listas com check ficam à esquerda */
+.bloco-corpo{text-align:center}
+.bloco-topo{text-align:center}
+.lista{text-align:left}
+.conta .linha{flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;padding:12px 14px}
+.conta .linha span{font-size:15px}
+.conta .desc{padding:14px 14px 12px}
+.conta .total{padding:16px 14px 10px;gap:14px}
+.conta .total span{font-size:16px}
+.conta .parc{text-align:center;padding:4px 14px 14px}
+.preco{text-align:center}
+
 @media (min-width:600px){
   .bt{font-size:20px;padding:20px 16px}
+  .bloco-corpo{padding:26px 28px}
+  .bloco h2{font-size:30px}
 }
 @media (min-width:900px){
   .lado{padding:0 24px}
@@ -84,11 +153,12 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
   .sub-t{font-size:18px}
   .video{margin:28px auto 0;max-width:min(420px,calc((100svh - 340px) * 9 / 16))}
 }
-@media (prefers-reduced-motion:reduce){.bt{transition:none}}
+@media (prefers-reduced-motion:reduce){.bt,.bt2,.tarja{transition:none}}
 </style>
 </head>
 <body>
 <p class="faixa">Atenção, aluno</p>
+<p class="tarja" id="tarja" aria-live="polite">Desconto válido só nesta página</p>
 <main>
 <div class="abre"><div class="lado">
   <h1>Recado do Dr. Vitor para quem é aluno do <span class="vm">ECG Descomplicado</span></h1>
@@ -103,13 +173,58 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
   </div>
 
   <div class="ofertas" id="ofertas">
+    <!-- Os fatos dos dois blocos saem do roteiro do vídeo (../fonte.md): cursos, apps, comunidade, preços e garantia. -->
     <div class="oferta esconder" id="oferta-clube">
-      <a class="bt" id="bt-clube" href="#">Quero o Clube do Plantonista</a>
-      <p class="forma">Condição de aluno, vitalício e com o seu <b>ECG Descomplicado</b> dentro. Pix ou cartão em até 12x.</p>
+      <div class="bloco oferta-clube">
+        <p class="bloco-topo">Desconto válido só nesta página</p>
+        <div class="bloco-corpo">
+          <h2 class="titulo-clube"><img src="img/logo-clube.png" alt="Clube do Plantonista" width="600" height="185" draggable="false"><span class="sublinha">vitalício</span></h2>
+          <ul class="lista">
+            <li><b>Mais de 10 cursos de emergência</b>, entre eles:
+              <ul class="cursos">
+                <li>Taquiarritmias e Bradiarritmias</li>
+                <li>Drogas Vasoativas e Antiarrítmicos</li>
+                <li>Dor Torácica</li>
+                <li>Intubação no Plantão</li>
+                <li>ACLS</li>
+                <li>POCUS na Emergência</li>
+              </ul>
+            </li>
+            <li><b>Todo curso novo que entrar</b> <span>· sem pagar de novo</span></li>
+            <li><b>App Dose Certa</b> <span>· a ampola, a diluição e como iniciar</span></li>
+            <li><b>Comunidade do Plantonista</b> <span>· o grupo com o Dr. Vitor para discutir os casos</span></li>
+            <li><b>Seu ECG Descomplicado vitalício</b> <span>+ o app ECG GO</span></li>
+          </ul>
+          <div class="conta">
+            <p class="linha"><span>Quem não é aluno paga</span><s>R$ 2.597</s></p>
+            <p class="linha desc"><span>Seu desconto de aluno</span><b>− R$ 599</b></p>
+            <p class="aviso">Desconto válido só nesta página</p>
+            <p class="linha total"><span>Você paga</span><b class="circulado">R$ 1.998<svg class="rabisco" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M152 9 C104 0 34 3 13 22 C-5 39 18 70 92 74 C162 78 197 61 193 38 C189 15 141 5 93 8 C70 9 50 13 37 19"/></svg></b></p>
+            <p class="parc">ou 12x de R$ 199,90 · Pix ou cartão</p>
+          </div>
+          <a class="bt" id="bt-clube" href="#">Quero o Clube do Plantonista</a>
+          <p class="garantia">Vitalício · 30 dias de garantia</p>
+        </div>
+      </div>
     </div>
     <div class="oferta esconder" id="oferta-ecg">
-      <a class="bt" id="bt-ecg" href="#">Quero só o meu ECG vitalício + ECG GO</a>
-      <p class="forma">O seu curso de eletro para sempre, com as atualizações e o app. Pix ou cartão em até 12x.</p>
+      <p class="ou">Agora você só quer o seu eletro? Tem a segunda opção:</p>
+      <div class="bloco oferta-ecg" style="margin-top:14px">
+        <div class="bloco-corpo">
+          <h2>Upgrade do seu <span class="vm">ECG Descomplicado</span> para vitalício</h2>
+          <p class="apoio">Você já é aluno, e hoje o seu acesso é de 1 ano. Com o upgrade, o curso fica seu para sempre.</p>
+          <ul class="lista">
+            <li><b>Seu ECG Descomplicado vitalício</b> <span>· sem o prazo de 1 ano</span></li>
+            <li><b>As aulas novas que entrarem</b> <span>· o curso segue sendo atualizado</span></li>
+            <li><b>App ECG GO vitalício</b></li>
+          </ul>
+          <div class="preco">
+            <p class="valor">R$ 597</p>
+            <p class="parc">ou 12x de R$ 59,94 <span>· Pix ou cartão</span></p>
+          </div>
+          <a class="bt2" id="bt-ecg" href="#">Quero o upgrade para vitalício</a>
+        </div>
+      </div>
     </div>
   </div>
 </div></div>
@@ -150,6 +265,15 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
     document.getElementById("bt-" + b.id).href = u.toString();
     b.chave = "recado_alunos_bf26_" + b.id + "_visto";
   });
+
+  // tarja do alto: liga quando o bloco do Clube aparece na tela, e fica
+  var tarja = document.getElementById("tarja");
+  if ("IntersectionObserver" in window) {
+    var obs = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { tarja.classList.add("on"); obs.disconnect(); } });
+    }, { threshold: 0.15 });
+    obs.observe(document.getElementById("oferta-clube"));
+  }
 
   function mostra(b, rolar) {
     if (b.mostrado) return;

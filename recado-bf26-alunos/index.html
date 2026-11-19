@@ -68,6 +68,7 @@ main{flex:1}
 .faixa{background:var(--vermelho);color:#fff;text-align:center;font-weight:900;font-size:15px;letter-spacing:.14em;text-transform:uppercase;line-height:1;padding:11px 16px}
 .abre{padding:22px 0 72px;background:radial-gradient(ellipse 80% 40% at 50% 34%,var(--brasa),transparent 72%);text-align:center}
 h1{font-weight:900;font-size:clamp(28px,7.4vw,52px);line-height:1.04;letter-spacing:-.045em;margin:0 auto;max-width:860px}
+.junto{white-space:nowrap}
 .sub-t{font-size:16px;line-height:1.45;color:var(--cinza);margin:12px auto 0;max-width:600px}
 
 /* vídeo vertical (1080x1920): coluna estreita no centro, para caber título + vídeo na primeira tela */
@@ -149,6 +150,9 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
 .conta .parc{text-align:center;padding:4px 14px 14px}
 .preco{text-align:center}
 
+@media (max-width:599px){
+  .video{max-width:none;width:100%}
+}
 @media (min-width:600px){
   .bt{font-size:20px;padding:20px 16px}
   .bloco-corpo{padding:26px 28px}
@@ -170,7 +174,7 @@ footer{padding:28px 24px calc(28px + env(safe-area-inset-bottom));border-top:1px
 <main>
 <div class="abre"><div class="lado">
   <h1>Recado do Dr. Vitor para quem é aluno do <span class="vm">ECG Descomplicado</span></h1>
-  <p class="sub-t">É sobre o seu acesso no curso. Assista até o fim.</p>
+  <p class="sub-t"><span class="junto">É sobre o seu acesso no curso.</span><br><span class="junto">Assista até o fim.</span></p>
 
   <div class="video" id="video">
     <!-- Vídeo do recado (RECADO_ALUNOS_CLUBE_VITALICIO, 3:22,6, vertical). Para ligar: embed entre VTURB e /VTURB e o id
